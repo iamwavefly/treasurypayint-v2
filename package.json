@@ -2,9 +2,6 @@
   "name": "treasurypayint",
   "version": "1.0.0",
   "description": "Online banking for everyone",
-  "engines": {
-    "node": "12.13.0"
-  },
   "main": "app.js",
   "scripts": {
     "start": "npm app.js",
