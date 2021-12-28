@@ -76,6 +76,7 @@ app.use("/users", users);
 app.use("*", (req, res) => {
   res.status(404).render("404", { layout: false });
 });
-
-// Listen to port
-http.createServer(app).listen(process.env.PORT || 4000);
+const port = process.env.PORT || 3001;
+app.listen(port, () => {
+  console.log("Server started on port " + port);
+});
