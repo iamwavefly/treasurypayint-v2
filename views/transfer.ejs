@@ -1,0 +1,107 @@
+<div id="alertBox">
+    <!-- Button trigger modal -->
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#newExampleModalCenter"
+        id="btnPopTransfer" style="display:none">
+        Launch demo modal
+    </button>
+
+    <!-- Modal -->
+    <div class="modal fade" id="newExampleModalCenter" tabindex="-1" role="dialog"
+        aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p>Hey, <br>make sure you put the correct generated Transfer Access ID to continue</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" id="goodBtn2" data-dismiss="modal">Ok</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="alertBox">
+    <!-- Button trigger modal -->
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#successNewExampleModalCenter"
+        id="btnPopTransferSuccess" style="display:none">
+        Launch demo modal
+    </button>
+
+    <!-- Modal -->
+    <div class="modal fade" id="successNewExampleModalCenter" tabindex="-1" role="dialog"
+        aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="container">
+                        <div>
+                            <div class="col-xs-6 m-auto transactionSuccess text-danger">
+                                <i class="lnr lnr-cross-circle display-2"></i>
+                            </div>
+                            <br>
+                            <div class="col-xs-6 m-auto transactionSuccess text-primary">
+                                <p> Transaction declined! <br> Contact us for more details</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" id="goodBtn">Ok</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+<div class="container">
+    <div class="card mb-4 mt-4">
+        <form action="/users/checkpoint/<%= user.id %>?_method=PUT" method="POST">
+            <div class="card-header transfer-splash">
+                <div class="img__transfer__cover mb-4">
+                    <img src="../img/icon/transfer-money.png" alt="">
+                </div>
+                <h2>Transfer Fund</h2>
+                <p class="text-muted">Available Balance</p>
+                <h2><%= (user.available).toLocaleString('en-US', { style: 'currency', currency: 'USD', }) %></h2>
+                <div class="">
+                    <!-- <div class="btn-group" role="group" aria-label="Basic example">
+                    <div class="col-lg-4">
+                        <a href="/" class="btn btn-outline-primary">Linked Account</a>
+                    </div>
+                    <div class="col-lg-4">
+                        <a href="/" class="btn btn-outline-primary">Other Banks</a>
+                    </div>
+                    <div class="col-lg-4">
+                        <a href="/" class="btn btn-outline-primary">Foreign Transfer</a>
+                    </div>
+                    <button class="btn btn-success">Return Home</button>
+                </div> -->
+                    <select class="form-control" name="checkpoint">
+                        <option selected default desabled>Select Transfer Mode</option>
+                        <option value="Linked Account">Linked Account</option>
+                        <option value="Other Banks">Other Banks</option>
+                        <option value="Foreign Transfer">Foreign Transfer</option>
+                    </select>
+                </div>
+                <button class="btn btn-success mt-3">Proceed</button>
+            </div>
+        </form>
+
+    </div>
+</div>

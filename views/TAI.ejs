@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#002244">
+    <title><%= title %> </title>
+    <link rel="stylesheet" href="../css/tai.css">
+    <script src="https://use.fontawesome.com/releases/v5.13.0/js/all.js" crossorigin="anonymous"></script>
+
+</head>
+
+<body>
+    <div class="container">
+        <div class="header">
+            <h3>Please Verify Your Transfer Access ID Below.</h3>
+            <p>To make sure your transaction went smooth, you have to verify your TAI </p>
+        </div>
+        <form action="/tai-report" class="tai__verify-form" method="GET">
+            <div class="form">
+                <input type="password" autocomplete="false" id="tai" name="tai" minlength="4" value="" maxlength="4" class="tai__input" placeholder="Enter TAI">
+                <i class="icon fas fa-lock tai__icon"></i>
+                <label for="tai" class="tai__label" value="<%= typeof tai !== "undefined" ? tai : "" %> ">Enter TAI</label>
+            </div>
+            <% if(user) { %>
+                <div class="report">
+                <span class="tai__status"><i class="icon fas fa-check"></i> Verified</span>
+                <p class="tai__report">Account Id: <b><%= user.user_id %> </b></p>
+                <p class="tai__report">Authorized Name: <b><%= user.first_name %> <%= user.other_name %></b></p>
+            </div>
+            <div class="btn__group">
+                <a href="/dashboard" class="loader__btn"> Back</a>
+                <!-- <input type="checkbox" id="report__alert" class="report__alert-che">
+                <label for="report__alert" class="report__alert-label"><div class="tai__btn">
+                    Transfer
+                </div></label> -->
+                <a href="/tai-checkpoint" id="transfer__btn" class="loader__btn"><div class="loader"></div><div class="btn__content">Transfer</div></a>
+            </div>
+            
+            <% } else if (user == null) { %>
+                <div class="report">
+                    <span class="tai__status" style="color: orangered"><i class="icon fas fa-times"></i> Unverified</span>
+                    <p class="tai__report" style="color: orangered">Invalid Transfer Access ID</p>
+                </div>
+                <div class="btn__group">
+                    <button type="submit" class="loader__btn"><div class="loader"></div><div class="btn__content">Verify</div></button>
+                </div>
+            <% } else { %> 
+                <button type="submit" class="loader__btn"><div class="loader"></div><div class="btn__content">Verify</div></button>
+            <% } %> 
+        </form>
+    </div>
+</body>
+
+<script>
+    const transfer__btn = document.getElementById("transfer__btn")
+    const modal = document.getElementById("modal")
+
+    const btn = document.querySelector(".loader__btn")
+    const loader = document.querySelector(".loader")
+    const content = document.querySelector(".btn__content") 
+    const report = document.querySelector(".report") 
+    btn.addEventListener("click", function(){
+        loader.style.display = "inline"
+        content.style.display = "none"
+
+        console.log(1);
+    })
+    transfer__btn.addEventListener("click", function(e){
+        e.preventDefault()
+        loader.style.display = "inline"
+        content.style.display = "none"
+        setTimeout(() => {
+            window.location = "/tai-checkpoint"
+        }, 5000);
+    })
+</script>
+
+</html>

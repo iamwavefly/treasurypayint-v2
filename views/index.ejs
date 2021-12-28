@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+
+<html lang="en" class="material-style layout-fixed">
+
+<head>
+    <title>Treasury PayInt | International Online Banking</title>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+    <meta name="description" content="Treasury PayInt PayInt." />
+    <link rel="icon" type="image/x-icon" href="/img/logo.png">
+
+    <!-- Google fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
+
+    <!-- Icon fonts -->
+    <link rel="stylesheet" href="/fonts/fontawesome.css">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-SV2HBQMKMF"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-SV2HBQMKMF');
+    </script>
+    <!-- Core stylesheets -->
+    <link rel="stylesheet" href="/css/bootstrap-material.css">
+    <link rel="stylesheet" href="/css/shreerang-material.css">
+    <link rel="stylesheet" href="/css/uikit.css">
+
+    <!-- Libs -->
+    <!-- <link rel="stylesheet" href="/libs/perfect-scrollbar/perfect-scrollbar.css">
+    <link rel="stylesheet" href="/libs/flot/flot.css"> -->
+
+    <!-- Font Awesome icons (free version)-->
+    <script src="https://use.fontawesome.com/releases/v5.13.0/js/all.js" crossorigin="anonymous"></script>
+    <!-- Google fonts-->
+    <!-- <link href="https://fonts.googleapis.com/css?family=Merriweather+Sans:400,700" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic"
+        rel="stylesheet" type="text/css" /> -->
+    <!-- Third party plugin CSS-->
+    <!-- <link href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.min.css"
+        rel="stylesheet" /> -->
+    <!-- Core theme CSS (includes Bootstrap)-->
+
+
+    <!-- animation style -->
+    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.0/dist/aos.css">
+
+    <!-- welcome page css -->
+
+    <link rel="stylesheet" href="/css/style.css">
+
+    <!-- /welcome -->
+
+</head>
+
+<body>
+    <!--[if lte IE 9]>
+            <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
+        <![endif]-->
+
+    <!-- header-start -->
+    <header>
+        <div class="header-area ">
+            <div id="sticky-header" class="main-header-area">
+                <div class="container-fluid ">
+                    <%- include("./partials/_header.ejs") %>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- header-end -->
+    <div class="loader">
+        <img src="../img/loader.gif" alt="loading...">
+    </div>
+
+    <!-- slider_area_start -->
+    <div class="slider_area">
+        <div class="single_slider  d-flex align-items-center slider_bg_1">
+            <div class="container">
+                <div class="row align-items-center justify-content-center">
+                    <div class="col-lg-7 col-md-6">
+                        <div class="slider_text">
+                            <h3 data-aos="fade-right">Go Beyond Your
+                                Imagination With Fast & Secure Banking.</h3>
+                            <div class="sldier_btn" data-aos="fade-up" data-aos-delay="500">
+                                <a href="/users/auth/register" class="boxed-btn3">Open Account</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-5 col-md-6">
+                        <div class="payment_form white-bg" data-aos="fade-in-right" data-aos-delay="500">
+                            <div class="info text-center">
+                                <h4>You're Welcome</h4>
+                                <p class="mt-3">Please enter your credentials to Access Your Account.</p>
+                            </div>
+                            <form action="/users/login" method="POST">
+                                <%- include('./partials/message'); %>
+                                <div class="form user-login">
+                                    <div class="row">
+                                        <div class="col-lg-12">
+                                            <div class="single_input">
+                                                <ion-icon  class="icon" name="person"></ion-icon>
+                                                <input type="text" class="form-control" autocomplete="off"
+                                                    autofocus="true" placeholder="Enter your username" name="username">
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-12">
+                                            <div class="single_input">
+                                                <ion-icon class="icon" name="lock-closed"></ion-icon>
+                                                <input type="password" autocomplete="off" class="form-control"
+                                                    placeholder="Securely enter your password" name="password">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <p>Don't have account yet? <a style="color: #9b3d3d; opacity: 0.8;" href="/users/auth/register">Open Account</a>
+                                </p>
+                                <div class="submit_btn">
+                                    <button class="boxed-btn3" type="submit">Sign In</button>
+                                </div>
+                                <span class="forgot-password">Forgot your password? <a style="color: #9b3d3d; opacity: 0.8;" href="/users//auth/forgot-password">Click here</a></span>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- slider_area_end -->
+    <%- include('./partials/_footer.ejs') %>
+</body>
+<!-- Core scripts -->
+<script src="/js/pace.js"></script>
+<script src="/js/jquery-3.3.1.min.js"></script>
+<script src="/libs/popper/popper.js"></script>
+<script src="/js/bootstrap.js"></script>
+<script src="/js/sidenav.js"></script>
+<script src="/js/layout-helpers.js"></script>
+<script src="/js/material-ripple.js"></script>
+
+<!-- Libs -->
+<!-- <script src="/libs/perfect-scrollbar/perfect-scrollbar.js"></script>
+<script src="/libs/eve/eve.js"></script>
+<script src="/libs/flot/flot.js"></script>
+<script src="/libs/flot/curvedLines.js"></script>
+<script src="/libs/chart-am4/core.js"></script>
+<script src="/libs/chart-am4/charts.js"></script>
+<script src="/libs/chart-am4/animated.js"></script> -->
+
+<!-- Demo -->
+<!-- <script src="/js/demo.js"></script>
+<script src="/js/analytics.js"></script> -->
+<script src="/js/custom.js"></script>
+<!-- <script src="/js/pages/dashboards_index.js"></script> -->
+
+
+
+
+<!-- Bootstrap core JS-->
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.bundle.min.js"></script>
+<!-- Third party plugin JS-->
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js"></script> -->
+<!-- Core theme JS-->
+<script src="js/scripts.js"></script>
+
+<script src="/js/custom-msg.js"></script>
+
+
+
+
+<!-- Welcome page js -->
+<!-- 
+<script src="js/vendor/modernizr-3.5.0.min.js"></script>
+<script src="js/vendor/jquery-1.12.4.min.js"></script>
+<script src="js/wow.min.js"></script>
+<script src="js/jquery.slicknav.min.js"></script>
+<script src="js/popper.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/owl.carousel.min.js"></script>
+<script src="js/isotope.pkgd.min.js"></script>
+<script src="js/ajax-form.js"></script>
+<script src="js/waypoints.min.js"></script>
+<script src="js/jquery.counterup.min.js"></script>
+<script src="js/imagesloaded.pkgd.min.js"></script>
+<script src="js/scrollIt.js"></script>
+<script src="js/jquery.scrollUp.min.js"></script>
+<script src="js/nice-select.min.js"></script>
+<script src="js/jquery.magnific-popup.min.js"></script>
+<script src="js/plugins.js"></script>
+<script src="js/gijgo.min.js"></script> -->
+
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+    integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+    crossorigin="anonymous"></script>
+<script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+<script src="https://unpkg.com/aos@2.3.0/dist/aos.js"></script>
+<script>
+
+    AOS.init({
+        duration: 1200,
+    })
+
+</script>
+
+<script src="../js/country.js"></script>
+<script src="../js/signup.js"></script>
+<script src="js/main.js"></script>
+<script src="../js/loader.js"></script>
+
+<!-- /welcome -->
+
+
+</body>
+
+</html>

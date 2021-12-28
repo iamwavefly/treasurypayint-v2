@@ -1,0 +1,290 @@
+.profile-container {
+  display: grid;
+  grid-template-columns: 20rem 1fr;
+  grid-gap: 20px;
+  width: 100%;
+  background-color: #f7f7f7;
+  height: auto;
+  max-height: 100vh;
+}
+.profile-container > .profile-info {
+  background-color: #ffff;
+  width: 100%;
+  height: 100%;
+  box-shadow: 0px 5px 5px rgba(167, 156, 156, 0.05);
+  display: grid;
+  grid-template-rows: 14rem 6rem 1fr 4rem;
+}
+.profile-container > .profile-info > div:first-child {
+  overflow: hidden;
+  width: 9rem;
+  height: 9rem;
+  border-radius: 50%;
+  margin: auto auto;
+  border: 1px solid #eee;
+  box-shadow: 0 5px 10px rgba(54, 48, 48, 0.2);
+}
+.profile-container > .profile-info > div:first-child > img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.profile-container > .profile-info > div:nth-child(2) {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: left;
+  padding-left: 3.5rem;
+  flex-direction: column;
+}
+.profile-container > .profile-info > div:nth-child(2) > h2 {
+  color: #333;
+  font-size: 1.37rem;
+  margin: 0;
+}
+.profile-container > .profile-info > div:nth-child(2) > span {
+  color: #888;
+  font-size: 0.87rem;
+  margin-top: 5px;
+}
+.profile-container > .profile-info > div:nth-child(2) > span.profile-status {
+  margin-top: 5px;
+  display: flex;
+  align-items: center;
+}
+.profile-container
+  > .profile-info
+  > div:nth-child(2)
+  > span.profile-status
+  > span {
+  color: #555;
+  margin-left: 5px;
+  font-style: italic;
+}
+.profile-container
+  > .profile-info
+  > div:nth-child(2)
+  > span.profile-status
+  > div {
+  width: 12px;
+  height: 12px;
+  background-color: #eee;
+  border-radius: 50%;
+}
+.profile-container
+  > .profile-info
+  > div:nth-child(2)
+  > span.profile-status
+  > div.online {
+  background-color: #62d493;
+}
+.profile-container
+  > .profile-info
+  > div:nth-child(2)
+  > span.profile-status
+  > div.offline {
+  background-color: #c46900;
+}
+.profile-container > .profile-info > div:nth-child(3) {
+  display: flex;
+  flex-direction: column;
+  /* justify-content: center; */
+  padding-left: 3.5rem;
+}
+.profile-container > .profile-info > div:nth-child(3) > li {
+  list-style-type: none;
+  color: #888;
+  margin-bottom: 15px;
+  font-size: 0.87rem;
+  display: flex;
+  flex-direction: column;
+}
+.profile-container > .profile-info > div:nth-child(3) > li:nth-child(7) {
+  margin-bottom: 5px;
+}
+.profile-container > .profile-info > div:nth-child(3) > li:nth-child(8) {
+  margin-bottom: 5px;
+}
+.profile-container > .profile-info > div:nth-child(3) > div {
+  display: flex;
+  align-items: center;
+}
+.profile-container > .profile-info > div:nth-child(3) > li > span {
+  font-size: 0.75rem;
+  margin-bottom: 5px;
+  color: #c46900;
+  width: fit-content;
+  padding: 2px 5px;
+  border-radius: 3px;
+  background-color: #f7f7f7;
+}
+.profile-container li > div {
+  display: flex;
+  align-items: center;
+}
+.profile-container ion-icon {
+  margin-right: 5px;
+  font-size: 0.87rem;
+  border-radius: 3px;
+  color: #888 !important;
+}
+.profile-ticket > .header > h2 {
+  margin: auto 0;
+  font-size: 1.37rem;
+}
+.profile-ticket > .tabs {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-gap: 20px;
+  align-items: center;
+  height: 4rem;
+  border-bottom: 1px solid #eee;
+}
+.profile-ticket > .tabs > .tab {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  align-items: center;
+  transition: all 0.4s ease;
+  cursor: pointer;
+  border-bottom: 1px solid transparent;
+}
+.profile-ticket > .tabs > .tab:hover {
+  border-bottom: 1px solid #c46900;
+  box-shadow: 0 5px 10px rgba(167, 156, 156, 0.05);
+}
+.profile-ticket > .tabs > .tab:hover button {
+  color: #c46900;
+}
+.profile-ticket > .tabs > .tab.active > button {
+  color: #c46900;
+}
+.profile-ticket > .tabs > .tab.active {
+  border-bottom: 1px solid #c46900;
+}
+.profile-ticket > .tabs > .tab > button {
+  font-size: 1rem;
+  color: #555;
+  margin-top: 5px;
+  cursor: pointer;
+  outline: 0;
+  border: 0;
+  background-color: transparent;
+}
+.tab-panel {
+  display: none;
+  padding: 6px 12px;
+  border-top: none;
+  animation: fadeEffect 1s; /* Fading effect takes 1 second */
+}
+/* Go from zero to full opacity */
+@keyframes fadeEffect {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* TGN Styles */
+#profile-setting {
+  padding: 2rem 2rem 5rem;
+  position: relative;
+}
+.grid-system {
+  grid-template-columns: repeat(2, 1fr) !important;
+  gap: 60px !important;
+}
+label {
+  font-weight: 400;
+  font-style: 0.87rem;
+  color: #555;
+  width: 100%;
+  margin: 0;
+}
+input {
+  background-color: transparent;
+  color: #888;
+  width: 95%;
+  padding: 8px 4px;
+  font-size: 0.87rem;
+  transition: all 0.4s ease;
+}
+.profile-setting-content:first-child {
+  border-right: 1px solid #eee;
+}
+.form-wrapper {
+  margin-top: 1rem;
+}
+.profile-setting-btn {
+  grid-column: 1 / -1;
+  margin-right: auto;
+  display: flex;
+}
+.setting-btn-outline {
+  outline: none;
+  border: 1px solid #c46900;
+  color: #c46900;
+  background-color: #ffff;
+  padding: 6px 15px;
+  margin-right: 10px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.4s ease;
+}
+.setting-btn-outline ion-icon {
+  color: #c46900 !important;
+}
+.setting-btn-outline:hover ion-icon {
+  color: #fff !important;
+}
+.setting-btn-outline:hover {
+  background-color: #c46900;
+  color: #fff;
+  box-shadow: 0 5px 10px rgba(167, 156, 156, 0.05);
+}
+.setting-btn-outline:active {
+  transform: scale(1.1);
+}
+.setting-btn {
+  max-height: 2.5rem;
+  outline: none;
+  border: none;
+  background-color: #c46900;
+  color: #ffff;
+  padding: 0 15px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.4s ease;
+}
+.setting-btn ion-icon {
+  color: #fff !important;
+}
+.setting-btn:hover {
+  opacity: 0.8;
+  box-shadow: 0 5px 10px rgba(167, 156, 156, 0.05);
+}
+.setting-btn:active {
+  transform: scale(1.1);
+}
+
+/* Security Section */
+.security {
+  padding: 30px;
+}
+.security > div > .form-wrapper {
+  display: flex;
+  justify-content: space-between;
+}
+.security > div > .form-wrapper > div {
+  display: flex;
+  flex-direction: column;
+}
+.security > div > .form-wrapper > div > label {
+  color: #555;
+}
+.security > div > .form-wrapper > div > p {
+  color: #888;
+}

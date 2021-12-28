@@ -1,0 +1,422 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  font-family: "Montserrat", sans-serif;
+}
+section {
+  position: relative;
+  min-height: 100vh;
+  background-color: #f8dd30;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* padding: 20px; */
+}
+
+section .container {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  background: #fff;
+  box-shadow: 0 15px 50px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+section .container .user {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+}
+
+section .container .user .imgBx {
+  position: relative;
+  width: 50%;
+  height: 100%;
+  background: #ff0;
+  transition: 0.5s;
+}
+
+section .container .user .imgBx img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+section .container .user .formBx {
+  position: relative;
+  width: 50%;
+  height: 100%;
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 40px;
+  transition: 0.5s;
+}
+
+section .container .user .formBx form h2 {
+  font-size: 18px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  text-align: center;
+  width: 100%;
+  margin-bottom: 10px;
+  color: #555;
+}
+
+section .container .user .formBx form input {
+  position: relative;
+  width: 100%;
+  padding: 10px;
+  background: #f5f5f5;
+  color: #333;
+  border: none;
+  outline: none;
+  box-shadow: none;
+  margin: 8px 0;
+  font-size: 14px;
+  letter-spacing: 1px;
+  font-weight: 300;
+}
+
+section .container .user .formBx form input[type="submit"] {
+  max-width: 100px;
+  background: #677eff;
+  color: #fff;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 1px;
+  transition: 0.5s;
+}
+
+section .container .user .formBx form .signup {
+  position: relative;
+  margin-top: 20px;
+  font-size: 12px;
+  letter-spacing: 1px;
+  color: #555;
+  text-transform: uppercase;
+  font-weight: 300;
+}
+
+section .container .user .formBx form .signup a {
+  font-weight: 600;
+  text-decoration: none;
+  color: #677eff;
+}
+section .container .imgBx.forgot-password {
+  background: linear-gradient(
+      135deg,
+      rgba(68, 18, 16, 0.8) 10%,
+      rgba(75, 59, 2, 0.8) 100%
+    ),
+    url("/img/forgot-password.jpg") !important;
+  background-repeat: no-repeat !important;
+  background-size: cover !important;
+}
+/* sign up banner content */
+section .container .signupBx > .imgBx {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  width: 60%;
+  background: linear-gradient(
+      135deg,
+      rgba(68, 18, 16, 0.8) 10%,
+      rgba(75, 59, 2, 0.8) 100%
+    ),
+    url("/img/signup.jpg");
+  background-position: center;
+  background-size: cover;
+  overflow: hidden;
+}
+.imgBx > .brand-logo {
+  height: 5rem;
+  overflow: hidden;
+}
+.imgBx > .brand-logo > img {
+  position: relative !important;
+  width: 100%;
+  height: 100%;
+  max-height: 5rem;
+  object-fit: contain;
+}
+.imgBx > .brand {
+  color: #f1f1f1;
+  text-align: center;
+  margin-top: 10px;
+}
+.imgBx > .brand > h2 {
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+.imgBx > .brand > h2 > span {
+  font-weight: 400;
+}
+.imgBx > .brand > p {
+  font-size: 1rem;
+  margin-top: 5px;
+  line-height: 1.6rem;
+  width: 55%;
+  margin: 1rem auto auto;
+  color: #ddd;
+  font-weight: 400;
+}
+section .container .signupBx > .imgBx > .features {
+  margin-top: 1rem;
+}
+section .container .signupBx > .imgBx > .features > li {
+  display: flex;
+  align-items: center;
+  list-style-type: none;
+  color: #ddd;
+  font-size: 1rem;
+  line-height: 2rem;
+  width: 100%;
+  text-align: center;
+}
+section .container .signupBx > .imgBx > .features > li > ion-icon {
+  background: rgba(218, 125, 20, 0.1);
+  padding: 5px;
+  border-radius: 50%;
+  color: #cf750e;
+  width: 18px;
+  height: 18px;
+  margin-right: 10px;
+}
+section .container .signupBx > .imgBx > .support {
+  position: absolute;
+  bottom: 5%;
+  right: 5%;
+}
+section .container .signupBx > .imgBx > .support > a {
+  color: #ddd;
+  font-size: 0.87rem;
+  text-decoration: none;
+}
+section .container .signupBx {
+  pointer-events: none;
+}
+
+section .container.active .signupBx {
+  pointer-events: initial;
+}
+
+section .container .signupBx .formBx {
+  left: 100%;
+}
+
+section .container.active .signupBx .formBx {
+  left: 0;
+  background-color: #fafafa;
+}
+section .container.active .signupBx .formBx > form {
+  width: 70%;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 15px;
+}
+form > h2 {
+  grid-column: 1 / -1;
+}
+.label-password {
+  display: flex;
+  justify-content: space-between;
+}
+form > div {
+  position: relative;
+}
+form > div ion-icon {
+  position: absolute;
+  bottom: 29%;
+  left: 14px;
+  color: #888;
+  z-index: 99;
+}
+label {
+  color: #555;
+  font-stretch: 0.87rem;
+}
+input {
+  height: 3rem;
+  padding: 0 40px !important;
+  border: 1px solid #eee !important;
+  transition: all 0.4s ease;
+}
+input:focus {
+  border: 1px solid #cf750e !important;
+}
+input:hover {
+  border: 1px solid #cf750e !important;
+}
+input::placeholder {
+  color: #888;
+  font-weight: lighter;
+}
+section .container.active .signupBx .formBx .username-field,
+.email-field {
+  grid-column: 1 / -1;
+  width: 100%;
+}
+form > button {
+  grid-column: 1 / -1;
+  width: 100%;
+  margin-top: 20px;
+  background-image: linear-gradient(
+    to right,
+    #f46b45 0%,
+    #eea849 51%,
+    #f46b45 100%
+  );
+  padding: 15px 45px;
+  text-align: center;
+  text-transform: uppercase;
+  transition: 0.5s;
+  background-size: 200% auto;
+  color: white;
+  box-shadow: 0 0 20px #eee;
+  border: 0;
+  outline: 0;
+  cursor: pointer;
+  display: block;
+}
+
+form > button:hover {
+  background-position: right center; /* change the direction of the change here */
+  color: #fff;
+  text-decoration: none;
+}
+section .container.active .signupBx .formBx > form > p {
+  grid-column: 1 / -1;
+  width: 100%;
+}
+a {
+  color: #cf750e !important;
+  text-decoration: none;
+}
+section .container .signupBx .imgBx {
+  left: -100%;
+}
+
+section .container.active .signupBx .imgBx {
+  left: 0%;
+}
+
+section .container .signinBx .formBx {
+  left: 0%;
+  background-color: #fafafa;
+}
+section .container .signinBx .formBx > form {
+  width: 70%;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 15px;
+}
+section .container .signinBx .formBx > form > h2 {
+  grid-column: 1 / -1;
+}
+section .container .signinBx .username-field,
+.password-field {
+  grid-column: 1 / -1;
+}
+section .container .signinBx .formBx > form > div:nth-child(3) {
+  grid-column: 1 / -1;
+}
+section .container .signinBx .formBx > form > p {
+  grid-column: 1 / -1;
+}
+section .container.active .signinBx .formBx {
+  left: 100%;
+}
+section .container .signinBx .imgBx {
+  left: 0%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  width: 60%;
+  background: linear-gradient(
+      135deg,
+      rgba(68, 18, 16, 0.8) 10%,
+      rgba(75, 59, 2, 0.8) 100%
+    ),
+    url("/img/signin.jpg");
+  background-position: center;
+  background-size: cover;
+  overflow: hidden;
+}
+section .container.active .signinBx .imgBx {
+  left: -100%;
+}
+
+@media (max-width: 991px) {
+  section .container {
+    max-width: 400px;
+  }
+
+  section .container .imgBx {
+    display: none;
+  }
+
+  section .container .user .formBx {
+    width: 100%;
+  }
+}
+
+.alert.alert-dismissible {
+  grid-column: 1 / -1;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  border-radius: 4px;
+  box-shadow: none;
+  font-weight: 400;
+  font-size: 0.875rem;
+  line-height: 1.43;
+  letter-spacing: 0.01071em;
+  display: flex;
+  padding: 6px 16px;
+}
+.alert.alert-dismissible > button {
+  outline: 0;
+  border: 0;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+}
+
+/* error alert */
+.alert.alert-dismissible.alert-warning {
+  background-color: rgb(253, 237, 237);
+  color: rgb(95, 33, 32);
+}
+.alert.alert-dismissible.alert-warning > button {
+  background-color: rgb(95, 33, 32);
+  color: #fff;
+}
+/* success alert */
+.alert.alert-dismissible.bg-success {
+  background-color: rgb(237, 247, 237);
+  color: rgb(30, 70, 32);
+}
+.alert.alert-dismissible.bg-success > button {
+  background-color: rgb(30, 70, 32);
+  color: #fff;
+}

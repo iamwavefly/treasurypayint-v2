@@ -1,0 +1,23 @@
+.pin-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: auto;
+}
+.pin-wrapper > input {
+  width: 44px;
+  height: 44px;
+  border: 1px solid #d7d7d7;
+  border-radius: 6px;
+  outline: none;
+  margin: 1px;
+  text-align: center;
+  margin: 0 5px;
+  background: #eeeeee;
+  font-size: 20px;
+}
+.pin {
+  color: #ffffff;
+  font-size: 20px;
+  text-align: center;
+}

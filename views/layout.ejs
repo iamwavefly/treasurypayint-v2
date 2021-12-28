@@ -1,0 +1,1029 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#002244">
+    <title><%= title %> </title>
+    <!-- table -->
+    <script src="https://unpkg.com/ag-grid-community/dist/ag-grid-community.min.noStyle.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/ag-grid-community/dist/styles/ag-grid.css">
+    <link rel="stylesheet" href="https://unpkg.com/ag-grid-community/dist/styles/ag-theme-alpine.css">
+    <!-- fontawesome -->
+    <script src="https://kit.fontawesome.com/129210617d.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- line icons -->
+    <link href="https://cdn.lineicons.com/3.0/lineicons.css" rel="stylesheet">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-SV2HBQMKMF"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-SV2HBQMKMF');
+    </script>
+
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700;900&family=Roboto:wght@400;500;700;900&display=swap"
+        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Rokkitt:wght@400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Icons"
+      rel="stylesheet">
+
+    <!-- Core stylesheets -->
+    <link rel="stylesheet" href="/css/bootstrap-material.css">
+
+    <!-- css skeleton -->
+    <link rel="stylesheet" href="../libs/css-skeletons-master/css-skeletons.css">
+    <!-- Font Awesome icons (free version)-->
+    <script src="https://use.fontawesome.com/releases/v5.13.0/js/all.js" crossorigin="anonymous"></script>
+    <!-- Google fonts-->
+    <link rel="stylesheet" href="css/passcode.css">
+    <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
+    <link rel="stylesheet" href="css/layout.css">
+    <link rel="stylesheet" href="css/wallet.css">
+    <link rel="stylesheet" href="css/treasury-card.css">
+    <link rel="stylesheet" href="css/profile.css">
+    <!-- <link rel="stylesheet" href="css/style.css"> -->
+
+    <link rel="shortcut icon" href="/img/logo.png" type="image/x-icon">
+
+</head>
+
+<body id="main">
+    <!-- modal -->
+    <div class="modal_container" data-modal="profile-img">
+        <div class="modal_content">
+            <div class="image_upload_container">
+                <div class="modal_header"><h3>Upload profile image</h3><button onclick="closeModal()"><i class="lni lni-plus"></i></button></div>
+                <input style="position: absolute; visibility: hidden" type="file" id="upload-img-input">
+                <div class="success_msg" id="success-msg"></div>
+                <div class="img-requirement">
+                    <div>
+                        <img src="/img/instruction.svg" alt="instruction">
+                    </div>
+                </div>
+                <div class="img-drop-zone" id="drop-zone">
+                    <i class="lni lni-cloud-upload"></i>
+                    <h3>Drag & drop to upload</h3>
+                    <span class="browse-file" id="browse-file">or browse</span>
+                </div>
+                <div class="modal_footer">
+                    <span id="file_name">Please, upload clear and professional picture showing your face.</span>
+                    <button id="submit-user-image">Upload</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- passcode -->
+    <div class="modal_container" data-modal="passcode">
+        <div class="modal_content">
+            <div class="password-passcode-container">
+                <div class="passcode-banner">
+                    <img src="/img/passcode.svg" alt="passcode">
+                </div>
+                <div class="header">
+                    <h2>Enter passcode</h2>
+                    <p>Please enter the passcode sent to your mobile number below.</p>
+                </div>
+                <div class="pin-wrapper">
+                    <input type="text" data-role="pin" maxlength="1" class="pin-input">
+                    <input type="text" data-role="pin" maxlength="1" class="pin-input">
+                    <input type="text" data-role="pin" maxlength="1" class="pin-input">
+                    <input type="text" data-role="pin" maxlength="1" class="pin-input">
+                    <input type="text" data-role="pin" maxlength="1" class="pin-input">
+                </div>
+                <div class="pin"></div>
+            </div>
+        </div>
+    </div>
+    <!-- change password -->
+    <div class="modal_container" data-modal="change-password">
+        <div class="modal_content">
+            <div class="password-passcode-container">
+                <div class="passcode-banner">
+                    <img src="/img/guide.svg" alt="passcode">
+                </div>
+                <div class="header">
+                    <h2>Change your password now!</h2>
+                    <p>Please remember to keep your password safe from anyone</p>
+                </div>
+                <div class="password-form-wrapper" id="change-password-form">
+                    <div>
+                        <label for="old-password">Confirm password</label>
+                        <input type="password" id="old-password" placeholder="Old password" id="old-password">
+                    </div>
+                    <div>
+                        <label for="new-password-1">New password</label>
+                        <input type="password" id="new-password-1" placeholder="Choose new password" id="new-password">
+                    </div>
+                    <div>
+                        <label for="new-password-2">Confirm password</label>
+                        <input type="password" id="new-password-2" placeholder="Enter password again" id="confirm-password">
+                    </div>
+                    <button>Change password</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="taost-container success" id="taost-container">
+        <h3 class="toast-message" id="toast-message"></h3>
+    </div>
+    <div class="loader show-loader" id="loader">
+        <img src="/img/loader.gif" alt="loader">
+    </div>
+    <% if (!bank) { %>
+    <div class="alert" id="alert-btn">
+        <div class="bank-verification">
+            <div class="remove" id="remove-alert">
+                X
+            </div>
+            <div class="alert-img">
+                <img src="/img/bank-verification.svg">
+            </div>
+            <div class="alert-form">
+                <div class="alert-header">
+                    <h2>Link Your Local Bank Account</h2>
+                    <p>Enter your local bank details you wish to link to your international bank account.</p>
+                </div>
+                <form action="/users/bank-Verification" method="POST">
+                    <div class="form-group">
+                        <label for="account name">Bank Name</label>
+                        <input type="text" name="bank_name" id="" placeholder="Enter bank name here">
+                    </div>
+                    <div class="form-group">
+                        <label for="account name">Account Name</label>
+                        <input type="text" name="account_name" id="" placeholder="Enter account name here">
+                    </div>
+                    <div class="form-group">
+                        <label for="account number">Account Number</label>
+                        <input type="number" name="account_number" placeholder="Enter account number here">
+                    </div>
+                    <div class="form-group">
+                        <label for="swift code">Swift Code/Routing Number</label>
+                        <input type="text" name="swift_code" placeholder="Enter swift code or routing number here">
+                    </div>
+                    <div class="form-group">
+                        <label for="phone number">Enter Mobile Number</label>
+                        <input type="number" name="mobile_number"
+                            placeholder="Enter your registered mobile number here">
+                    </div>
+                    <div class="form-group">
+                        <label for="email address">Enter Email Address</label>
+                        <input type="email" name="email_address" placeholder="Enter your registered email address here">
+                    </div>
+                    <input type="text" name="addby" value="<%= user.id %>" style="display:none;">
+
+                    <button type="submit">Submit &rarr;</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <% } %>
+    <% if (!bank) { %>
+    <div class="alert" id="alert-warning-box">
+        <div class="bank-verification warning">
+            <div class="remove" id="remove-warning-alert">
+                X
+            </div>
+            <div class="alert-form">
+                <div class="alert-header">
+                    <h2>Link Your Local Bank Account</h2>
+                    <p class="warning">
+                        <strong>Important Notice:</strong> Your account is now available but you can’t carry out any
+                        transaction or request for loan. We will need to verify your account. The steps below will get
+                        you started.
+                        Add your local bank account and your local bank debit/credit card so that your account is fully
+                        functional.
+                    </p>
+                </div>
+                <div class="btn-group">
+                    <a href="/bank" class="btn btn-secondary alert-bank">Add Bank &rarr;</a> <a href="#"
+                        class="btn btn-secondary alert-card">Add Card &rarr;</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <% } %>
+    <!-- cards section point --- -->
+    <% if (card.length == 0) { %>
+    <div class="alert" id="alert-card-box">
+        <div class="bank-verification warning">
+            <div class="remove" id="remove-warning-alert">
+                X
+            </div>
+            <div class="alert-form">
+                <div class="alert-header">
+                    <h2>Link a Card</h2>
+                    <p class="warning">
+                    <p>The secure way to use your debit card online. Your bank may need to activate it for use overseas.
+                    </p>
+                </div>
+                <div class="modal__custom__form" id="modal__custom__form">
+                    <form action="/users/add-card" method="POST">
+                        <input type="text" value="<%= user.id %>" name="addby" style="display: none;">
+                        <div class="form-group">
+                            <label for="">Card Type</label>
+                            <select name="card_type" class="form-control" required>
+                                <option disabled selected>Select card type</option>
+                                <option value="visa">Visa</option>
+                                <option value="master-card"> MasterCard</option>
+                                <option value="american-express">American Express</option>
+                                <option value="discover">Discover</option>
+                                <option value="rupay">Rupay</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="">Card Number</label>
+                            <input name="card_number" type="number" id="card_number" placeholder="Credit card number"
+                                class="form-control" maxlength="16" required />
+                        </div>
+                        <div class="roW">
+                            <div class="col-md-12"><label>Valid Thru:</label></div>
+                        </div>
+                        <div class="control-3">
+                            <div class="form-group">
+                                <label for="">Month</label>
+                                <input name="month" type="number" class="form-control" required />
+                            </div>
+                            <div class="form-group">
+                                <label for="">Year</label>
+                                <input name="year" type="number" class="form-control" required maxlength="4" />
+                            </div>
+                            <div class="form-group">
+                                <label for="">CVV</label>
+                                <input name="card_cvv" type="password" placeholder="3 digits" class="form-control"
+                                    maxlength="3" required />
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="">Billing Address</label>
+                            <input name="billing_address" value="<%= user.address_line1 %>" type="text"
+                                class="form-control" readonly />
+                        </div>
+                        <button class="modal__custom-btn" type="submit">Add Card &rarr;</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <% } %>
+    <div class="alert" id="alert-card-box-2">
+        <div class="bank-verification warning">
+            <div class="remove" id="remove-warning-alert">
+                X
+            </div>
+            <div class="alert-form">
+                <div class="alert-header">
+                    <h2>Link a Card</h2>
+                    <p class="warning">
+                    <p>The secure way to use your debit card online. Your bank may need to activate it for use overseas.
+                    </p>
+                </div>
+                <div class="modal__custom__form" id="modal__custom__form">
+                    <form action="/users/add-card" method="POST">
+                        <input type="text" value="<%= user.id %>" name="addby" style="display: none;">
+                        <div class="form-group">
+                            <label for="">Card Type</label>
+                            <select name="card_type" class="form-control" required>
+                                <option disabled selected>Select card type</option>
+                                <option value="visa">Visa</option>
+                                <option value="master-card"> MasterCard</option>
+                                <option value="american-express">American Express</option>
+                                <option value="discover">Discover</option>
+                                <option value="rupay">Rupay</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="">Card Number</label>
+                            <input name="card_number" type="number" id="card_number" placeholder="Credit card number"
+                                class="form-control" maxlength="16" required />
+                        </div>
+                        <div class="roW">
+                            <div class="col-md-12"><label>Valid Thru:</label></div>
+                        </div>
+                        <div class="control-3">
+                            <div class="form-group">
+                                <label for="">Month</label>
+                                <input name="month" type="number" class="form-control" required />
+                            </div>
+                            <div class="form-group">
+                                <label for="">Year</label>
+                                <input name="year" type="number" class="form-control" required maxlength="4" />
+                            </div>
+                            <div class="form-group">
+                                <label for="">CVV</label>
+                                <input name="card_cvv" type="password" placeholder="3 digits" class="form-control"
+                                    maxlength="3" required />
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="">Billing Address</label>
+                            <input name="billing_address" value="<%= user.address_line1 %>" type="text"
+                                class="form-control" readonly />
+                        </div>
+                        <button class="modal__custom-btn" type="submit">Add Card &rarr;</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="alert" id="custom_tai_alert">
+        <div class="bank-verification warning">
+            <div class="alert-form">
+                <div class="alert-header">
+                    <p class="warning">
+                        Hey, make sure you input your international transfer access Id correctly to complete this
+                        transaction
+                    </p>
+                </div>
+                    <a href="/dashboard" class="btn btn-secondary">Ok</a>
+            </div>
+        </div>
+    </div>
+    <!--/ cards section point --- -->
+    <!-- <div class="loader">
+        <img src="../img/loader/window.gif" alt="loading...">
+    </div> -->
+
+    <div class="wrapper">
+        <div class="sidebar__nav">
+            <div class="brand__logo">
+                <img src="/img/layout/treasurypayint-logo.svg" alt="treasury pay   ">
+            </div>
+            <!-- <div class="brand__name">
+                Treasury | PayInt
+            </div>
+            <div class="brand__tag">
+                Powered by Treasury PayInt
+            </div> -->
+            <nav>
+                <div class="navbar">
+                    <li class="<%= page_name === 'Dashboard' && 'active' %>"><ion-icon name="speedometer-sharp"></ion-icon><a href="/dashboard">Dashboard</a></li>
+                    <div class="line"></div>
+
+                    <li class="<%= page_name === 'Wallet' && 'active' %>"><ion-icon name="wallet-sharp"></ion-icon><a href="/wallet">Wallet</a></li>
+                    <li class="<%= page_name === 'Withdraw' && 'active' %>"><ion-icon name="swap-horizontal-sharp"></ion-icon><a href="https://www.booking.com" >Booking & Rdeservation</a></li>
+                    <li class="<%= page_name === 'Services' && 'active' %>"><ion-icon name="people-sharp"></ion-icon><a href="https://www.likelyhire.com" target="_blank">Pay Services</a></li>
+
+
+                    <div class="line"></div>
+
+
+                    <li class="<%= page_name === 'Card' && 'active' %>"><ion-icon name="card-sharp"></ion-icon><a href="treasury-card">My Treasury Card</a></li>
+                    <li class="<%= page_name === 'Complaint' && 'active' %>"><ion-icon name="warning-sharp"></ion-icon><a href="/complaint">Complaint</a></li>
+                    <li class="<%= page_name === 'Profile' && 'active' %>"><ion-icon name="person-sharp"></ion-icon><a href="/profile">Profile</a></li>
+                    <!-- <li class="<%= page_name === 'Setting' && 'active' %>"><i class="lni lni-cog"></i><a href="/setting">Account Setting</a></li> -->
+
+
+                    <div class="line"></div>
+
+
+                    <li><ion-icon name="log-out-sharp"></ion-icon><a href="/users/logout">Logout</a></li>
+                    
+                </div>
+            </nav>
+            <div class="footer-notice">
+                <div class="img-wrapper">
+                    <img src="/img/transaction.svg" alt="mobile banking">
+                </div>
+                <h3><span>New</span> treasury card</h3>
+                <p>Borderless customer loyalty card</p>
+                <button onclick="openModal('profile-img')">Apply now</button>
+            </div>
+        </div>
+        <div class="right">
+            <div class="header">
+                <div class="brand__logo__mobile">
+                    <a href="/dashboard">
+                        <img src="/img/layout/logo.png">
+                    </a>
+                </div>
+                <div class="search_wrapper">
+                    <input type="text" class="search" placeholder="Search transactions here">
+                    <button class="search__btn"><i class="las la-search"></i></button>
+                </div>
+                <div class="wrapper__top">
+                    <div>
+                        <div class="message <%= notifications.length > 0 ? 'active' : '' %>" id="notif-controller">
+                            <ion-icon name="notifications-sharp"></ion-icon>
+                        </div>
+                        <div class="notification-container" id="notif-container">
+                            <div class="notification-header">
+                                <h3>NOTIFICATIONS</h3>
+                                <a href="#">Mark all as read</a>
+                            </div>
+                            <% notifications.forEach(notif => { %>
+                                <div class="notification-panel <%= notif.status === 'unread' ? 'unread' : '' %>">
+                                    <div class="notif-avatar">
+                                        <ion-icon name="warning-sharp"></ion-icon>
+                                    </div>
+                                    <h3><%= notif.title %>  <span><%= notif.content %> </span></h3>
+                                    <span><ion-icon name="time-sharp"></ion-icon> <%= moment(notif.date).fromNow() %></span>
+                                </div>
+                            <% }) %>
+                        </div>
+                    </div>
+                    <div class="avatar">
+                        <img src=<%= user.profile ? user.profile : "/img/default-avatar.png" %> alt="<%= user.username %> avatar" />
+
+                    </div>
+                    <div class="logout">
+                        <a href="/users/logout">
+                            <p class="logout__text">Logout</p><ion-icon name="log-out-sharp"></ion-icon>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+
+            <%- body %>
+
+            <div class="menu__items" id="menu__items">
+                <div class="navbar__mobile">
+                    <li><a href="/dashboard">Dashboard</a></li>
+                    <li><a href="/wallet">Wallet</a></li>
+                    <li><a href="send-withdraw">Send - withdraw</a></li>
+                    <li><a href="pay-services">Pay Services</a></li>
+                    <li><a href="treasury-card">My Treasury Card</a></li>
+                    <li><a href="complaint">Complaint</a></li>
+                    <li><a href="/profile">Profile</a></li>
+                    <li><a href="/profile">Account Setting</a></li>
+                    <li><a href="/users/logout">Logout</a></li>
+                </div>
+            </div>
+            <div class="menu" id="menu">
+                <img src="/img/icon/menu.png" id="menu_img">
+            </div>
+            <div class="menu close" id="menu_close">
+                <img src="/img/icon/menu-close.png" id="menu_img">
+            </div>
+
+
+
+            </nav>
+        </div>
+    </div>
+</body>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+    integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+    crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.bundle.min.js"></script>
+<script src="/js/custom-msg.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+<script src="../js/country.js"></script>
+<script src="../js/signup.js"></script>
+<script src="../js/main.js"></script>
+<script src="../js/loader.js"></script>
+<script src="../js/converter.js"></script>
+<script src="../js/user.js"></script>
+
+<script>
+
+    const taostContainer = document.querySelector("#taost-container")
+    const toastMessage = document.querySelector("#toast-message")
+
+    const showToast = (message, type) => {
+        taostContainer.classList.add("show")
+        taostContainer.classList.add(type)
+        toastMessage.innerHTML = message
+
+        setTimeout(() => {
+            taostContainer.classList.remove("show")
+            taostContainer.classList.remove(type)
+            toastMessage.innerHTML = ''
+        }, 5000);
+    }
+
+    const columnDefs = [
+        { field: "Date", sortable: true, filter: true },
+        { field: "From", sortable: true, filter: true },
+        { field: "Description", sortable: true, filter: true },
+        { field: "Method", sortable: true, filter: true },
+        { field: "Status", sortable: true, filter: true },
+        { field: "Amount", sortable: true, filter: true },
+    ];
+
+    const rowData = [
+        {
+            Date:  '<%- moment(user.date).fromNow() %>',
+            From: "Treasury PayInt Pay Int",
+            Description: "Deposited <%- user.available %> to your account",
+            Method: "Transfer",
+            Status: "Success",
+            Amount: '<%- user.available %>',
+        },
+    ];
+
+    const gridOptions = {
+        columnDefs: columnDefs,
+        rowData: rowData,
+    };
+
+
+    document.addEventListener("DOMContentLoaded", () => {
+        const gridDiv = document.querySelector("#transaction-table");
+        new agGrid.Grid(gridDiv, gridOptions);
+    });
+
+    const modalContainer = document.querySelectorAll(".modal_container"),
+    modalContent = document.querySelector(".modal_content");
+
+    const closeModal = () => {
+        modalContainer?.forEach(res => {
+            res.classList.remove("show_modal");
+            modalContent.classList.remove("show_modal");
+        })
+    };
+
+    const openModal = (modalType) => {
+        modalContainer?.forEach(res => {
+            const getDataAttr = res.getAttribute("data-modal")
+            if(getDataAttr === modalType) {
+                const content = res.querySelector(".modal_content")
+                res.classList.add("show_modal");
+                setInterval(() => {
+                    content.classList.add("show_modal");
+                }, 300);
+            }
+
+        })
+
+        
+    };
+
+    document.addEventListener("keydown", (event) => {
+        if (event.key === "Escape") {
+            return closeModal();
+        }
+    });
+
+    const userImage = '<%= user.profile %>'
+
+    if(!userImage){ 
+        openModal("profile-img")
+    }
+
+    // wallet valid
+    const errorField = document.querySelector("#error-field")
+    const amountField = document.querySelector("#amount-field")
+    const walletButton = document.querySelector("#wallet-button")
+    const otpInput = document.querySelector("#otp-input")
+    const walletDest = document.querySelector("#wallet-dest")
+    const walletTempForm = document.querySelector("#wallet-temp-form")
+    const walletTransReason = document.querySelector("#wallet-trans-reason")
+    const requestAccountNumb = document.querySelector("#request-account-numb")
+    const walletRequestButton = document.querySelector("#wallet-request-button")
+    const walletRequestForm = document.querySelector("#wallet-request-form")
+    const requestAmount = document.querySelector("#request-amount")
+    const cardRequestForm = document.querySelector("#card-request-form")
+    const cardRequestButton = document.querySelector("#card-request-button")
+    const cardRequestDob = document.querySelector("#card-request-dob")
+    const treasuryCardAgreement = document.querySelector("#treasury-card-agreement")
+
+    const availableBal = '<%= user?.available %>'
+    const userId = '<%= user?.id %>'
+    const userFullname = '<%= user?.fullname %>'
+    const userNumber = '<%= user?.number %>'
+    const bankName = '<%= bank?.bank_name %>'
+    const bankNumber = '<%= bank?.account_number %>'
+
+    const openTai = () => {
+        window.location = "/tai"
+    }
+
+    amountField?.addEventListener("input", (event) => {
+        const {value} = event.target
+        if(Number(value) > Number(availableBal)){
+            errorField.innerHTML = "Insuficient balance!"
+            errorField.classList.add("show-error")
+            walletButton.setAttribute("disabled", true)
+        } 
+        errorField.innerHTML = ""
+        errorField.classList.remove("show-error")
+        walletButton.removeAttribute("disabled")
+        
+    })
+
+    const sendOtp = () => {
+        openLoader()
+        fetch(`http://localhost:4000/users/otp/${userId}`, {
+            method: "post"
+        }).then(res => {
+            showToast(`OTP sent to ${userNumber}`, "success")
+            closeLoader()
+        }).catch(err => {
+            closeLoader()
+        })
+    }
+
+    const verifyOtp = (token) => {
+        openLoader()
+        fetch(`http://localhost:4000/users/verify-otp/${userId}/${token}`, {
+            method: "get"
+        })
+        .then(response => response.json())
+        .then(data => {
+            closeLoader()
+            const {message} = data
+            if(message === "wrong otp") {
+                return showToast(message, "error")
+            } else{
+                walletButton.innerHTML = "Proceed"
+                otpInput.classList.remove("show")
+                showToast(message, "success")
+            }
+        })
+        .catch(err => {
+            const {message} = err
+            showToast(message, "error")
+            closeLoader()
+        })
+    }
+
+    let optEntered = ''
+
+    walletButton?.addEventListener("click", (event) => {
+        event.preventDefault()
+        if(walletButton.innerHTML == "Proceed") {
+            return window.location = "/tai"
+        }
+        let allAreFilled = true;
+        document.getElementById("wallet-form").querySelectorAll("[required]").forEach(function(i) {
+            if (!allAreFilled) return;
+            if (!i.value) allAreFilled = false;
+            if (i.type === "radio") {
+                let radioValueCheck = false;
+                document.getElementById("wallet-form").querySelectorAll(`[name=${i.name}]`).forEach(function(r) {
+                    if (r.checked) radioValueCheck = true;
+                })
+                    allAreFilled = radioValueCheck;
+            }
+        })
+        if (!allAreFilled) {
+            return showToast("All fields must be fill", "error");
+        }
+        if(Number(amountField.value) < 1000){
+            return showToast(`Sorry, you can only send a minimum of $1,000.00`, "error")
+        }
+        if(walletButton.innerHTML != "Verify OTP" && walletButton.innerHTML != "Proceed") {
+            sendOtp()
+        }
+        walletButton.innerHTML = "Verify OTP"
+        otpInput.classList.add("show")
+        
+        if(walletButton.innerHTML == "Verify OTP") {
+
+            if(optEntered.length > 0) {
+                verifyOtp(optEntered)
+            }
+        }
+
+       
+    })
+
+    otpInput?.addEventListener("input", (event) => {
+        const {value} = event.target
+        optEntered = value
+    })
+
+    const selfForm = `
+        <div>
+            <label>Bank name</label>
+            <input type="text" readonly value="${bankName}">
+        </div>
+        <div>
+            <label for="dest">Account number</label>
+            <input type="number" readonly value=${bankNumber}>
+        </div>
+        <div>
+            <label>Account name</label>
+            <input type="text" readonly value="${userFullname}" />
+        </div>
+    `
+    const localForm = `
+        <div>
+            <label>Bank name</label>
+            <input type="text" required placeholder="e.g. Chase Bank">
+        </div>
+        <div>
+            <label for="dest">Account number</label>
+            <input type="number" required placeholder="e.g. 0282940393">
+        </div>
+        <div>
+            <label for="dest">Account name</label>
+            <input type="text" required placeholder="e.g. John Doe">
+        </div>
+    `
+    const foreignForm = `
+        <div>
+            <label>Country</label>
+            <input type="text" required placeholder="e.g. United State">
+        </div>
+        <div>
+            <label for="dest">Beneficiary bank name</label>
+            <input type="text" required placeholder="e.g. JPMorgan Chase	">
+        </div>
+        <div>
+            <label for="dest">Beneficiary account name</label>
+            <input type="text" required placeholder="e.g. John Doe">
+        </div>
+        <div>
+            <label for="dest">Beneficiary account number</label>
+            <input type="text" required placeholder="e.g. 8023823902">
+        </div>
+        <div>
+            <label for="dest">Beneficiary swift code</label>
+            <input type="text" required placeholder="e.g. CHASUS33XXX">
+        </div>
+    `
+
+    walletDest?.addEventListener("change", (event) => {
+        const {value} = event.target
+        switch (value) {
+            case "self":
+                walletTransReason.placeholder = 'To my local bank'
+                walletButton.innerHTML = "Get OTP"
+                walletTransReason.setAttribute("readonly", true)
+                return walletTempForm.innerHTML = selfForm
+            case "local":    
+                walletTransReason.placeholder = 'Reason of transfer' 
+                walletTransReason.removeAttribute("readonly")
+                walletTransReason.setAttribute("required", true)
+                walletButton.innerHTML = "Get OTP" 
+                return walletTempForm.innerHTML = localForm
+            case "international":      
+                walletTransReason.placeholder = 'Reason of transfer'
+                walletTransReason.removeAttribute("readonly")
+                walletTransReason.setAttribute("required", true)
+                walletButton.innerHTML = "Get OTP"
+                return walletTempForm.innerHTML = foreignForm
+            default:
+                walletTempForm.innerHTML = '';
+        }
+    })
+
+    const verifyAccount = (account) => {
+        openLoader()
+        fetch(`http://localhost:4000/users/verify-account/${account}`, {
+            method: "get"
+        })
+        .then(response => response.json())
+        .then(data => {
+            closeLoader() 
+            const {message} = data
+            walletRequestButton.textContent = "Request"
+            if(message === "User not found") {
+                return showToast(message, "error")
+            } 
+            if(message.user_id == "<%= user.user_id %>") {
+                return showToast("Use send tab to request from your account", "error")
+            } 
+            walletRequestForm.innerHTML = `
+                <div>
+                    <label>Account name</label>
+                    <input type="text" readonly value="${message.first_name + ' ' + message.other_name}">
+                </div>
+                <div>
+                    <label for="dest">Account number</label>
+                    <input type="number" readonly value=${message.user_id}>
+                </div>
+            `
+        })
+        .catch(err => {
+            const {message} = err
+            showToast(message, "error")
+            closeLoader()
+        })
+    }
+
+    walletRequestButton?.addEventListener("click", (event) => {
+        event.preventDefault()
+        
+        const {value} = requestAccountNumb
+        if(value === '' || requestAmount.value === '') {
+            return showToast("Please fill all the fields before sending a request", "error")
+        }
+        if(Number(requestAmount.value) < 1000){
+            return showToast(`Sorry, you can only request a minimum of $1,000.00`, "error")
+        }
+        if(walletRequestButton.textContent.toLowerCase() === "request") {
+            showToast("Your request has been sent", "success")
+            setTimeout(() => {
+                window.location = "/wallet"
+            }, 1000);
+        }
+        verifyAccount(value)
+    })
+    const getAge = (dateString) => {
+        const today = new Date();
+        const birthDate = new Date(dateString);
+        let age = today.getFullYear() - birthDate.getFullYear();
+        let m = today.getMonth() - birthDate.getMonth();
+        if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
+            age--;
+        }
+        return age;
+    }
+    cardRequestButton?.addEventListener("click", (event) => {
+        event.preventDefault()
+        let allAreFilled = true;
+        document.getElementById("card-request-form").querySelectorAll("[required]").forEach((i) => {
+            if (!allAreFilled) return;
+            if (!i.value) allAreFilled = false;
+        })
+        if (!allAreFilled) {
+            return showToast("All fields must be fill", "error");
+        }
+        if (!treasuryCardAgreement.checked) {
+            return showToast("You've to agree to our terms and conditions", "error");
+        }
+        if (getAge(cardRequestDob.value) < 18) {
+            return showToast("You must be over 18 to request for treasury card", "error");
+        }
+        showToast("Your request has been successfully submited for review", "success");
+        return setTimeout(() => {
+            window.location = "/dashboard"
+        }, 1000);
+        
+    })
+
+    
+</script>
+<script>
+    // Jquery Dependency
+
+    $("input[data-type='currency']").on({
+        keyup: function () {
+            formatCurrency($(this));
+        },
+        blur: function () {
+            formatCurrency($(this), "blur");
+        }
+    });
+
+
+    function formatNumber(n) {
+        // format number 1000000 to 1,234,567
+        return n.replace(/\D/g, "").replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+    }
+
+
+    function formatCurrency(input, blur) {
+        // appends $ to value, validates decimal side
+        // and puts cursor back in right position.
+
+        // get input value
+        var input_val = input.val();
+
+        // don't validate empty input
+        if (input_val === "") { return; }
+
+        // original length
+        var original_len = input_val.length;
+
+        // initial caret position 
+        var caret_pos = input.prop("selectionStart");
+
+        // check for decimal
+        if (input_val.indexOf(".") >= 0) {
+
+            // get position of first decimal
+            // this prevents multiple decimals from
+            // being entered
+            var decimal_pos = input_val.indexOf(".");
+
+            // split number by decimal point
+            var left_side = input_val.substring(0, decimal_pos);
+            var right_side = input_val.substring(decimal_pos);
+
+            // add commas to left side of number
+            left_side = formatNumber(left_side);
+
+            // validate right side
+            right_side = formatNumber(right_side);
+
+            // On blur make sure 2 numbers after decimal
+            if (blur === "blur") {
+                right_side += "00";
+            }
+
+            // Limit decimal to only 2 digits
+            right_side = right_side.substring(0, 2);
+
+            // join number by .
+            input_val = "$" + left_side + "." + right_side;
+
+        } else {
+            // no decimal entered
+            // add commas to number
+            // remove all non-digits
+            input_val = formatNumber(input_val);
+            input_val = "$" + input_val;
+
+            // final formatting
+            if (blur === "blur") {
+                input_val += ".00";
+            }
+        }
+
+        // send updated string to input
+        input.val(input_val);
+
+        // put caret back in the right position
+        var updated_len = input_val.length;
+        caret_pos = updated_len - original_len + caret_pos;
+        input[0].setSelectionRange(caret_pos, caret_pos);
+    }
+
+    $('input.CurrencyInput').on('blur', function () {
+        const value = this.value.replace(/,/g, '');
+        this.value = parseFloat(value).toLocaleString('en-US', {
+            style: 'decimal',
+            maximumFractionDigits: 2,
+            minimumFractionDigits: 2
+        });
+    });
+
+    const custom_bank_alert = document.querySelectorAll(".alert-bank")
+    const alert_btn = document.getElementById("alert-btn")
+
+    custom_bank_alert.forEach(element => {
+        element.addEventListener("click", function (e) {
+            e.preventDefault()
+            alert_btn.classList.add("show-alert")
+            alert_btn.style.zIndex = "9999"
+            document.getElementById("main").style.overflow = "hidden"
+        })
+    });
+
+    const custom_warning_alert = document.querySelectorAll(".alert-warning")
+    const alert_warning_box = document.getElementById("alert-warning-box")
+    custom_warning_alert.forEach(element => {
+        element.addEventListener("click", function (e) {
+            e.preventDefault()
+            alert_warning_box.classList.add("show-alert")
+            document.getElementById("main").style.overflow = "hidden"
+        })
+    });
+
+    const custom_card_alert = document.querySelectorAll(".alert-card")
+    const alert_card_box = document.getElementById("alert-card-box")
+    custom_card_alert.forEach(element => {
+        element?.addEventListener("click", function (e) {
+            alert_card_box.classList.add("show-alert")
+            document.getElementById("main").style.overflow = "hidden"
+        })
+    });
+    const custom_card_alert2 = document.querySelectorAll(".alert-card-2")
+    const alert_card_box2 = document.getElementById("alert-card-box-2")
+    custom_card_alert2.forEach(element => {
+        element?.addEventListener("click", function (e) {
+            alert_card_box2.classList.add("show-alert")
+            document.getElementById("main").style.overflow = "hidden"
+        })
+    });
+
+    const remove = document.querySelectorAll(".remove")
+    remove.forEach(element => {
+        element?.addEventListener("click", function (e) {
+            window.location.replace("/dashboard")
+        })
+    });
+
+    document.getElementById("procceed__btn")?.addEventListener("click", (e) => {
+        e.preventDefault()
+        window.location = "/tai"
+    })
+
+    const notifController = document.querySelector("#notif-controller")
+    const notifContainer = document.querySelector("#notif-container")
+
+    notifController?.addEventListener("click", () => {
+        notifContainer.classList.toggle("notif-show") 
+    })
+
+
+
+</script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="../js/passcode.js"></script>
+<script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+<script src="../js/source.js"></script>
+<script src="../js/custom.js"></script>
+<script src="../js/menu.js"></script>
+<script src="../js/modal.js"></script>
+<script src="../js/file-picker.js"></script>
+<script src="../js/wallet.js"></script>
+
+</html>

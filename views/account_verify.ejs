@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+
+<html lang="en" class="material-style layout-fixed">
+
+<head>
+    <title>Treasury PayInt PayInt</title>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+    <meta name="description" content="Treasury PayInt PayInt." />
+    <link rel="icon" type="image/x-icon" href="/img/logo.png">
+
+    <!-- Google fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
+
+    <!-- Icon fonts -->
+    <link rel="stylesheet" href="/fonts/fontawesome.css">
+    <link rel="stylesheet" href="/fonts/ionicons.css">
+    <link rel="stylesheet" href="/fonts/linearicons.css">
+    <link rel="stylesheet" href="/fonts/open-iconic.css">
+    <link rel="stylesheet" href="/fonts/pe-icon-7-stroke.css">
+    <link rel="stylesheet" href="/fonts/feather.css">
+
+    <!-- Core stylesheets -->
+    <link rel="stylesheet" href="/css/bootstrap-material.css">
+    <link rel="stylesheet" href="/css/shreerang-material.css">
+    <link rel="stylesheet" href="/css/uikit.css">
+
+    <!-- Libs -->
+    <link rel="stylesheet" href="/libs/perfect-scrollbar/perfect-scrollbar.css">
+    <link rel="stylesheet" href="/libs/flot/flot.css">
+
+    <!-- Font Awesome icons (free version)-->
+    <script src="https://use.fontawesome.com/releases/v5.13.0/js/all.js" crossorigin="anonymous"></script>
+    <!-- Google fonts-->
+    <link href="https://fonts.googleapis.com/css?family=Merriweather+Sans:400,700" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic"
+        rel="stylesheet" type="text/css" />
+    <!-- Third party plugin CSS-->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.min.css"
+        rel="stylesheet" />
+    <!-- Core theme CSS (includes Bootstrap)-->
+
+
+
+
+
+    <!-- welcome page css -->
+
+    <link rel="stylesheet" href="/css/style.css">
+
+    <!-- /welcome -->
+
+</head>
+
+<body>
+    
+
+    <div class="modal__custom">
+        <div class="modal__custom-inner">
+            <img src="/img/smile.png" alt="" srcset="">
+            <p>
+            <span class="custom__alert-user">Hi <%= user.first_name %>,</span> <br>   
+            Let’s setup your account real quick, Your account is now active and you can
+            perform transactions and request for loan but we only need to verify your account so that your account is fully
+            functional.</p>
+            <button class="modal__custom-btn" id="verify__btn">Proceed &rarr;</button>
+        </div>
+    </div>
+    <div class="modal__custom__form" id="modal__custom__form">
+        <div class="modal__custom-inner form">
+            <h2>Account Verification</h2>
+            <p>Please sincerely fill the form below</p>
+          <form action="/users/verify/<%= user.id %>?_method=PUT" method="POST" enctype="multipart/form-data">
+                    <div class="form-group">
+                        <label for="">Marital Status</label>
+                        <select name="marital_status" class="form-control" required>
+                            <option disabled selected>select marital status</option>
+                            <option value="Single">Single</option>
+                            <option value="Married">Married</option>
+                            <option value="Divorced">Divorced</option>
+                            <option value="Widowed">Widowed</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="">Occupation</label>
+                        <input name="occupation" type="text" placeholder="What's your job?" class="form-control" required />
+                    </div>
+                    <div class="form-group">
+                        <label for="">Monthly Income</label>
+                        <input name="income" type="text" placeholder="What's your monthly income?" class="form-control currency" required/>
+                    </div>
+                    <div class="form-group">
+                        <label for="">Upload Valid ID <span class="desc__small">(Internation Passport, Driver's License, National ID or Voter's Card)</span></label>
+                        <input name="verify_id" accept="image/png, image/jpeg" type="file" class="form-control" required/>
+                    </div>
+                    <button class="modal__custom-btn" type="submit">Verify Now &rarr;</button>
+          </form>
+        </div>
+    </div>
+    <div class="loader">
+        <img src="../img/loader/load.gif" alt="loading...">
+    </div>
+
+    <body>
+        <!-- [ Preloader ] Start -->
+        <div class="page-loader">
+            <div class="bg-primary"></div>
+        </div>
+        <!-- [ Preloader ] End -->
+
+        <!-- [ Layout wrapper ] Start -->
+        <div class="layout-wrapper layout-2">
+            <div class="layout-inner">
+                <!-- [ Layout sidenav ] Start -->
+                <div id="layout-sidenav" class="layout-sidenav sidenav sidenav-vertical bg-white logo-dark">
+                    <!-- Brand demo (see assets/css/demo/demo.css) -->
+                    <div class="app-brand demo">
+                        <span class="app-brand-logo demo">
+                            <img src="/img/logo.png" alt="Brand Logo" class="img-fluid">
+                        </span>
+                        <a href="/dashboard" class="app-brand-text demo sidenav-text font-weight-normal ml-2">Treasury PayInt
+                            |
+                            PayInt</a>
+                        <a href="javascript:" class="layout-sidenav-toggle sidenav-link text-large ml-auto">
+                            <i class="ion ion-md-menu align-middle"></i>
+                        </a>
+                    </div>
+                    <div class="sidenav-divider mt-0"></div>
+
+                    <!-- Links -->
+                    <ul class="sidenav-inner py-1">
+
+                        <!-- Dashboards -->
+                        <li class="sidenav-item active">
+                            <a href="/dashboard" class="sidenav-link">
+                                <i class="sidenav-icon feather icon-home"></i>
+                                <div>Summary</div>
+                                <!--
+                                <div class="pl-1 ml-auto">
+                                    <div class="badge badge-danger">Hot</div>
+                                </div>
+    -->
+                            </a>
+                        </li>
+
+                        <!-- Layouts -->
+                        <li class="sidenav-divider mb-1"></li>
+
+                        <li class="sidenav-item">
+                            <a href="javascript:" class="sidenav-link sidenav-toggle">
+                                <i class="sidenav-icon feather icon-user"></i>
+                                <div>Payments</div>
+                            </a>
+                            <ul class="sidenav-menu">
+                                <!-- <li class="sidenav-item">
+                                    <a href="/request-fund" class="sidenav-link">
+                                        <div>Request Money</div>
+                                    </a>
+                                </li> -->
+
+                                <li class="sidenav-item">
+                                    <a href="/withdraw/<%= user.id %> " class="sidenav-link">
+                                        <div>Send Money</div>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="sidenav-item">
+                            <a href="javascript:" class="sidenav-link">
+                                <i class="sidenav-icon feather icon-user"></i>
+                                <div>Activity</div>
+                            </a>
+                        </li>
+                        <li class="sidenav-item">
+                            <a href="/service-request" class="sidenav-link sidenav-toggle">
+                                <i class="sidenav-icon feather icon-clipboard"></i>
+                                <div>Bill Payments</div>
+                            </a>
+                            <ul class="sidenav-menu">
+                                <li class="sidenav-item">
+                                    <a href="/profile" class="sidenav-link">
+                                        <div>Merchant Payment</div>
+                                    </a>
+                                </li>
+                                <li class="sidenav-item">
+                                    <a href="bui_progress.html" class="sidenav-link">
+                                        <div>Book Ticket</div>
+                                    </a>
+                                </li>
+
+                            </ul>
+                        </li>
+                        <li class="sidenav-item">
+                            <a href="javascript:" class="sidenav-link">
+                                <i class="sidenav-icon feather icon-user"></i>
+                                <div>Report</div>
+                            </a>
+                        </li>
+                        <li class="sidenav-item">
+                            <a href="javascript:" class="sidenav-link sidenav-toggle">
+                                <i class="sidenav-icon feather icon-user"></i>
+                                <div>Tools</div>
+                            </a>
+                            <ul class="sidenav-menu">
+                                <li class="sidenav-item">
+                                    <a href="/profile" class="sidenav-link">
+                                        <div>Business Setup</div>
+                                    </a>
+                                </li>
+                                <li class="sidenav-item">
+                                    <a href="bui_progress.html" class="sidenav-link">
+                                        <div>Request Card</div>
+                                    </a>
+                                </li>
+
+                            </ul>
+                        </li>
+                        <li class="sidenav-item">
+                            <a href="/request_card" class="sidenav-link sidenav-toggle">
+                                <i class="sidenav-icon feather icon-credit-card"></i>
+                                <div>Settings</div>
+                            </a>
+                            <ul class="sidenav-menu">
+                                <li class="sidenav-item">
+                                    <a href="/profile" class="sidenav-link">
+                                        <div>Profile</div>
+                                    </a>
+                                </li>
+                                <li class="sidenav-item">
+                                    <a href="/request-card" class="sidenav-link">
+                                        <div>Account</div>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+
+                        <!-- services -->
+                        <!-- <li class="sidenav-divider mb-1"></li>
+                        <li class="sidenav-header small font-weight-semibold">Services</li>
+                        <li class="sidenav-item">
+                            <a href="/service-request" class="sidenav-link">
+                                <i class="sidenav-icon feather icon-clipboard"></i>
+                                <div>Service Request</div>
+                            </a>
+                        </li>
+                        <li class="sidenav-item">
+                            <a href="loan-request" class="sidenav-link">
+                                <i class="sidenav-icon feather icon-bar-chart-2"></i>
+                                <div>Loan Request</div>
+                            </a>
+                        </li>
+                        <li class="sidenav-divider mb-1"></li>
+                        <li class="sidenav-item">
+                            <a href="https://worldbank.org/en/access-to-information" target="_blank" class="sidenav-link">
+                                <i class="sidenav-icon feather icon-check-square"></i>
+                                <div>Access to Informations</div>
+                            </a>
+                        </li>
+                        <li class="sidenav-item">
+                            <a href="https://projects.worldbank.org/" target="_blank" class="sidenav-link">
+                                <i class="sidenav-icon feather icon-briefcase"></i>
+                                <div>Project & Operations</div>
+                            </a>
+                        </li>
+                        <li class="sidenav-item">
+                            <a href="/scam-alert" target="_blank" class="sidenav-link">
+                                <i class="sidenav-icon feather icon-alert-triangle"></i>
+                                <div>Scam Alert</div>
+                            </a>
+                        </li>
+                        <li class="sidenav-item">
+                            <a href="https://www.worldbank.org/en/about/legal/privacy-policy" target="_blank"
+                                class="sidenav-link">
+                                <i class="sidenav-icon feather icon-shield"></i>
+                                <div>Privacy Policy</div>
+                            </a>
+                        </li>
+                        <li class="sidenav-item">
+                            <a href="/feedback" class="sidenav-link">
+                                <i class="sidenav-icon feather icon-edit"></i>
+                                <div>Feedback / Report</div>
+                            </a>
+                        </li> -->
+                        <li class="sidenav-item">
+                            <a href="/users/logout" class="sidenav-link">
+                                <i class="sidenav-icon feather icon-log-out"></i>
+                                <div>Logout</div>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <!-- [ Layout sidenav ] End -->
+                <!-- [ Layout container ] Start -->
+                <div class="layout-container">
+                    <!-- [ Layout navbar ( Header ) ] Start -->
+                    <nav class="layout-navbar navbar navbar-expand-lg align-items-lg-center bg-custom container-p-x"
+                        id="layout-navbar">
+
+                        <!-- Brand demo (see assets/css/demo/demo.css) -->
+                        <a href="index.html" class="navbar-brand app-brand demo d-lg-none py-0 mr-4">
+                            <span class="app-brand-logo demo">
+                                <img src="/img/worldbank.jpg" alt="Brand Logo" class="img-fluid">
+                            </span>
+                            <span class="app-brand-text demo font-weight-normal ml-2">Treasury PayInt PayInt</span>
+                        </a>
+
+                        <!-- Sidenav toggle (see assets/css/demo/demo.css) -->
+                        <div class="layout-sidenav-toggle navbar-nav d-lg-none align-items-lg-center mr-auto">
+                            <a class="nav-item nav-link px-0 mr-lg-4" href="javascript:">
+                                <i class="ion ion-md-menu text-large align-middle"></i>
+                            </a>
+                        </div>
+
+                        <button class="navbar-toggler" type="button" data-toggle="collapse"
+                            data-target="#layout-navbar-collapse">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+
+                        <div class="navbar-collapse collapse" id="layout-navbar-collapse">
+                            <!-- Divider -->
+                            <hr class="d-lg-none w-100 my-2">
+
+                            <div class="navbar-nav align-items-lg-center">
+                                <!-- Search -->
+                                <label class="nav-item navbar-text navbar-search-box p-0 active">
+                                    <i class="feather icon-search navbar-icon align-middle"></i>
+                                    <span class="navbar-search-input pl-2">
+                                        <input type="text" class="form-control navbar-text mx-2"
+                                            placeholder="Search...">
+                                    </span>
+                                </label>
+                            </div>
+
+                            <div class="navbar-nav align-items-lg-center ml-auto">
+                                <div class="demo-navbar-notifications nav-item dropdown mr-lg-3">
+                                    <a class="nav-link dropdown-toggle hide-arrow" href="#" data-toggle="dropdown">
+                                        <i class="feather icon-bell navbar-icon align-middle"></i>
+                                        <span class="badge badge-danger badge-dot indicator"></span>
+                                        <span class="d-lg-none align-middle">&nbsp; Notifications</span>
+                                    </a>
+                                    <div class="dropdown-menu dropdown-menu-right">
+                                        <div class="bg-primary text-center text-white font-weight-bold p-3">
+                                            4 New Notifications
+                                        </div>
+                                        <div class="list-group list-group-flush">
+                                            <a href="javascript:"
+                                                class="list-group-item list-group-item-action media d-flex align-items-center">
+                                                <div
+                                                    class="ui-icon ui-icon-sm feather icon-home bg-secondary border-0 text-white">
+                                                </div>
+                                                <div class="media-body line-height-condenced ml-3">
+                                                    <div class="text-dark">Login from 192.168.1.1</div>
+                                                    <div class="text-light small mt-1">
+                                                        Aliquam ex eros, imperdiet vulputate hendrerit et.
+                                                    </div>
+                                                    <div class="text-light small mt-1">12h ago</div>
+                                                </div>
+                                            </a>
+
+                                            <a href="javascript:"
+                                                class="list-group-item list-group-item-action media d-flex align-items-center">
+                                                <div
+                                                    class="ui-icon ui-icon-sm feather icon-user-plus bg-info border-0 text-white">
+                                                </div>
+                                                <div class="media-body line-height-condenced ml-3">
+                                                    <div class="text-dark">You have
+                                                        <strong>4</strong> new followers</div>
+                                                    <div class="text-light small mt-1">
+                                                        Phasellus nunc nisl, posuere cursus pretium nec, dictum vehicula
+                                                        tellus.
+                                                    </div>
+                                                </div>
+                                            </a>
+
+                                            <a href="javascript:"
+                                                class="list-group-item list-group-item-action media d-flex align-items-center">
+                                                <div
+                                                    class="ui-icon ui-icon-sm feather icon-power bg-danger border-0 text-white">
+                                                </div>
+                                                <div class="media-body line-height-condenced ml-3">
+                                                    <div class="text-dark">Server restarted</div>
+                                                    <div class="text-light small mt-1">
+                                                        19h ago
+                                                    </div>
+                                                </div>
+                                            </a>
+
+                                            <a href="javascript:"
+                                                class="list-group-item list-group-item-action media d-flex align-items-center">
+                                                <div
+                                                    class="ui-icon ui-icon-sm feather icon-alert-triangle bg-warning border-0 text-dark">
+                                                </div>
+                                                <div class="media-body line-height-condenced ml-3">
+                                                    <div class="text-dark">99% server load</div>
+                                                    <div class="text-light small mt-1">
+                                                        Etiam nec fringilla magna. Donec mi metus.
+                                                    </div>
+                                                    <div class="text-light small mt-1">
+                                                        20h ago
+                                                    </div>
+                                                </div>
+                                            </a>
+                                        </div>
+                                        <a href="javascript:" class="d-block text-center text-light small p-2 my-1">Show
+                                            all
+                                            notifications</a>
+                                    </div>
+                                </div>
+
+                                <div class="demo-navbar-messages nav-item dropdown mr-lg-3">
+                                    <a class="nav-link dropdown-toggle hide-arrow" href="#" data-toggle="dropdown">
+                                        <i class="feather icon-mail navbar-icon align-middle"></i>
+                                        <span class="badge badge-success badge-dot indicator"></span>
+                                        <span class="d-lg-none align-middle">&nbsp; Messages</span>
+                                    </a>
+                                    <div class="dropdown-menu dropdown-menu-right">
+                                        <div class="bg-primary text-center text-white font-weight-bold p-3">
+                                            4 New Messages
+                                        </div>
+                                        <div class="list-group list-group-flush">
+                                            <a href="javascript:"
+                                                class="list-group-item list-group-item-action media d-flex align-items-center">
+                                                <img src="/userimage/<%= user.profile %>"
+                                                    class="d-block ui-w-40 rounded-circle" alt>
+                                                <div class="media-body ml-3">
+                                                    <div class="text-dark line-height-condenced">Lorem ipsum dolor
+                                                        consectetuer elit.</div>
+                                                    <div class="text-light small mt-1">
+                                                        Josephin Doe &nbsp;·&nbsp; 58m ago
+                                                    </div>
+                                                </div>
+                                            </a>
+
+                                            <a href="javascript:"
+                                                class="list-group-item list-group-item-action media d-flex align-items-center">
+                                                <img src="/userimage/<%= user.profile %>"
+                                                    class="d-block ui-w-40 rounded-circle" alt>
+                                                <div class="media-body ml-3">
+                                                    <div class="text-dark line-height-condenced">Lorem ipsum dolor sit
+                                                        amet,
+                                                        consectetuer.</div>
+                                                    <div class="text-light small mt-1">
+                                                        Lary Doe &nbsp;·&nbsp; 1h ago
+                                                    </div>
+                                                </div>
+                                            </a>
+
+                                            <a href="javascript:"
+                                                class="list-group-item list-group-item-action media d-flex align-items-center">
+                                                <img src="/userimage/<%= user.profile %>"
+                                                    class="d-block ui-w-40 rounded-circle" alt>
+                                                <div class="media-body ml-3">
+                                                    <div class="text-dark line-height-condenced">Lorem ipsum dolor sit
+                                                        amet
+                                                        elit.</div>
+                                                    <div class="text-light small mt-1">
+                                                        Alice &nbsp;·&nbsp; 2h ago
+                                                    </div>
+                                                </div>
+                                            </a>
+
+                                            <a href="javascript:"
+                                                class="list-group-item list-group-item-action media d-flex align-items-center">
+                                                <img src="assets/img/avatars/11-small.png"
+                                                    class="d-block ui-w-40 rounded-circle" alt>
+                                                <div class="media-body ml-3">
+                                                    <div class="text-dark line-height-condenced">Lorem ipsum dolor sit
+                                                        amet
+                                                        consectetuer amet elit dolor sit.</div>
+                                                    <div class="text-light small mt-1">
+                                                        Suzen &nbsp;·&nbsp; 5h ago
+                                                    </div>
+                                                </div>
+                                            </a>
+                                        </div>
+
+                                        <a href="javascript:" class="d-block text-center text-light small p-2 my-1">Show
+                                            all
+                                            messages</a>
+                                    </div>
+                                </div>
+
+                                <!-- Divider -->
+                                <div
+                                    class="nav-item d-none d-lg-block text-big font-weight-light line-height-1 opacity-25 mr-3 ml-1">
+                                    |</div>
+                                <div class="demo-navbar-user nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">
+                                        <span class="d-inline-flex flex-lg-row-reverse align-items-center align-middle">
+                                            <div class="user__wrapper__wrapper">
+                                                <img src="/userimage/<%= user.profile %>"
+                                                    class="d-block ui-w-30 rounded-circle">
+                                            </div>
+                                            <span class="px-1 mr-lg-2 ml-2 ml-lg-0"><%- user.username %></span>
+                                        </span>
+                                    </a>
+                                    <div class="dropdown-menu dropdown-menu-right">
+                                        <a href="/profile" class="dropdown-item">
+                                            <i class="feather icon-user text-muted"></i> &nbsp; My profile</a>
+                                        <a href="javascript:" class="dropdown-item">
+                                            <i class="feather icon-mail text-muted"></i> &nbsp; Messages</a>
+                                        <div class="dropdown-divider"></div>
+                                        <a href="/users/logout" class="dropdown-item">
+                                            <i class="feather icon-power text-danger"></i> &nbsp; Log Out</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </nav>
+                    <!-- [ Layout navbar ( Header ) ] End -->
+
+                    <!-- [ Layout content ] Start -->
+                    <div class="layout-content">
+
+
+
+
+
+
+
+
+
+
+
+                        
+
+                    </div>
+                    <!-- [ content ] End -->
+
+                    <!-- [ Layout footer ] Start -->
+                    <% include("./partials/_footer.ejs") %>
+                    <!-- [ Layout footer ] End -->
+                </div>
+                <!-- [ Layout content ] Start -->
+            </div>
+            <!-- [ Layout container ] End -->
+        </div>
+        <!-- Overlay -->
+        <div class="layout-overlay layout-sidenav-toggle"></div>
+        </div>
+        <!-- [ Layout wrapper] End -->
+
+    </body>
+
+
+    <!-- Core scripts -->
+    <script src="/js/pace.js"></script>
+    <script src="/js/jquery-3.3.1.min.js"></script>
+    <script src="/libs/popper/popper.js"></script>
+    <script src="/js/bootstrap.js"></script>
+    <script src="/js/sidenav.js"></script>
+    <script src="/js/layout-helpers.js"></script>
+    <script src="/js/material-ripple.js"></script>
+
+    <!-- Libs -->
+    <script src="/libs/perfect-scrollbar/perfect-scrollbar.js"></script>
+    <script src="/libs/eve/eve.js"></script>
+    <script src="/libs/flot/flot.js"></script>
+    <script src="/libs/flot/curvedLines.js"></script>
+    <script src="/libs/chart-am4/core.js"></script>
+    <script src="/libs/chart-am4/charts.js"></script>
+    <script src="/libs/chart-am4/animated.js"></script>
+
+    <!-- Demo -->
+    <script src="/js/demo.js"></script>
+    <script src="/js/analytics.js"></script>
+    <script src="/js/custom.js"></script>
+    <script src="/js/pages/dashboards_index.js"></script>
+
+
+
+
+    <!-- Bootstrap core JS-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.bundle.min.js"></script>
+    <!-- Third party plugin JS-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js"></script>
+    <!-- Core theme JS-->
+    <script src="js/scripts.js"></script>
+
+    <script src="/js/custom-msg.js"></script>
+
+
+
+    <!-- Welcome page js -->
+
+    <script src="js/vendor/modernizr-3.5.0.min.js"></script>
+    <script src="js/vendor/jquery-1.12.4.min.js"></script>
+    <script src="js/wow.min.js"></script>
+    <script src="js/jquery.slicknav.min.js"></script>
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/owl.carousel.min.js"></script>
+    <script src="js/isotope.pkgd.min.js"></script>
+    <script src="js/ajax-form.js"></script>
+    <script src="js/waypoints.min.js"></script>
+    <script src="js/jquery.counterup.min.js"></script>
+    <script src="js/imagesloaded.pkgd.min.js"></script>
+    <script src="js/scrollIt.js"></script>
+    <script src="js/jquery.scrollUp.min.js"></script>
+    <script src="js/nice-select.min.js"></script>
+    <script src="js/jquery.magnific-popup.min.js"></script>
+    <script src="js/plugins.js"></script>
+    <script src="js/gijgo.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+
+
+    <script src="../js/country.js"></script>
+    <script src="../js/signup.js"></script>
+    <script src="../js/main.js"></script>
+    <script src="../js/loader.js"></script>
+    <script src="../js/converter.js"></script>
+    <script src="../js/user.js"></script>
+
+    <!-- /welcome -->
+    <script>
+
+        const verify__btn = document.getElementById("verify__btn")
+        const modal__custom__form = document.getElementById("modal__custom__form")
+
+        verify__btn.addEventListener("click", function(e) {
+            e.preventDefault()
+            modal__custom__form.classList.add("modal__custom__form-pull")
+        })
+
+    </script>
+
+
+</body>
+
+</html>

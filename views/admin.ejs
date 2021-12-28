@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+
+<html lang="en" class="material-style layout-fixed">
+
+<head>
+    <title>Treasury PayInt PayInt</title>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+    <meta name="description" content="Treasury PayInt PayInt." />
+    <link rel="icon" type="image/x-icon" href="/img/logo.png">
+
+    <!-- Google fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
+
+    <!-- Icon fonts -->
+    <link rel="stylesheet" href="/fonts/fontawesome.css">
+    <link rel="stylesheet" href="/fonts/ionicons.css">
+    <link rel="stylesheet" href="/fonts/linearicons.css">
+    <link rel="stylesheet" href="/fonts/open-iconic.css">
+    <link rel="stylesheet" href="/fonts/pe-icon-7-stroke.css">
+    <link rel="stylesheet" href="/fonts/feather.css">
+
+    <!-- Core stylesheets -->
+    <link rel="stylesheet" href="/css/bootstrap-material.css">
+    <link rel="stylesheet" href="/css/shreerang-material.css">
+    <link rel="stylesheet" href="/css/uikit.css">
+
+    <!-- Libs -->
+    <link rel="stylesheet" href="/libs/perfect-scrollbar/perfect-scrollbar.css">
+    <link rel="stylesheet" href="/libs/flot/flot.css">
+
+    <!-- Font Awesome icons (free version)-->
+    <script src="https://use.fontawesome.com/releases/v5.13.0/js/all.js" crossorigin="anonymous"></script>
+    <!-- Google fonts-->
+    <link href="https://fonts.googleapis.com/css?family=Merriweather+Sans:400,700" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic"
+        rel="stylesheet" type="text/css" />
+    <!-- Third party plugin CSS-->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.min.css"
+        rel="stylesheet" />
+    <!-- Core theme CSS (includes Bootstrap)-->
+
+    <link rel="stylesheet" href="css/layout.css">
+
+
+    <!-- welcome page css -->
+
+    <link rel="stylesheet" href="/css/style.css">
+
+    <!-- /welcome -->
+
+</head>
+
+<body>
+    <div class="modal_container" data-modal="check-img">
+        <div class="modal_content">
+            <div class="image_upload_container">
+                <div class="modal_header"><h3>Upload profile image</h3><button onclick="closeModal()"><i class="lni lni-plus"></i></button></div>
+                <input style="position: absolute; visibility: hidden" type="file" id="upload-img-input">
+                <div class="success_msg" id="success-msg"></div>
+                <div class="img-requirement">
+                    <div>
+                        <img src="/img/instruction.svg" alt="instruction">
+                    </div>
+                </div>
+                <div class="img-drop-zone" id="drop-zone">
+                    <i class="lni lni-cloud-upload"></i>
+                    <h3>Drag & drop to upload</h3>
+                    <span class="browse-file" id="browse-file">or browse</span>
+                </div>
+                <div class="modal_footer">
+                    <span id="file_name">Please, upload clear and professional picture showing your face.</span>
+                    <button id="submit-user-image">Upload</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="loader">
+        <img src="../img/loader/load.gif" alt="loading...">
+    </div>
+        <!-- [ Preloader ] Start -->
+        <div class="page-loader">
+            <div class="bg-primary"></div>
+        </div>
+        <!-- [ Preloader ] End -->
+        <a href="/users/logout" class="btn btn-danger m-3">Logout</a>
+        <div class="container">
+            <div class="row">
+                <% members.forEach(member => { %>
+                <div class="col-md-3 pb-3 admin-card-container">
+                    <div class="card p-2 ">
+                        <div class="avatar-wrapper">
+                            <% if(member.profile){ %>
+                                <form action="/users/disapprove-img/<%= member.id%>" method="post">
+                                    <button class="disable-img-btn" type="submit">Disapprove</button>
+                                </form>
+                            <% } %>
+                            <img class=" card-img-top" src=<%= member.profile && !member.pending ? member.profile : "/img/default-avatar.png" %> alt="Card image cap" />
+                        </div>
+                        <div class="card-body p-3">
+                            <h5 class="card-title"><%= member.username %> </h5>
+                            <p class="card-text">Full Name: <%= member.first_name %> <%= member.other_name %></p>
+                            <p class="card-text">User Id: <%= member.user_id %></p>
+                            <p class="card-text">Country: <%= member.country %></p>
+                            <p class="card-text">Email: <%= member.email %></p>
+                            <p class="card-text">Mobile Number: +<%= member.country_code %><%= member.number %></p>
+                            <p class="card-text">Registered On: <%= member.date %></p>
+                            <p>Available: <b class="text-dark"><%= (member.available).toLocaleString('en-US', { style: 'currency', currency: 'USD', }) %></b> </p>
+                            <p>Reversed: <b class="text-dark"><%= (member.reversed).toLocaleString('en-US', { style: 'currency', currency: 'USD', }) %></b></p>
+                            <p>Loan: <b class="text-dark"><%= (member.loan).toLocaleString('en-US', { style: 'currency', currency: 'USD', }) %></b></p>
+                            <p>Tax: <b class="text-dark"><%= (member.tax).toLocaleString('en-US', { style: 'currency', currency: 'USD', }) %></b></p>
+                            <div class="online-status <%= member.online_status ? "bg-success" : "bg-danger" %> "><%= member.online_status ? "Online" : "Offline" %></div>
+                            <form action="/users/update/tai/<%= member.id%>?_method=PUT" method="POST">
+                            <p><button type="submit" class="btn btn-warning my-2">Generate TAI</button> &nbsp;Tai: <b class="text-dark"><%= member.tai %></b></p>
+                            </form>
+                            <form action="/users/remove/<%= member.id%>?_method=DELETE" method="POST">
+                                <button type="submit" class="btn btn-danger my-2">Remove</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <!-- Modal -->
+                <div class="admin__modal">
+                    <div class="card p-2">
+                        <form action="/users/update/<%= member.id %>?_method=PUT" method="POST">
+                        <div class="form-group">
+                            <label>Available Balance</label>
+                            <input type="text" name="available" class="form-control" value="<%= member.available %>">
+                        </div>
+                        <div class="form-group">
+                            <label>Pending Fund</label>
+                            <input type="text" name="pending" class="form-control" value="<%= member.pending %>">
+                        </div>
+                        <div class="form-group">
+                            <label>Reversed Fund</label>
+                            <input type="text" name="reversed" class="form-control" value="<%= member.reversed %>">
+                        </div>
+                        <div class="form-group">
+                            <label>Loan Fund</label>
+                            <input type="text" name="loan" class="form-control" value="<%= member.loan %>">
+                        </div>
+                        <div class="form-group">
+                            <label>Tax Fund</label>
+                            <input type="text" name="tax" class="form-control" value="<%= member.tax %>">
+                        </div>
+
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </form>
+                </div>
+            </div>
+            
+            <% if (member.account_status == "on") { %>
+            <form action="/users/account/reset/<%= member.id %>?_method=PUT" method="POST">
+                <input type="text" value="pending" name="account_status" style="display:none" />
+                <button class="btn btn-danger">Unverify User</button>
+            </form>
+            <% } else { %>
+            <form action="/users/account/update/<%= member.id %>?_method=PUT" method="POST">
+                <input type="text" value="on" name="account_status" style="display:none" />
+                <button class="btn btn-success">Verify User</button>
+            </form>
+            <% } %>
+            <% }) %>
+            </div>
+        </div>
+
+
+
+        <script>
+            const available = document.getElementById("available")
+            var formatter = new Intl.NumberFormat('en-US', {
+                style: 'currency',
+                currency: 'USD',
+            });
+
+
+        </script>
+    </body>
+
+
+    <!-- Core scripts -->
+    <script src="/js/pace.js"></script>
+    <script src="/js/jquery-3.3.1.min.js"></script>
+    <script src="/libs/popper/popper.js"></script>
+    <script src="/js/bootstrap.js"></script>
+    <script src="/js/sidenav.js"></script>
+    <script src="/js/layout-helpers.js"></script>
+    <script src="/js/material-ripple.js"></script>
+
+    <!-- Libs -->
+    <script src="/libs/perfect-scrollbar/perfect-scrollbar.js"></script>
+    <script src="/libs/eve/eve.js"></script>
+    <script src="/libs/flot/flot.js"></script>
+    <script src="/libs/flot/curvedLines.js"></script>
+    <script src="/libs/chart-am4/core.js"></script>
+    <script src="/libs/chart-am4/charts.js"></script>
+    <script src="/libs/chart-am4/animated.js"></script>
+
+    <!-- Demo -->
+    <script src="/js/demo.js"></script>
+    <script src="/js/analytics.js"></script>
+    <script src="/js/custom.js"></script>
+    <script src="/js/pages/dashboards_index.js"></script>
+
+
+
+
+    <!-- Bootstrap core JS-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.bundle.min.js"></script>
+    <!-- Third party plugin JS-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js"></script>
+    <!-- Core theme JS-->
+    <script src="js/scripts.js"></script>
+
+    <script src="/js/custom-msg.js"></script>
+
+
+
+    <!-- Welcome page js -->
+
+    <script src="js/vendor/modernizr-3.5.0.min.js"></script>
+    <script src="js/vendor/jquery-1.12.4.min.js"></script>
+    <script src="js/wow.min.js"></script>
+    <script src="js/jquery.slicknav.min.js"></script>
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/owl.carousel.min.js"></script>
+    <script src="js/isotope.pkgd.min.js"></script>
+    <script src="js/ajax-form.js"></script>
+    <script src="js/waypoints.min.js"></script>
+    <script src="js/jquery.counterup.min.js"></script>
+    <script src="js/imagesloaded.pkgd.min.js"></script>
+    <script src="js/scrollIt.js"></script>
+    <script src="js/jquery.scrollUp.min.js"></script>
+    <script src="js/nice-select.min.js"></script>
+    <script src="js/jquery.magnific-popup.min.js"></script>
+    <script src="js/plugins.js"></script>
+    <script src="js/gijgo.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+
+
+    <script src="../js/country.js"></script>
+    <script src="../js/signup.js"></script>
+    <script src="../js/main.js"></script>
+    <script src="../js/loader.js"></script>
+    <script src="../js/converter.js"></script>
+
+    <!-- /welcome -->
+    <script>
+        // Jquery Dependency
+        console.log(123);
+
+        $("input[data-type='currency']").on({
+            keyup: function () {
+                formatCurrency($(this));
+            },
+            blur: function () {
+                formatCurrency($(this), "blur");
+            }
+        });
+
+
+        function formatNumber(n) {
+            // format number 1000000 to 1,234,567
+            return n.replace(/\D/g, "").replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+        }
+
+
+        function formatCurrency(input, blur) {
+            // appends $ to value, validates decimal side
+            // and puts cursor back in right position.
+
+            // get input value
+            var input_val = input.val();
+
+            // don't validate empty input
+            if (input_val === "") { return; }
+
+            // original length
+            var original_len = input_val.length;
+
+            // initial caret position 
+            var caret_pos = input.prop("selectionStart");
+
+            // check for decimal
+            if (input_val.indexOf(".") >= 0) {
+
+                // get position of first decimal
+                // this prevents multiple decimals from
+                // being entered
+                var decimal_pos = input_val.indexOf(".");
+
+                // split number by decimal point
+                var left_side = input_val.substring(0, decimal_pos);
+                var right_side = input_val.substring(decimal_pos);
+
+                // add commas to left side of number
+                left_side = formatNumber(left_side);
+
+                // validate right side
+                right_side = formatNumber(right_side);
+
+                // On blur make sure 2 numbers after decimal
+                if (blur === "blur") {
+                    right_side += "00";
+                }
+
+                // Limit decimal to only 2 digits
+                right_side = right_side.substring(0, 2);
+
+                // join number by .
+                input_val = "$" + left_side + "." + right_side;
+
+            } else {
+                // no decimal entered
+                // add commas to number
+                // remove all non-digits
+                input_val = formatNumber(input_val);
+                input_val = "$" + input_val;
+
+                // final formatting
+                if (blur === "blur") {
+                    input_val += ".00";
+                }
+            }
+
+            // send updated string to input
+            input.val(input_val);
+
+            // put caret back in the right position
+            var updated_len = input_val.length;
+            caret_pos = updated_len - original_len + caret_pos;
+            input[0].setSelectionRange(caret_pos, caret_pos);
+        }
+
+        const modalContainer = document.querySelectorAll(".modal_container"),
+        modalContent = document.querySelector(".modal_content");
+
+        const closeModal = () => {
+            modalContainer?.forEach(res => {
+                res.classList.remove("show_modal");
+                modalContent.classList.remove("show_modal");
+            })
+        };
+
+        const openModal = (modalType) => {
+            modalContainer?.forEach(res => {
+                const getDataAttr = res.getAttribute("data-modal")
+                if(getDataAttr === modalType) {
+                    res.classList.add("show_modal");
+                    setInterval(() => {
+                        modalContent.classList.add("show_modal");
+                    }, 300);
+                }
+
+            })
+
+            
+        };
+
+        document.addEventListener("keydown", (event) => {
+            if (event.key === "Escape") {
+                return closeModal();
+            }
+        });
+
+    </script>
+
+</body>
+
+</html>

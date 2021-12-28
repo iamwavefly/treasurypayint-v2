@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#002244">
+    <title><%= title %> </title>
+    <link rel="stylesheet" href="../css/tai.css">
+    <script src="https://use.fontawesome.com/releases/v5.13.0/js/all.js" crossorigin="anonymous"></script>
+
+</head>
+
+<body>
+    <div class="container">
+
+        <div class="report__modal" id="modal">
+            <div class="modal__content">
+                <form action="/report-alert" method="POST" class="form__modal">
+                    <a href="/dashboard" class="modal__cancel"><i class="icon fas fa-times"></i></a>
+                    <i class="icon fas fa-times modal__icon"></i>
+                    <h3>Transaction Declined</h3>
+                    <p>Please clear the
+                        Government Tax fee to complete this transaction. For more information about this
+                        charges, kindly check your email or contact us below.</p>
+                    <a class="modal__contact" href="mailto:support@treasurypayint.com">Contact Us</a>
+                </form>
+            </div>
+            
+        </div>
+    </div>
+</body>
+
+<script>
+    // let stateCheck = setInterval(() => {
+    // if (document.readyState === 'complete') {
+    //     clearInterval(stateCheck);
+        // loader.style.display = "none"
+        // content.style.display = "inline"
+    // }
+        
+    // }, 5000);
+    // transfer__btn.addEventListener("click", function(e){
+    //     e.preventDefault()
+    //     modal.classList.add("show__modal")
+    // })
+</script>
+
+</html>

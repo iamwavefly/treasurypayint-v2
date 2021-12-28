@@ -1,0 +1,290 @@
+body{
+
+}
+/* Global Styling satrts here */
+:root{
+    --prime: #0E1F33;
+    --text-light: #f1f1f1;
+    --success: #28a745;
+}
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+a{
+    text-decoration: none;
+}
+/* Global Styling ends here */
+
+/* Navigation starts */
+.nav{
+    display: grid;
+    justify-content: space-between;
+    grid-template-columns: repeat(5, auto);
+    grid-template-areas:
+    "brand-name notify toggles toggles toggles";
+    background: var(--prime);
+    height: 60px;
+    align-items: center;
+}
+.nav .brand-name{
+    grid-area: brand-name;
+    margin: 0 2rem;
+    font-size: 1.5rem;
+    color: var(--text-light);
+}
+.nav .brand-name:hover{
+    color: var(--text-light);
+}
+.nav .notify{
+    grid-area: notify;
+}
+.nav .notify img{
+    width: 1.5rem;
+}
+.nav .toggles{
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(4, auto);
+    grid-area: toggles;
+    grid-template-areas: 
+    "form form form nav__logout";
+    justify-content: space-between;
+}
+.nav .form{
+    display: grid;
+    grid-area: form;
+    grid-template-columns: repeat(6, auto);
+    grid-template-areas: 
+    "form-control form-control form-control form-control form-control btn-info";
+}
+.nav .form .form-control{
+    grid-area: form-control;
+    border-radius: 3rem 0 0 3rem !important;
+    padding: 0 8px !important;
+}
+.nav .toggles .nav__logout{
+    display: block;
+    grid-area: nav__logout;
+    margin: 0 1.5rem;
+}
+.nav .toggler{
+    display: none;
+    position: absolute;
+    right: 1.5rem;
+    width: 30px;
+    height: 30px;
+    background: var(--text-light);
+    align-items: center;
+    justify-content: center;
+    border-radius: 2px;
+    cursor: pointer;
+}
+.nav .toggler i{
+    color: var(--prime);
+}
+.nav .form .btn-info{
+    grid-area: btn-info;
+    border-radius: 0 3rem 3rem 0;
+}
+/* Custom Table starts */
+.tables .table_body{
+    display: grid;
+    grid-template-columns: repeat(3, auto);
+    justify-content: space-between;
+    border-bottom: 1px solid gray;
+    padding: .5rem 0 .5rem .5rem;
+}
+.users{
+    position: relative;
+    margin: 6rem 0 1.5rem;
+    text-align: center;
+    text-transform: uppercase;
+}
+.member__name{
+    font-size: 1.3rem;
+    align-items: center;
+}
+.member__name span{
+    border: 1px solid #cfcdcd;
+    height: 12px;
+    width: 12px;
+    border-radius: 50%;
+    margin: 0 .3rem 0 0;
+    background: var(--success);
+    padding: 0;
+}
+.profile_status{
+    padding: 1rem;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-items: center;
+}
+.profile__img__wrapper{
+    height: 5rem;
+    width: 5rem;
+    border-radius: 50%;
+    padding: 0;
+    overflow: hidden;
+    border: 2px solid #cfcdcd;
+}
+.profile__img__wrapper img{
+    height: 100%;
+    width: 100%;
+}
+.user__reg{
+    width: auto;
+}
+.status__btn{
+    width: auto;
+}
+#exampleModal__1 label{
+    margin: .8rem 0 .3rem!important;
+}
+.profile__form{
+    border-bottom: 1px solid #cfcdcd;
+}
+.valid__id{
+    width: 100%;
+}
+.valid__id img{
+    width: 100%;
+}
+/* Custom Table ends */
+
+/* Action Page */
+.validate_back{
+    position: absolute;
+    font-size: .6rem;
+}
+section{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 40px;
+}
+section form{
+    margin: .8rem 0;
+}
+.section_1 form div{
+    display: grid;
+    grid-template-columns: repeat(4, auto);
+    grid-template-areas:
+    "input input input bt";
+}
+.input{
+    grid-area: input;
+}
+.bt{
+    grid-area: bt;
+}
+.section_2 .card div{
+    margin: .5rem 0;
+}
+/* Tai */
+.tai form div{
+    display: grid;
+    grid-template-columns: repeat(4, auto);
+    grid-template-areas: 
+    "input input input bt";
+}
+.input{
+    grid-area: input;
+}
+.bt{
+    grid-area: bt;
+}
+.tai span{
+    border: 1px solid gray;
+    padding: .2rem .5rem;
+    border-radius: .2rem;
+}
+/* Tax */
+.tax{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.tax .form-control{
+    width: 70%;
+}
+
+
+@media(max-width: 800px){
+    section{
+        grid-template-columns: 1fr;
+    }
+}
+@media(max-width: 768px){
+    .nav .toggler{
+        display: flex;
+    }
+    .nav .toggles{
+        grid-template-columns: repeat(4, auto);
+        grid-area: none;
+        position: absolute;
+        align-items: center;
+        left: 0;
+        top: 60px;
+        transform: translateY(-140%);
+        height: 8rem;
+        background: var(--prime);
+        width: 100%;
+        grid-template-areas: 
+        "form form form form"
+        "nav__logout . . .";
+        transition: transform .3s ease;
+        z-index: 999;
+    }
+    .nav .toggles.active{
+       transform: translateY(0);
+    }
+    .nav .toggles .form{
+        margin: 0 1rem;
+    }
+    .con{
+        transform: translateY(0);
+        transition: transform .3s ease;
+    }
+    .con.active{
+        transform: translateY(10%);
+    }
+}
+@media(max-width: 480px){
+    .nav .brand-name{
+        margin-left: 1rem;
+    }
+    .users{
+        font-size: 1.2rem;
+    }
+    .member__name{
+        font-size: 1.1rem;
+    } 
+    .member__name span{
+        height: 10px;
+        width: 10px;
+    }
+    .d-flex .btn{
+        font-size: .6rem !important;
+        padding: .3rem .45rem !important;
+    }
+    .nav .toggler{
+        right: 1rem;
+    }
+}
+@media(max-width: 320px){
+    /* .nav .toggler{
+        right: 1rem;;
+    } */
+    .nav .brand-name{
+        /* margin-left: 1rem; */
+        font-size: 1.2rem;
+    }
+    .member__name{
+        font-size: 1rem;
+    } 
+    .d-flex .btn{
+        font-size: .55rem !important;
+        padding: .25rem .4rem !important;
+    }
+}

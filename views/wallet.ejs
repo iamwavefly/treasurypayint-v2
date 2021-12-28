@@ -1,0 +1,163 @@
+<div class="wallet-container">
+    <div class="wallet-finance-section">
+        <div>
+            <div class="wallet-card-header">
+                <h2>Balance</h2>
+                <button><ion-icon name="wallet-sharp"></ion-icon></button>
+            </div>
+            <div class="wallet-card-content">
+                <h3><%= user.available.toLocaleString('en-US', { style: 'currency', currency: 'USD', }) %> </h3>
+            </div>
+            <div class="wallet-card-footer">
+                <img src="/img/layout/icon-arrow-up.svg" class="icon-arrow-up">
+                <p class="arrow-up"><%= Number(user.recent_received).toLocaleString('en-US', { style: 'currency', currency: 'USD', }) %> </p>
+                <img src="/img/layout/icon-arrow-down.svg" class="icon-arrow-down">
+                <p class="arrow-down">$0.00</p>
+            </div>
+        </div>
+        <div>
+            <div class="wallet-card-header">
+                <h2>Information</h2>
+                <button><ion-icon name="person-sharp"></ion-icon></button>
+            </div>
+            <div class="wallet-card-content mt-1">
+                <div><ion-icon name="home-sharp"></ion-icon> <span class="lighter">State:</span> <span><%= user.state %> </span></div>
+                <div><ion-icon name="location-sharp"></ion-icon> <span class="lighter">Country:</span> <span><%= user.country %> </span></div>
+                <div><ion-icon name="wallet-sharp"></ion-icon> <span class="lighter">Wallet ID:</span> <span><%= user.id.substr(0,20) %> </span></div>
+            </div>
+        </div>
+        <div>       
+            <div class="wallet-card-header">
+                <h2>Security</h2>
+                <button><ion-icon name="notifications-sharp"></ion-icon></button>
+            </div>
+            <div class="wallet-card-content mt-1">
+                <div class="wallet-card-security">
+                    <div>
+                        <button>
+                            <ion-icon name="chatbubble-sharp"></ion-icon>
+                        </button>
+                        <span>SMS alert on transactions</span>
+                    </div>
+                    <p><input type="checkbox" name="sms_alert" id="sms_alert" checked data-user_id=<%= user.id %> class="notif_alert"/><label for="sms_alert" ></label></p>
+                </div>
+                <div class="wallet-card-security">
+                    <div>
+                        <button>
+                            <ion-icon name="mail-sharp"></ion-icon>
+                        </button>
+                        <span>Email alert on transactions</span>
+                    </div>
+                    <p><input type="checkbox" name="email_alert" id="email_alert" checked data-user_id=<%= user.id %>  class="notif_alert" /><label for="email_alert"></label></p>
+                </div>
+                <div class="wallet-card footer ">
+                    <button class="custom-alert">Custom alert</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div>
+        <div class="wallet-card-wrapper">
+            <h3 class="card-number">
+                0000 0000 0000 0000
+            </h3>
+            <span class="bank-name">
+                Treasury Pay Int.
+            </span>
+            <span class="card-holder">
+                <%= user.first_name + ' ' +user.other_name %> 
+            </span>
+            <% const date = new Date() %> 
+            <span class="card-valid"><%= date.getFullYear() + 2 + "/" + date.getMonth() %> </span>
+            <img src="/img/cards/mastercard.svg" alt="">
+        </div>
+        <div class="transfer-wrapper">
+            <h2 class="title">Transactions</h2>
+            <div class="tabs">
+                <div class="btn-wrapper">
+                    <input type="radio" name="tabset" checked data-tab="1" id="tab1" class="wallet-tab">
+                    <label for="tab1">Send</label>
+                    <input type="radio" name="tabset"  data-tab="2" id="tab2" class="wallet-tab tab2">
+                    <label for="tab2">Request</label>
+                    <div class="tab-panels">
+                        <form id="wallet-form" class="send-panel tab-panel">
+                            <!-- <div class="payment-dest">
+                                
+                            </div> -->
+                            <div class="payment-dest">
+                                <label for="dest">Send from</label>
+                                <% const userId =  user.user_id %>
+                                <% const userBalance =  user.available %>
+                                <input type="text" readonly value="<%= `${userId} (${userBalance.toLocaleString('en-US', { style: 'currency', currency: 'USD', })})` %>">
+                            </div>
+                            <div class="payment-form">
+                                <div>
+                                    <label for="dest">Send to</label>
+                                    <select required id="wallet-dest">
+                                        <option disabled selected value="">Select destination</option>
+                                        <option value="self">Self</option>
+                                        <option value="local">Local</option>
+                                        <option value="international">International</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <label for="dest">Amount</label>
+                                    <input type="number" id="amount-field" required placeholder="$0.00">
+                                    <span id="error-field"></span>
+                                </div>
+                            </div>
+                            <div class="payment-form" id="wallet-temp-form"></div>
+                            <div class="payment-dest">
+                                <input type="text" id="wallet-trans-reason" placeholder="Reason for transaction">
+                            </div>
+                            <div class="action-button-wrapper">
+                                <input type="number" placeholder="Input otp" id="otp-input">
+                                <button id="wallet-button">Get OTP</button>
+                            </div>
+                        </form>
+                        <form id="tabset-2" class="request-panel tab-panel">
+                            <div class="payment-dest">
+                                <label for="dest">Account number</label>
+                                <input type="number" id="request-account-numb" placeholder="User account number">
+                            </div>
+                            <div class="payment-dest">
+                                <label for="dest">Amount</label>
+                                <input type="number" id="request-amount" placeholder="Amount to request e.g. $100.00">
+                            </div>
+                            <div class="payment-form" id="wallet-request-form"></div>
+                            <div class="action-button-wrapper">
+                                <button id="wallet-request-button">Continue</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="">
+        <div>
+            <div class="img-wrapper">
+                <img src="/img/pay-service.svg" alt="credit card">
+            </div>
+            <a href="https://www.likelyhire.com" target="_blank" class="title">
+                Pay services
+            </a>
+        </div>
+        <div>
+            <div class="img-wrapper">
+                <img src="/img/booking.svg" alt="booking">
+            </div>
+            <a href="https://www.booking.com" target="_blank" class="title">
+                Booking/Reservation
+            </a>
+        </div>
+        <div>
+            <div class="img-wrapper">
+                <img src="/img/treasury-card.svg" alt="booking">
+            </div>
+            <a href="treasury-card"" class="title">
+                Treasury card
+            </a>
+        </div>
+    </div>
+</div>

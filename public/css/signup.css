@@ -1,0 +1,350 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;800&display=swap");
+:root {
+  --custom_primary: #282c35;
+  --custom_secondary: #bbbfca;
+  --custom_light: rgb(230, 230, 230);
+  --light-color: #fefefe;
+  --dark-color: #495464;
+}
+body {
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+* {
+  padding: 0;
+  margin: 0;
+}
+.container {
+  width: 100%;
+  height: auto;
+  height: 100vh;
+  display: grid;
+  grid-template-columns: 2fr 3fr;
+  background-color: #f1f3f7;
+  overflow: hidden;
+}
+.container > .hero {
+  background-color: #f4f4f2;
+  width: 100%;
+  max-height: 100vh;
+  display: grid;
+  place-items: center;
+  background: #2c3e50; /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #3498db, #2c3e50),
+    url("/img/man-working-night.jpg"); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+      to right,
+      rgba(52, 152, 219, 0.075),
+      rgba(44, 62, 80, 0.8)
+    ),
+    url("/img/man-working-night.jpg"); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+  /* background: rgba(83, 53, 74, 0.918) url(/img/man-working-night.jpg); */
+  background-position: center;
+  background-size: cover;
+  box-shadow: 5px 0px 10px rgba(2, 30, 48, 0.2);
+  position: sticky;
+  bottom: 0;
+  left: 0;
+}
+.container .hero > img {
+  width: 70%;
+  height: 70%;
+  object-fit: contain;
+}
+.content-wrapper {
+  overflow-y: auto;
+}
+.content {
+  position: relative;
+  width: 65%;
+  height: auto;
+  display: flex;
+  margin: 5rem auto;
+  flex-direction: column;
+  align-items: center;
+  overflow-y: auto;
+  padding: 0 20px;
+}
+/* .content::-webkit-scrollbar {
+  display: none;
+} */
+.content > .brandLogo {
+  width: 60%;
+  height: 45px;
+  margin-bottom: 10px;
+}
+.content > .brandLogo > img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+.content > .formHeader {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
+  border-bottom: 1px solid #f4f4f2;
+  padding-bottom: 20px;
+}
+.content > .formHeader > h2 {
+  font-weight: 600;
+  font-size: 26px;
+  background: #103055;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.content > .formHeader > h2 > span {
+  font-weight: 400;
+  color: var(--dark-color);
+}
+.content > .formHeader > p {
+  color: var(--dark-color);
+  font-size: 14px;
+  margin-top: 5px;
+}
+.content > form {
+  width: 100%;
+  height: auto;
+  margin-top: 0px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  grid-gap: 10px;
+}
+.content > form > button {
+  width: 40%;
+  height: 50px;
+  margin-top: 10px;
+  margin-left: auto;
+  margin-right: auto;
+  grid-column: 1 / -1;
+  background: #005c97; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to right,
+    #363795,
+    #103055
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  /* background: -webkit-linear-gradient(to right, #3498db, #2c3e50); */
+  color: #fff;
+  border: 0;
+  outline: 0;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 50px;
+  box-shadow: 0 8px 3px rgba(83, 53, 74, 0.1);
+  opacity: 1;
+  text-transform: uppercase;
+  transition: all 0.4s ease;
+}
+.content > form > button:hover {
+  opacity: 0.9;
+  box-shadow: 0 10px 1px rgba(83, 53, 74, 0.1);
+}
+.content > form > button:active {
+  transform: scale(1.1);
+}
+.content > form > div.inputWrapper {
+  position: relative;
+  display: flex;
+  flex-direction: column-reverse;
+}
+.content > .error {
+  position: relative;
+  bottom: 1rem;
+  width: 100%;
+  grid-gap: 15px;
+  display: grid;
+  align-items: center;
+  grid-auto-rows: 20px;
+  height: auto;
+  margin-bottom: 1.5rem;
+}
+.content > .error > div {
+  color: #c46900;
+  font-size: 12px;
+  margin-bottom: -20px;
+  background-color: #eadede;
+  padding: 5px 8px;
+  display: flex;
+  justify-content: space-between;
+}
+.content > .error > div > button {
+  background-color: #c46900;
+  color: #fff;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  outline: 0;
+  border: 0;
+  cursor: pointer;
+  box-shadow: 0 5px 10px rgba(29, 1, 1, 0.1);
+  transition: all 0.4s ease;
+}
+.content > .error > div > button:active {
+  box-shadow: none;
+  transform: scale(1.1);
+}
+.content > form > div.consent {
+  grid-column: 1 /-1;
+  margin-top: 20px;
+  line-height: 1.2rem;
+  width: 90%;
+}
+.content > form > div.consent > p {
+  display: inline;
+  font-size: 12px;
+  color: #888;
+  line-height: 5px;
+}
+.content > form > div.user {
+  width: 100%;
+  grid-column: 1 / -1;
+  display: grid;
+  place-items: center;
+}
+.content > form > div.user > span {
+  color: var(--dark-color);
+  font-size: 14px;
+  margin-top: 5px;
+}
+.content > form > div.user > span > a {
+  color: #005c97;
+  text-decoration: none;
+}
+.content > form > div > input[type="checkbox"] {
+  position: relative;
+  top: 2px;
+  margin-right: 6px;
+  padding: 0;
+  line-height: 0;
+  filter: hue-rotate(30deg);
+  filter: saturate(0.3);
+  cursor: pointer;
+  transform: scale(1.2);
+}
+.content > form > div.inputWrapper:nth-child(5) {
+  grid-column: 2 / -1;
+}
+.content > form > div.inputWrapper:nth-child(9) {
+  grid-column: 1 / 3;
+}
+.content > form > div.inputWrapper > label {
+  position: absolute;
+  left: 10px;
+  top: 30%;
+  font-size: 14px;
+  color: var(--dark-color);
+  opacity: 0;
+  transition: all 0.4s ease;
+}
+.content > form > div.inputWrapper > input,
+select {
+  background-color: #fff;
+  border: 0;
+  outline: 0;
+  height: 55px;
+  font-size: 14px;
+  padding: 0 15px;
+  margin-top: 5px;
+  color: #888;
+}
+.content > form > div.inputWrapper > input:not(:placeholder-shown) ~ label {
+  color: var(--custom_secondary);
+  top: 15%;
+  font-size: 12px;
+  opacity: 1;
+}
+.content > form > div.inputWrapper > select ~ label {
+  color: var(--custom_secondary);
+  top: 15%;
+  font-size: 12px;
+  opacity: 1;
+}
+.content > form > div.inputWrapper > input::placeholder {
+  color: inherit;
+}
+.instruction {
+  margin-bottom: 20px;
+  margin-top: 20px;
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-column: 1 / -1;
+}
+.instruction h3 {
+  font-size: 1rem;
+  color: #333;
+  font-weight: 500;
+}
+.instruction > div {
+  margin: auto 0;
+}
+.instruction p {
+  padding-bottom: 20px;
+  margin-top: 5px;
+  font-size: 14px;
+  width: 90%;
+
+  color: var(--dark-color);
+  border-bottom: 1px solid #eee;
+}
+.instruction > img {
+  width: 100%;
+  object-fit: contain;
+}
+#upload-input {
+  position: absolute;
+  opacity: 0;
+}
+.instruction .btn-wrapper {
+  display: flex;
+  width: 100%;
+}
+.upload-img {
+  background-color: #f1f1f1;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  width: fit-content;
+  height: 40px;
+  border-radius: 5px;
+  padding: 0 20px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  transition: all 0.4s ease;
+}
+.uploaded-img {
+  background-color: #f1f1f1;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  width: 40px;
+  height: 40px;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  transition: all 0.4s ease;
+  margin-left: 5px;
+  opacity: 0;
+  visibility: hidden;
+}
+.show {
+  opacity: 1;
+  visibility: visible;
+}
+.upload-img:hover {
+  box-shadow: 0 5px 10px rgba(17, 1, 1, 0.05);
+}
+.upload-img:active {
+  transform: scale(1.1);
+}
+.upload-img > span {
+  color: #363795;
+  font-size: 0.89rem;
+}
+.upload-img > i {
+  margin-right: 5px;
+  color: #363795;
+}
+/* #363795,
+#103055 */

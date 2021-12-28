@@ -1,0 +1,859 @@
+<body class="nav-md">
+  <div class="container body">
+    <div class="main_container">
+      <div class="col-md-3 left_col">
+        <div class="left_col scroll-view">
+          <div class="navbar nav_title" style="border: 0;">
+            <a href="/dashboard" class="site_title"><img src="/images/wordbank.jpg" alt="..." class="logo"><span>Treasury PayInt</span></a>
+          </div>
+
+          <hr>
+
+          <div class="clearfix"></div>
+
+          <!-- menu profile quick info -->
+          <div class="profile clearfix">
+            <div class="profile_pic">
+              <img src="images/img.jpg" alt="..." class="img-circle profile_img">
+            </div>
+            <div class="profile_info">
+              <span>Welcome,</span>
+              <h2><%- first_name  %></h2>
+            </div>
+            <div class="clearfix"></div>
+          </div>
+          <!-- /menu profile quick info -->
+
+          <br />
+
+
+          <!-- sidebar menu -->
+          <div id="sidebar-menu" class="main_menu_side hidden-print main_menu" style="z-index: 0;">
+            <div class="menu_section">
+              <h3>General</h3>
+              <ul class="nav side-menu">
+                <li><a href="/dashboard"><i class="fa fa-home"></i> Home </a></li>
+                <li><a><i class="fa fa-edit"></i> Account <span class="fa fa-chevron-down"></span></a>
+                  <ul class="nav child_menu">
+                    <li class="active"><a href="/dashboard/profile">Profile</a></li>
+                    <li><a href="/dashboard/#mini-statement">Summary Statement</a></li>
+                  </ul>
+                </li>
+                <li data-toggle="modal" data-target="#exampleModalScrollable"><a><i class="fa fa-share-square-o" ></i> Transfer</a>
+                </li>
+                <li><a><i class="fa fa-credit-card"></i>Card<span class="fa fa-chevron-down"></span></a>
+                  <ul class="nav child_menu">
+                    <li data-toggle="modal" data-target="#cardVoidModalScrollable"><a href="javascript:void()">Request Card</a></li>
+                  </ul>
+                </li>
+              </ul>
+            </div>
+            <hr>
+              <ul class="nav side-menu">
+                <li data-toggle="modal" data-target="#servicesModalScrollable"><a><i class="fa fa-briefcase"></i> Service Request </a></li>
+                <li data-toggle="modal" data-target="#loanModalScrollable"><a><i class="fa fa-line-chart"></i>Loan Request</a></li>
+                <li><a href="https://www.worldbank.org/en/access-to-information" hreflang="en" target="_blank"><i class="fa fa-database"></i> Access to Informations </a></li>
+                <li><a href="https://projects.worldbank.org/?lang=en" hreflang="en" target="_blank"><i class="fa fa-building"></i> Project & Operations </a></li>
+                <hr>
+                <li><a><i class="fa fa-exclamation-circle"></i> Scam Alert </a></li>
+                <li><a href="https://www.worldbank.org/en/about/legal/privacy-policy" hreflang="en" target="_blank"><i class="fa fa-lock"></i> Privacy Policy </a></li>
+                <li data-toggle="modal" data-target="#feedModalScrollable"><a><i class="fa fa-comments-o"></i> Feedback / Report</a></li>
+                <li><a href="/users/logout"><i class="fa fa-sign-out"></i> Logout </a></li>
+              </ul>
+
+          </div>
+          <!-- /sidebar menu -->
+        </div>
+      </div>
+
+      <!-- top navigation -->
+      <div class="top_nav">
+          <div class="nav_menu">
+              <div class="nav toggle">
+                <a id="menu_toggle"><i class="fa fa-bars"></i></a>
+              </div>
+              <nav class="nav navbar-nav">
+              <ul class=" navbar-right">
+                <li class="nav-item dropdown open" style="padding-left: 15px;">
+                  <a href="javascript:;" class="user-profile dropdown-toggle" aria-haspopup="true" id="navbarDropdown" data-toggle="dropdown" aria-expanded="false">
+                    <img src="images/img.jpg" alt=""> <%- first_name %>
+                  </a>
+                  <div class="dropdown-menu dropdown-usermenu pull-right" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item"  href="/dashboard/profile"> Profile</a>
+                      <!-- <a class="dropdown-item"  href="javascript:;">
+                        <span class="badge bg-red pull-right">50%</span>
+                        <span>Settings</span>
+                      </a> -->
+                  <a class="dropdown-item"  href="mailto:info@treasurypayint.com" target="_blank">Help</a>
+                    <a class="dropdown-item"  href="/users/logout"><i class="fa fa-sign-out pull-right"></i> Log Out</a>
+                  </div>
+                </li>
+
+                <li role="presentation" class="nav-item dropdown open">
+                  <a href="javascript:;" class="dropdown-toggle info-number" id="navbarDropdown1" data-toggle="dropdown" aria-expanded="false">
+                    <i class="fa fa-envelope-o"></i>
+                    <span class="badge bg-green">6</span>
+                  </a>
+                  <ul class="dropdown-menu list-unstyled msg_list" role="menu" aria-labelledby="navbarDropdown1">
+                    <li class="nav-item">
+                      <a class="dropdown-item">
+                        <span class="image"><img src="images/img.jpg" alt="Profile Image" /></span>
+                        <span>
+                          <span>John Smith</span>
+                          <span class="time">3 mins ago</span>
+                        </span>
+                        <span class="message">
+                          Film festivals used to be do-or-die moments for movie makers. They were where...
+                        </span>
+                      </a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="dropdown-item">
+                        <span class="image"><img src="images/img.jpg" alt="Profile Image" /></span>
+                        <span>
+                          <span>John Smith</span>
+                          <span class="time">3 mins ago</span>
+                        </span>
+                        <span class="message">
+                          Film festivals used to be do-or-die moments for movie makers. They were where...
+                        </span>
+                      </a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="dropdown-item">
+                        <span class="image"><img src="images/img.jpg" alt="Profile Image" /></span>
+                        <span>
+                          <span>John Smith</span>
+                          <span class="time">3 mins ago</span>
+                        </span>
+                        <span class="message">
+                          Film festivals used to be do-or-die moments for movie makers. They were where...
+                        </span>
+                      </a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="dropdown-item">
+                        <span class="image"><img src="images/img.jpg" alt="Profile Image" /></span>
+                        <span>
+                          <span>John Smith</span>
+                          <span class="time">3 mins ago</span>
+                        </span>
+                        <span class="message">
+                          Film festivals used to be do-or-die moments for movie makers. They were where...
+                        </span>
+                      </a>
+                    </li>
+                    <li class="nav-item">
+                      <div class="text-center">
+                        <a class="dropdown-item">
+                          <strong>See All Alerts</strong>
+                          <i class="fa fa-angle-right"></i>
+                        </a>
+                      </div>
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+            </nav>
+          </div>
+        </div>
+      <!-- /top navigation -->
+
+
+
+    
+
+
+
+
+      <!-- page content -->
+
+
+
+
+
+    <div class="right_col text-center" role="main">
+          <div class="tile_count text-center overview">
+                  <div class="col-md-2 col-sm-4  tile_stats_count ">
+                    <span class="count_top"><i class="fa fa-line-chart"></i> Available Balance </span>
+                    <div class="count green"><i class="fa fa-usd"></i>0.00</div>
+                    <span class="count_bottom"><i class="green">0% </i> From Last Month</span>
+                  </div>
+                  <div class="col-md-2 col-sm-4  tile_stats_count">
+                  <span class="count_top"><i class="fa fa-clock-o"></i> Pending Fund </span>
+                    <div class="count"><i class="fa fa-usd"></i>0.00</div>
+                    <span class="count_bottom"><i class="green"><i class="fa fa-sort-asc"></i>0% </i> From Last Month</span>
+                  </div>
+                  <div class="col-md-2 col-sm-4  tile_stats_count">
+                    <span class="count_top"><i class="fa fa-mail-forward"></i> Reverse Fund </span>
+                    <div class="count green"><i class="fa fa-usd"></i>0.00</div>
+                    <span class="count_bottom"><i class="green"><i class="fa fa-sort-desc"></i>0% </i> From Last Month</span>
+                  </div>
+                  <div class="col-md-2 col-sm-4  tile_stats_count">
+                    <span class="count_top"><i class="fa fa-building"></i> Loan Balance</span>
+                    <div class="count green"><i class="fa fa-usd"></i>0.00</div>
+                    <span class="count_bottom"><i class="green"><i class="fa fa-sort-asc"></i>0% </i> From Last Month</span>
+                  </div>
+                  <div class="col-md-2 col-sm-4  tile_stats_count">
+                    <span class="count_top"><i class="fa fa-wrench"></i> Tax Payment </span>
+                    <div class="count red"><i class="fa fa-usd"></i>0.00</div>
+                    <span class="count_bottom"><i class="red"><i class="fa fa-sort-asc"></i>0% </i> From Last Month </span>
+                  </div>
+                  <div class="col-md-2 col-sm-4  tile_stats_count">
+                    <span class="count_top"><i class="fa fa-sliders"></i> Maintenance Fee </span>
+                    <div class="count red"><i class="fa fa-usd"></i>0.00</div>
+                    <span class="count_bottom"><i class="red"><i class="fa fa-sort-asc"></i>0% </i> From Last Month </span>
+                  </div>
+              </div>
+
+
+
+
+
+
+
+
+
+
+              <div class="col-md-12 col-sm-12 ">
+                <div class="x_panel">
+                  <div class="x_title">
+                    <h2>World Domination </h2>
+                    <ul class="nav navbar-right panel_toolbox">
+                      <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                      </li>
+                      <li><a class="close-link"><i class="fa fa-close"></i></a>
+                      </li>
+                    </ul>
+                    <div class="clearfix"></div>
+                  </div>
+                  <div class="x_content">
+                    <div class="dashboard-widget-content">
+                      <div class="col-md-4 hidden-small">
+                        <h2 class="line_30">612 Locations from 20 countries</h2>
+      
+                        <table class="countries_list">
+                          <tbody>
+                            <tr>
+                              <td>United States</td>
+                              <td class="fs15 fw700 text-right">21 Locations</td>
+                            </tr>
+                            <tr>
+                              <td>United Kingdom</td>
+                              <td class="fs15 fw700 text-right">13 Locations</td>
+                            </tr>
+                            <tr>
+                              <td>France</td>
+                              <td class="fs15 fw700 text-right">24 Locations</td>
+                            </tr>
+                            <tr>
+                              <td>Germany</td>
+                              <td class="fs15 fw700 text-right">16 Locations</td>
+                            </tr>
+                            <tr>
+                              <td>Spain</td>
+                              <td class="fs15 fw700 text-right">11 Locations</td>
+                            </tr>
+                            <tr>
+                              <td>Britain</td>
+                              <td class="fs15 fw700 text-right">10 Locations</td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div id="world-map-gdp" class="col-md-8 col-sm-12 " style="height:230px;"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+
+
+
+              
+
+              <div class="col-md-12 col-sm-12" id="mini-statement">
+                <div class="x_panel">
+                  <div class="x_title">
+                    <h2>Mini Statement <small>Custom design</small></h2>
+                    <ul class="nav navbar-right panel_toolbox">
+                      <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                      </li>
+                      <li><a class="close-link"><i class="fa fa-close"></i></a>
+                      </li>
+                    </ul>
+                    <div class="clearfix"></div>
+                  </div>
+                    <div class="table-responsive">
+                          <table class="table table-striped jambo_table bulk_action">
+                            <thead>
+                              <tr class="headings">
+                                <th>
+                                  <input type="checkbox" id="check-all" class="flat">
+                                </th>
+                                <th class="column-title">Tranking_ID</th>
+                                <th class="column-title">Transaction Date </th>
+                                <th class="column-title">Value Date</th>
+                                <th class="column-title">Description </th>
+                                <th class="column-title">Amount </th>
+                                <th class="column-title">Status </th>
+                                <th class="column-title no-link last"><span class="nobr">Action</span>
+                                </th>
+                                <th class="bulk-actions" colspan="7">
+                                  <a class="antoo" style="color:#fff; font-weight:500;">Bulk Actions ( <span class="action-cnt"> </span> ) <i class="fa fa-chevron-down"></i></a>
+                                </th>
+                              </tr>
+                            </thead>
+
+                            <tbody>
+                              <tr class="even pointer">
+                                <td class="a-center ">
+                                  <input type="checkbox" class="flat" name="table_records">
+                                </td>
+                                <td class=" ">121000040</td>
+                                <td class=" ">May 23, 2014 11:47:56 PM </td>
+                                <td class=" ">121000210 <i class="success fa fa-long-arrow-up"></i></td>
+                                <td class=" ">John Blank L</td>
+                                <td class=" ">Paid</td>
+                                <td class="a-right a-right ">$7.45</td>
+                                <td class=" last"><a href="#">View</a>
+                                </td>
+                              </tr>
+                              <tr class="odd pointer">
+                                <td class="a-center ">
+                                  <input type="checkbox" class="flat" name="table_records">
+                                </td>
+                                <td class=" ">121000039</td>
+                                <td class=" ">May 23, 2014 11:30:12 PM</td>
+                                <td class=" ">121000208 <i class="success fa fa-long-arrow-up"></i>
+                        
+                                </td>
+                                <td class=" ">John Blank L</td>
+                                <td class=" ">Paid</td>
+                                <td class="a-right a-right ">$741.20</td>
+                                <td class=" last"><a href="#">View</a>
+                                </td>
+                              </tr>
+                              <tr class="even pointer">
+                                <td class="a-center ">
+                                  <input type="checkbox" class="flat" name="table_records">
+                                </td>
+                                <td class=" ">121000038</td>
+                                <td class=" ">May 24, 2014 10:55:33 PM</td>
+                                <td class=" ">121000203 <i class="success fa fa-long-arrow-up"></i>
+                                </td>
+                                <td class=" ">Mike Smith</td>
+                                <td class=" ">Paid</td>
+                                <td class="a-right a-right ">$432.26</td>
+                                <td class=" last"><a href="#">View</a>
+                                </td>
+                              </tr>
+                              <tr class="odd pointer">
+                                <td class="a-center ">
+                                  <input type="checkbox" class="flat" name="table_records">
+                                </td>
+                                <td class=" ">121000037</td>
+                                <td class=" ">May 24, 2014 10:52:44 PM</td>
+                                <td class=" ">121000204</td>
+                                <td class=" ">Mike Smith</td>
+                                <td class=" ">Paid</td>
+                                <td class="a-right a-right ">$333.21</td>
+                                <td class=" last"><a href="#">View</a>
+                                </td>
+                              </tr>
+                              <tr class="even pointer">
+                                <td class="a-center ">
+                                  <input type="checkbox" class="flat" name="table_records">
+                                </td>
+                                <td class=" ">121000040</td>
+                                <td class=" ">May 24, 2014 11:47:56 PM </td>
+                                <td class=" ">121000210</td>
+                                <td class=" ">John Blank L</td>
+                                <td class=" ">Paid</td>
+                                <td class="a-right a-right ">$7.45</td>
+                                <td class=" last"><a href="#">View</a>
+                                </td>
+                              </tr>
+                              <tr class="odd pointer">
+                                <td class="a-center ">
+                                  <input type="checkbox" class="flat" name="table_records">
+                                </td>
+                                <td class=" ">121000039</td>
+                                <td class=" ">May 26, 2014 11:30:12 PM</td>
+                                <td class=" ">121000208 <i class="error fa fa-long-arrow-down"></i>
+                                </td>
+                                <td class=" ">John Blank L</td>
+                                <td class=" ">Paid</td>
+                                <td class="a-right a-right ">$741.20</td>
+                                <td class=" last"><a href="#">View</a>
+                                </td>
+                              </tr>
+                              <tr class="even pointer">
+                                <td class="a-center ">
+                                  <input type="checkbox" class="flat" name="table_records">
+                                </td>
+                                <td class=" ">121000038</td>
+                                <td class=" ">May 26, 2014 10:55:33 PM</td>
+                                <td class=" ">121000203</td>
+                                <td class=" ">Mike Smith</td>
+                                <td class=" ">Paid</td>
+                                <td class="a-right a-right ">$432.26</td>
+                                <td class=" last"><a href="#">View</a>
+                                </td>
+                              </tr>
+                              <tr class="odd pointer">
+                                <td class="a-center ">
+                                  <input type="checkbox" class="flat" name="table_records">
+                                </td>
+                                <td class=" ">121000037</td>
+                                <td class=" ">May 26, 2014 10:52:44 PM</td>
+                                <td class=" ">121000204</td>
+                                <td class=" ">Mike Smith</td>
+                                <td class=" ">Paid</td>
+                                <td class="a-right a-right ">$333.21</td>
+                                <td class=" last"><a href="#">View</a>
+                                </td>
+                              </tr>
+
+                              <tr class="even pointer">
+                                <td class="a-center ">
+                                  <input type="checkbox" class="flat" name="table_records">
+                                </td>
+                                <td class=" ">121000040</td>
+                                <td class=" ">May 27, 2014 11:47:56 PM </td>
+                                <td class=" ">121000210</td>
+                                <td class=" ">John Blank L</td>
+                                <td class=" ">Paid</td>
+                                <td class="a-right a-right ">$7.45</td>
+                                <td class=" last"><a href="#">View</a>
+                                </td>
+                              </tr>
+                              <tr class="odd pointer">
+                                <td class="a-center ">
+                                  <input type="checkbox" class="flat" name="table_records">
+                                </td>
+                                <td class=" ">121000039</td>
+                                <td class=" ">May 28, 2014 11:30:12 PM</td>
+                                <td class=" ">121000208</td>
+                                <td class=" ">John Blank L</td>
+                                <td class=" ">Paid</td>
+                                <td class="a-right a-right ">$741.20</td>
+                                <td class=" last"><a href="#">View</a>
+                                </td>
+                              </tr>
+                            </tbody>
+                          </table>
+                    </div>
+                    
+
+                    <!-- /openner -->
+                  </div>
+                </div>
+
+
+  </div>
+      
+      <!-- /page content -->
+
+
+
+
+      <!-- Transfer Modal -->
+<div class="modal fade" id="exampleModalScrollable" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalScrollableTitle">TRANSFER</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        
+        
+        <form>
+          <span class="red">Transfer from</span>
+          <hr>
+          <div class="form-group">
+            <label for="inputAddress">User ID <span class="red">*</span></label>
+            <input type="number" class="form-control" id="inputAddress" placeholder=<%- account %> readOnly>
+          </div>
+          <hr>
+          <span class="red">Transfer to (all fields required)<span class="red">*</span></span>
+          <hr>
+          <div class="form-group">
+            <label for="inputAddress">Bank Name <span class="red">*</span></label>
+            <input type="text" class="form-control" id="inputAddress" placeholder=<%- bank_name %> readOnly>
+          </div>
+          <div class="form-row">
+            <div class="form-group col-md-6">
+              <label for="inputEmail4">Account Name <span class="red">*</span></label>
+              <input type="email" class="form-control" id="inputEmail4" placeholder=<%- account_name %> readOnly>
+            </div>
+            <div class="form-group col-md-6">
+              <label for="inputPassword4">Account Number <span class="red">*</span></label>
+              <input type="number" class="form-control" id="exampleFormControlFile1" placeholder=<%- account_number %> readOnly>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="inputAddress">Bank Branch <span class="red">*</span></label>
+            <input type="text" class="form-control" id="inputAddress" placeholder=<%- bank_branch %> readOnly>
+          </div>
+          <div class="form-group">
+            <label for="inputAddress">Amount <span class="red">*</span></label>
+            <input type="text" class="form-control" id="inputAddress" placeholder="$2000" required>
+          </div>
+          <div class="form-group">
+            <label for="inputAddress">Country <span class="red">*</span></label>
+            <input type="text" class="form-control" id="inputAddress" placeholder="United States" required>
+          </div>
+          
+          <div class="form-group">
+            <label for="exampleFormControlFile1">Confirm ID <span class="red">*</span></label>
+            <input type="file" class="form-control-file" id="exampleFormControlFile1" required>
+          </div>
+          <label red>Account Type <span class="red">*</span></label>
+          <p>
+            Current
+            <input type="radio" class="flat" name="gender" id="genderM" value="M" /> 
+            Savings
+            <input type="radio" class="flat" name="gender" id="genderF" value="F" />
+            Money Market
+            <input type="radio" class="flat" name="gender" id="genderM" value="M" /> 
+            Certificate of Deposit
+            <input type="radio" class="flat" name="gender" id="genderF" value="F" />
+            Retirement
+            <input type="radio" class="flat" name="gender" id="genderM" value="M" /> 
+          </p>
+          <hr>
+          <div class="form-group">
+            <label for="exampleFormControlTextarea1">Naration <span class="red">*</span></label>
+            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Purpose of transfer..." required></textarea>
+          </div>
+          <hr>
+          <hr>
+          <div class="form-group">
+            <label for="inputAddress">Comfirm Password <span class="red">*</span></label>
+            <input type="password" class="form-control" id="inputPassword4" placeholder="" required>
+          </div>
+          <div class="form-group">
+            <label for="inputAddress">TAI (Transfer Access ID)<span class="red">*</span></label>
+            <input type="text" class="form-control" id="inputAddress" placeholder="" id="pop" title="Please provide TAI"  required>
+            <span class="red">Please input your generated TAI in the input field above.</span>
+          </div>
+          <br />
+          <button type="submit" class="btn btn-primary">Transfer</button>
+        </form>
+  
+  
+  
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary btn-danger" data-dismiss="modal">X</button>
+      </div>
+    </div>
+  </div>
+  </div>
+  <!-- /modal -->
+  
+  <!-- Card Request Modal -->
+  <div class="modal fade" id="cardVoidModalScrollable" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalScrollableTitle">CARD REQUEST</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        
+        
+        <form>
+          <hr>
+          <div class="form-group">
+            <label for="inputAddress">User ID <span class="red">*</span></label>
+            <input type="number" class="form-control" id="inputAddress" placeholder=<%- account %> readOnly>
+          </div>
+          <div class="form-group">
+            <label for="inputAddress">Fullname <span class="red">*</span></label>
+            <input type="text" class="form-control" id="inputAddress" placeholder=<%- first_name + "_" + other_name %> readOnly>
+          </div>
+          <div class="form-group">
+            <label for="exampleFormControlTextarea1">Address <span class="red">*</span></label>
+            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="" required></textarea>
+          </div>
+          <div class="form-row">
+            <div class="form-group col-md-6">
+              <label for="inputEmail4">Country <span class="red">*</span></label>
+              <input type="email" class="form-control" id="inputEmail4" placeholder="" required>
+            </div>
+            <div class="form-group col-md-6">
+              <label for="inputPassword4">State <span class="red">*</span></label>
+              <input type="number" class="form-control" id="exampleFormControlFile1" required>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="inputAddress">Email <span class="red">*</span></label>
+            <input type="text" class="form-control" id="inputAddress" placeholder=<%- email %> readOnly>
+          </div>
+          <div class="form-group">
+            <label for="inputAddress">Phone Number <span class="red">*</span></label>
+            <input type="text" class="form-control" id="inputAddress" placeholder=<%- number %> readOnly>
+          </div>
+          <div class="form-group">
+            <label for="inputAddress">Comfirm Password <span class="red">*</span></label>
+            <input type="password" class="form-control" id="inputPassword4" placeholder="" required>
+          </div>
+          <br />
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+  
+  
+  
+  
+  
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary btn-danger" data-dismiss="modal">X</button>
+      </div>
+    </div>
+  </div>
+  </div>
+  <!-- /modal -->
+  
+  
+  
+  <!-- Service Request Modal -->
+  <div class="modal fade" id="servicesModalScrollable" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalScrollableTitle">SERVICE REQUEST</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        
+        
+        <form>
+          <hr>
+          <div class="form-group">
+            <label for="inputAddress">User ID <span class="red">*</span></label>
+            <input type="number" class="form-control" id="inputAddress" placeholder=<%- account %> readOnly>
+          </div>
+          <div class="form-group">
+            <label for="inputAddress">Fullname <span class="red">*</span></label>
+            <input type="text" class="form-control" id="inputAddress" placeholder=<%- first_name + "_" + other_name %> readOnly>
+          </div>
+          <div class="form-group">
+            <label for="inputAddress">Email <span class="red">*</span></label>
+            <input type="text" class="form-control" id="inputAddress" placeholder=<%- email %> readOnly>
+          </div>
+          <div class="form-group">
+            <label for="inputAddress">Phone Number <span class="red">*</span></label>
+            <input type="text" class="form-control" id="inputAddress" placeholder=<%- number %> readOnly>
+          </div>
+          <div class="form-group">
+            <label for="exampleFormControlTextarea1">Comment <span class="red">*</span></label>
+            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="" required></textarea>
+          </div>
+          <br />
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+  
+  
+  
+  
+  
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary btn-danger" data-dismiss="modal">X</button>
+      </div>
+    </div>
+  </div>
+  </div>
+  <!-- /modal -->
+  
+  <!-- Loan Modal -->
+  <div class="modal fade" id="loanModalScrollable" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalScrollableTitle">LOAN REQUEST</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        
+        
+        <form>
+          <hr>
+          <div class="form-group">
+            <label for="inputAddress">User ID <span class="red">*</span></label>
+            <input type="number" class="form-control" id="inputAddress" placeholder=<%- account %> readOnly>
+          </div>
+          <hr>
+          <span class="red">(all fields required)<span class="red">*</span></span>
+          <hr>
+          <div class="form-group">
+            <label for="inputAddress">Fullname <span class="red">*</span></label>
+            <input type="text" class="form-control" id="inputAddress" placeholder=<%- first_name + "_" + other_name %> readOnly>
+          </div>
+          <div class="form-group">
+            <label for="exampleFormControlTextarea1">Address <span class="red">*</span></label>
+            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="" required></textarea>
+          </div>
+          <div class="form-row">
+            <div class="form-group col-md-6">
+              <label for="inputEmail4">Contact Number <span class="red">*</span></label>
+              <input type="number" class="form-control" id="inputNumber4" placeholder=<%- number %> readOnly>
+            </div>
+            <div class="form-group col-md-6">
+              <label for="inputPassword4">Email Address <span class="red">*</span></label>
+              <input type="email" class="form-control" id="inputEmail4" placeholder=<%- email %> readOnly>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="inputAddress">Country <span class="red">*</span></label>
+            <input type="text" class="form-control" id="inputAddress" placeholder=<%- country %> readOnly>
+          </div>
+          <div class="form-group">
+            <label for="inputAddress">Date of Birth <span class="red">*</span></label>
+            <input type="text" class="form-control" id="inputAddress" placeholder=<%- dob %> readOnly>
+          </div>
+          <label>Marital Status <span class="red">*</span>:</label>
+          <p>
+            Single
+            <input type="radio" class="flat" name="gender" id="genderM" value="M" /> 
+            Married
+            <input type="radio" class="flat" name="gender" id="genderF" value="F" />
+            Divorced
+            <input type="radio" class="flat" name="gender" id="genderM" value="M" />  
+            Widowed
+            <input type="radio" class="flat" name="gender" id="genderM" value="M" />  
+          </p>
+          <div class="form-group">
+            <label for="occupation">Occupation/job <span class="red">*</span></label>
+            <input type="text" class="form-control" id="input4occupation" placeholder="Teacher" required>
+          </div>
+          <div class="form-group">
+            <label for="inputNumber">Monthly Incomes <span class="red">*</span></label>
+            <input type="number" class="form-control" id="inputNumber4" placeholder="$3,000.00" required>
+          </div>
+          
+          <div class="form-group">
+            <label for="exampleFormControlFile1">Upload Valid ID <span class="red">*</span></label>
+            <input type="file" class="form-control-file" id="exampleFormControlFile1" required>
+          </div>
+          <hr>
+          <div class="form-group">
+            <label for="exampleFormControlTextarea1">Loan Purpose</label>
+            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder=".... *" required></textarea>
+          </div>
+          <div class="form-group">
+            <label for="inputAddress">Amount <span class="red">*</span></label>
+            <input type="text" class="form-control" id="inputAddress" placeholder="$50,000.00 - 1,000,000.00">
+          </div>
+          <hr>
+          <hr>
+          <div class="form-group">
+            <label for="inputAddress">Comfirm Password <span class="red">*</span></label>
+            <input type="password" class="form-control" id="inputPassword4" placeholder="" required>
+          </div>
+          <br />
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+  
+  
+  
+  
+  
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary btn-danger" data-dismiss="modal">X</button>
+      </div>
+    </div>
+  </div>
+  </div>
+  <!-- Feedback Modal -->
+  <div class="modal fade" id="feedModalScrollable" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalScrollableTitle">FEEDBACK</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        
+        
+        <form>
+          <hr>
+          <div class="form-group">
+            <label for="inputAddress">User ID <span class="red">*</span></label>
+            <input type="number" class="form-control" id="inputAddress" placeholder=<%- account %> readOnly>
+          </div>
+          <hr>
+          <span class="red">(all fields required)<span class="red">*</span></span>
+          <hr>
+          <div class="form-group">
+            <label for="inputAddress">Fullname <span class="red">*</span></label>
+            <input type="text" class="form-control" id="inputAddress" placeholder=<%- first_name + "_" + other_name %> readOnly>
+          </div>
+          <div class="form-row">
+            <div class="form-group col-md-6">
+              <label for="inputEmail4">Contact Number <span class="red">*</span></label>
+              <input type="number" class="form-control" id="inputNumber4" placeholder=<%- number %> readOnly>
+            </div>
+            <div class="form-group col-md-6">
+              <label for="inputPassword4">Email Address <span class="red">*</span></label>
+              <input type="email" class="form-control" id="inputEmail4" placeholder=<%- email %> readOnly>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="exampleFormControlTextarea1">Address <span class="red">*</span></label>
+            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="" required></textarea>
+          </div>
+          <br />
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+  
+  
+  
+  
+  
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary btn-danger" data-dismiss="modal">X</button>
+      </div>
+    </div>
+  </div>
+  </div>
+
+  <!-- /modal -->
+
+
+  <!-- Modal -->
+  <!-- /Modal -->
+
+
+
+
+
+
+      <!-- footer content -->
+      <footer>
+        <div class="pull-right">
+          &copy; 2020 The Treasury PayInt PayInt, All Rights Reserved.</a>
+        </div>
+        <div class="clearfix"></div>
+      </footer>
+      <!-- /footer content -->
+    </div>
+  </div>
+
+

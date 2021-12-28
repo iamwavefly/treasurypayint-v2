@@ -1,0 +1,82 @@
+.taost-container {
+  position: fixed;
+  top: 10%;
+  right: 0;
+  height: 2.5rem;
+  background-color: #ededed;
+  width: auto;
+  display: flex;
+  align-items: center;
+  z-index: 99999;
+  border-radius: 5px;
+  background-image: linear-gradient(
+    rgba(255, 255, 255, 0.11),
+    rgba(255, 255, 255, 0.11)
+  );
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 3px 5px -1px,
+    rgba(0, 0, 0, 0.14) 0px 6px 10px 0px, rgba(0, 0, 0, 0.12) 0px 1px 18px 0px;
+  transform: translateX(100%);
+  opacity: 0;
+  transition: all 0.6s ease;
+  overflow: hidden;
+}
+.taost-container.show {
+  opacity: 1;
+  transform: translateX(0);
+}
+.taost-container.success {
+  background-color: rgb(56, 142, 60);
+}
+.taost-container.error {
+  background-color: rgb(211, 47, 47);
+}
+.taost-container.warning {
+  background-color: rgb(245, 124, 0);
+}
+.taost-container.success::before {
+  content: "\f058";
+  font-family: "Font Awesome 5 Free";
+  display: grid;
+  place-items: center;
+  background-color: rgba(0, 0, 0, 0.05);
+  color: #fff;
+  left: 0;
+  top: 0;
+  width: 2.5rem;
+  height: 2.5rem;
+}
+.taost-container.error::before {
+  content: "\f06a";
+  font-family: "Font Awesome 5 Free";
+  display: grid;
+  place-items: center;
+  background-color: rgba(0, 0, 0, 0.05);
+  color: #fff;
+  left: 0;
+  top: 0;
+  width: 2.5rem;
+  height: 2.5rem;
+  z-index: 999999;
+}
+.taost-container.warning::before {
+  content: "\f071";
+  font-family: "Font Awesome 5 Free";
+  display: grid;
+  place-items: center;
+  background-color: rgba(0, 0, 0, 0.05);
+  color: #fff;
+  left: 0;
+  top: 0;
+  width: 2.5rem;
+  height: 2.5rem;
+}
+
+.toast-message {
+  position: relative;
+  margin: auto 10px;
+  color: rgb(255, 255, 255);
+  font-size: 0.875rem;
+  font-weight: 500;
+  line-height: 1.43;
+  letter-spacing: 0.01071em;
+}

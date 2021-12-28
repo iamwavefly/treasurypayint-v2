@@ -1,0 +1,328 @@
+<div class="profile-container">
+
+  <div class="profile-info">
+    <div class="profile-avatar">
+      <img src="<%= user?.profile %>" alt="<%= user?.username %> ">
+    </div>
+    <div class="profile-name">
+      <h2><%= user?.fullname %> </h2>
+      <span><%= 'Joined: ' + moment(user?.date).fromNow() %> </span>
+      <span class="profile-status"> <div class="<%= user?.online_status ? 'online' : 'offline' %>"></div><span><%= user?.online_status ? 'Online' : 'Offline' %></span> </span>
+    </div>
+    <div>
+      <li>
+        <span>Username</span>
+        <div>
+          <ion-icon name="person"></ion-icon><%= user?.username %>
+        </div>
+      </li>
+      <li>
+        <span>Account number</span>
+        <div>
+          <ion-icon name="key"></ion-icon><%= user?.user_id %>
+        </div>
+      </li>
+      <li>
+        <span>Date of birth</span>
+        <div>
+          <ion-icon name="calendar-clear"></ion-icon><%= user?.dob %>
+        </div>
+      </li>
+      <li>
+        <span>Email</span>
+        <div>
+          <ion-icon name="mail"></ion-icon><%= user?.email.length > 25 ? user?.email.substr(0, 25) + "..." : user?.email %>
+        </div>
+      </li>
+      <li>
+        <span>Mobile number</span>
+        <div>
+          <ion-icon name="call"></ion-icon><%= user?.number %>
+        </div>
+      </li>
+    </div>
+  </div>
+  <div class="profile-ticket">
+    <div class="header">
+      <h2>Settings</h2>
+    </div>
+    <h2><%- include('./partials/message'); %></h2>
+    <div class="tabs">
+      <div class="tablinks tab active" onclick="openPanel(event, 'profile-setting')">
+        <button for="profile-setting-tab">Profile setting</button>
+      </div>
+      <div class="tablinks tab" onclick="openPanel(event, 'security')">
+        <button for="security">Privacy & Security</button>
+      </div>
+      <div class="tab">
+        <button class="tablinks" for="notifications">Notifications</button>
+      </div>
+      <div class="tab">
+        <button class="tablinks" for="usage">Usage & statistic</button>
+      </div>
+    </div>
+    <!-- tab content 👇 -->
+    <form class="profile-setting tab-panel grid-system" action="/users/profile/update/<%= user?.id %>?_method=PUT" method="post" id="profile-setting" style="display: grid;">
+      <div class="profile-setting-content">
+        <div class="form-wrapper">
+          <label for="">Full Name</label>
+          <div class="form-wrapper-content">
+            <ion-icon name="person"></ion-icon>
+            <input type="text" readonly value="<%= user?.fullname %>">
+          </div>
+        </div>  
+        <div class="form-wrapper">
+          <label for="">Email</label>
+          <div class="form-wrapper-content">
+            <ion-icon name="mail"></ion-icon>
+            <input type="email" readonly value="<%= user?.email %>">
+          </div>
+        </div>  
+        <div class="form-wrapper">
+          <label for="">Daily Limit</label>
+          <div class="form-wrapper-content">
+            <ion-icon name="hand-right"></ion-icon>
+            <input type="text" readonly value="$1,000.00">
+          </div>
+        </div>  
+        <div class="form-wrapper">
+          <label for="">Gender</label>
+          <div class="form-wrapper-content">
+            <ion-icon name="transgender"></ion-icon>
+            <input type="text" readonly value="<%= user?.gender %>">
+          </div>
+        </div>
+        <div class="form-wrapper">
+          <label for="">Date of Birth</label>
+          <div class="form-wrapper-content">
+            <ion-icon name="calendar"></ion-icon>
+            <input type="text" readonly value="<%= user?.dob %>">
+          </div>
+        </div>
+      </div>
+
+      <div class="profile-setting-content">
+        <div class="form-wrapper">
+          <label for="">Address</label>
+          <div class="form-wrapper-content">
+            <ion-icon name="location"></ion-icon>
+            <input type="text" readonly name="address_line1" required value="<%= user?.address_line1 %> ">
+          </div>
+        </div>  
+        <div class="form-wrapper">
+          <label for="">City</label>
+          <div class="form-wrapper-content">
+            <ion-icon name="navigate-circle"></ion-icon>
+            <input type="text" readonly name="city" required value="<%= user?.city %> ">
+          </div>
+        </div>
+        <div class="form-wrapper">
+          <label for="">State</label>
+          <div class="form-wrapper-content">
+            <ion-icon name="navigate"></ion-icon>
+            <input type="text" readonly name="state" required value="<%= user?.state %> ">
+          </div>
+        </div> 
+        <div class="form-wrapper">
+          <label for="">Country</label>
+          <div class="form-wrapper-content">
+            <ion-icon name="earth"></ion-icon>
+            <input type="text" readonly name="country" required value="<%= user?.country %> ">
+          </div>
+        </div> 
+        <div class="form-wrapper">
+          <label for="">Mobile Number</label>
+          <div class="form-wrapper-content">
+            <ion-icon name="call"></ion-icon>
+            <input type="text" readonly name="number" value="<%= user?.number %> ">
+          </div>
+        </div> 
+      </div>
+      <div class="profile-setting-btn">
+        <button class="setting-btn-outline" id="profile-edit-btn"><ion-icon name="pencil"></ion-icon> Edit</button>
+        <button class="setting-btn" id="profile-submit-btn"><ion-icon name="cloud-done"></ion-icon> Save</button>
+      </div>
+    </form>
+
+    <div class="security tab-panel" id="security">
+      <div class="security-content">
+        <div class="form-wrapper">
+          <div class="form-wrapper-content">
+            <label for="">Password</label>
+            <p>Change your password to a new one.</p>
+          </div>
+          <button id="change-password" class="setting-btn btn-right">Change Password</button>
+        </div> 
+        <div class="form-wrapper">
+          <div class="form-wrapper-content">
+            <label for="">Transfer Access ID</label>
+            <p>Change your old TAI to a new TAI.</p>
+          </div>
+          <button class="setting-btn btn-right">Request TAI</button>
+        </div> 
+        <div class="form-wrapper">
+          <div class="form-wrapper-content">
+            <label for="">Login Two-Factor Authentication</label>
+            <p>On</p>
+          </div>
+          <button class="setting-btn btn-right">Turn Off</button>
+        </div> 
+      </div>
+
+      <!-- <div class="security-content">
+        <div class="form-wrapper">
+          <label for="">Password</label>
+          <div class="form-wrapper-content">
+            <p>Change your password to a new one.</p>
+            <button class="setting-btn">Change Paassword</button>
+          </div>
+        </div> 
+        <div class="form-wrapper">
+          <label for="">Transfer Access ID</label>
+          <div class="form-wrapper-content">
+            <p>Change your old TAI to a new TAI.</p>
+            <button class="setting-btn">Request TAI</button>
+          </div>
+        </div> 
+        <div class="form-wrapper">
+          <label for="">Login Two-Factor Authentication</label>
+          <div class="form-wrapper-content">
+            <p>On</p>
+            <button class="setting-btn">Turn Off</button>
+          </div>
+        </div> 
+      </div> -->
+    </div>
+
+    <div class="profile-setting tab-panel" id="privacy-setting">
+      Privacy Setting
+    </div>
+  </div>
+</div>
+
+
+<script>
+
+  const profileEditBtn = document.querySelector('#profile-edit-btn')
+  const profileEditForm = document.querySelector('#profile-setting')
+  const profileSubmitBtn = document.querySelector('#profile-submit-btn')
+  const changePassword = document.querySelector('#change-password')
+  const changePasswordBtn = document.querySelector('#change-password-form button')
+  const newPassword1 = document.querySelector('#new-password-1')
+  const newPassword2 = document.querySelector('#new-password-2')
+  const oldPassword = document.querySelector('#old-password')
+
+  function openPanel(evt, panelName) {
+    // Declare all variables
+    let i, tabcontent, tablinks;
+
+    // Get all elements with class="tabcontent" and hide them
+    tabcontent = document.getElementsByClassName("tab-panel");
+    for (i = 0; i < tabcontent.length; i++) {
+      tabcontent[i].style.display = "none";
+    }
+
+    // Get all elements with class="tablinks" and remove the class "active"
+    tablinks = document.getElementsByClassName("tablinks");
+    for (i = 0; i < tablinks.length; i++) {
+      tablinks[i].className = tablinks[i].className.replace(" active", "");
+    }
+
+    // Show the current tab, and add an "active" class to the button that opened the tab
+    document.getElementById(panelName).style.display = "grid";
+    evt.currentTarget.className += " active";
+  }
+
+  profileEditBtn.addEventListener('click', (event) => {
+    event.preventDefault()
+    profileEditForm.querySelectorAll("[required]").forEach(function(i) {
+      i.removeAttribute("readonly")
+      i.style.borderBottom = "1px solid #C46900"
+    })
+  })
+  profileSubmitBtn.addEventListener("click", (event) => {
+    event.preventDefault()
+    let data
+    profileEditForm.querySelectorAll("[required]").forEach(function(i) {
+      data = {...data,
+        [i.name]: i.value
+      }
+    })
+    openLoader()
+    fetch('http://localhost:4000/users/profile/update/<%= user?.id %>', {
+      method: 'PUT',
+      headers: {
+      'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(data)
+    }).then(response => response.json())
+      .then(data => {
+      closeLoader()
+      const {message,user} = data
+      showToast(message, "success")
+      setTimeout(() => {
+        window.location = "/profile"
+      }, 1000);
+    })
+  })
+  const verifyPasscode = (passcode) => {
+    openLoader()
+    fetch(`http://localhost:4000/users/password/verify-passcode/${passcode}/<%= user.id %>`, {
+      method: 'POST',
+    })
+      .then(response => response.json())
+      .then(data => {
+        closeLoader()
+        const {message} = data
+        if(message === "Passcode incorrect, try again!") {
+          return showToast(message, "error")
+        } 
+        showToast(message, "success")
+        setTimeout(() => {
+          closeModal()
+          openModal('change-password')
+        }, 1000);
+      })
+  }
+  changePassword.addEventListener("click", () => {
+    openModal('passcode')
+    openLoader()
+    fetch('http://localhost:4000/users/password/send-passcode/<%= user?.id %>', {
+      method: 'POST',
+    })
+      .then(response => response.json())
+      .then(data => {
+        closeLoader()
+        const {message,user} = data
+        showToast(message, "success")
+        setTimeout(() => {
+          // openModal('change-password')
+        }, 1000);
+      })
+  })
+  changePasswordBtn.addEventListener('click', () => {
+    if(newPassword1.value === '' || newPassword2 ==='' || oldPassword === '') {
+      return showToast("Please fill all fields", "error")
+    }
+    if (newPassword1.value !== newPassword2.value) {
+      return showToast("Password do not match", "error")
+    }
+    openLoader()
+    fetch(`http://localhost:4000/users/password/change-password/${newPassword1.value}/${oldPassword.value}`, {
+      method: 'POST',
+    })
+      .then(response => response.json())
+      .then(data => {
+        closeLoader()
+        const {message} = data
+        if(message === "Password updated, please login again") {
+          showToast(message, "success")
+          setTimeout(() => {
+            window.location = '/'
+          }, 1000);
+        } else {
+          showToast(message, "error")
+        }
+      })
+  })
+</script>

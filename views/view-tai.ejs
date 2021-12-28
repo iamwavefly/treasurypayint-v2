@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#002244">
+    <title><%= title %> </title>
+    <link rel="stylesheet" href="../css/view-tai.css">
+    <script src="https://use.fontawesome.com/releases/v5.13.0/js/all.js" crossorigin="anonymous"></script>
+
+</head>
+
+<body>
+    <div class="container">
+        <div class="header">
+            <h3>Please Verify Your Account Information Below.</h3>
+            <p>To view your Transfer Access ID (TAI), you have to verify your details.</p>
+        </div>
+        <form action="/view__tai-report" class="tai__verify-form" method="GET">
+            <div class="form">
+                <input type="text" autocomplete="false" id="ac__id" name="ac__id" minlength="10" value="" maxlength="10" class="account_id" placeholder="Account ID">
+                <i class="icon fas fa-user tai__user"></i>
+                <input style="margin: .5rem 0 1rem;" type="password" autocomplete="false" id="confirm__pass" minlength="8" name="confirm__pass" class="confirm__password" placeholder="Confirm your password">
+                <i class="icon fas fa-lock tai__passkey"></i>
+            </div>
+            <% if(user) { %>
+                <div class="report">
+                <span class="tai__status"><i class="icon fas fa-check"></i> Validated</span>
+                <p class="tai__report">TAI: <b><%= user.tai %></b></p>
+                <p class="tai__report">Authorized Name: <b><%= user.first_name %> <%= user.other_name %></b></p>
+            </div>
+            <div class="btn__group">
+                <a href="/" class="loader__btn">Cancel</a>
+            </div>
+            
+            <% } else if (user == null) { %>
+                <div class="report">
+                    <span class="tai__status" style="color: orangered"><i class="icon fas fa-times"></i> Validation Failed</span>
+                    <p class="tai__report" style="color: orangered">Incorrect details provided</p>
+                </div>
+                <div class="btn__group">
+                    <button type="submit" class="loader__btn"><div class="loader"></div><div class="btn__content">Validate</div></button>
+                </div>
+            <% } else { %> 
+                <button type="submit" class="loader__btn"><div class="loader"></div><div class="btn__content">Validate</div></button>
+            <% } %> 
+        </form>
+    </div>
+</body>
+
+<script>
+    const transfer__btn = document.getElementById("transfer__btn")
+    const modal = document.getElementById("modal")
+
+    const btn = document.querySelector(".loader__btn")
+    const loader = document.querySelector(".loader")
+    const content = document.querySelector(".btn__content") 
+    const report = document.querySelector(".report") 
+    btn.addEventListener("click", function(){
+        loader.style.display = "inline"
+        content.style.display = "none"
+
+        console.log(1);
+    })
+    // transfer__btn.addEventListener("click", function(e){
+    //     e.preventDefault()
+    //     loader.style.display = "inline"
+    //     content.style.display = "none"
+    //     setTimeout(() => {
+    //         window.location = "/tai-checkpoint"
+    //     }, 5000);
+    // })
+</script>
+
+</html>

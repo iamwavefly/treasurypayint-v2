@@ -1,0 +1,257 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap');
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+body{
+    font-family: 'Roboto', sans-serif;
+
+}
+.container{
+    height: 100vh;
+    width: 100%;
+    background-image: linear-gradient(to right bottom, rgba(0, 0, 0, 0.644), rgba(2, 21, 56, 0.178)), url("https://static-cse.canva.com/blob/142372/Patterns-3-03.jpg");
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.header{
+    text-align: center;
+    position: relative;
+    top: -10%;
+    color: #f3f3f3;
+    width: auto;
+    max-width: 80%;
+}
+.header h3{
+    font-weight: 900;
+    font-size: 24px;
+}
+.header p{
+    color: #e2e2e2;
+    font-size: 14px;
+    padding-top: 10px;
+    font-weight: 500;
+}
+.tai__verify-form{
+    background: #eeeeee;
+    width: 22rem;
+    height: auto;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: column;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.575);
+    padding: 40px 0;
+
+    transition: all 0.6s cubic-bezier(.02,.65,.95,.3);
+}
+form .form{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    position: relative;
+}
+form input{
+    width: 18rem;
+    padding: 10px;
+    border: 1px solid rgba(2, 21, 56, 0.315);
+    border-radius: 5px;
+    outline: none;
+    position: relative;
+}
+/* form .form p{
+    margin-bottom: .5rem;
+} */
+.tai__verify-form button, a{
+    text-decoration: none;
+    width: 18rem;
+    height: 2rem;
+    font-weight: 600 ;
+    font-size: 14px;
+    color: #eeeeee;
+    background-image: linear-gradient(to bottom, #d15569, #a73043);
+    padding: 10px;
+    outline: none;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    position: relative;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.116);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.report__alert-label{
+    text-decoration: none;
+    width: 26rem;
+    height: 2rem;
+    font-weight: 600 ;
+    font-size: 14px;
+    color: #eeeeee;
+    background-image: linear-gradient(to bottom, #d15569, #a73043);
+    padding: 10px;
+    outline: none;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    position: relative;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.116);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+#report__alert:checked ~ .report__modal{
+    display: inline;
+}
+input[type="checkbox"]{
+  display: none;
+}
+form button img{
+    position: absolute;
+    top: 50%;
+    width: 200%;
+    border: 1px solid orangered;
+}
+.btn__group{
+    width:80%;
+    display: flex;
+}
+.tai__verify-form .btn__group a, label{
+    margin-right: 5px;
+    font-weight: 400 !important;
+}
+.btn__group button:last-child{
+    background:  rgba(43, 51, 62, 0.836);
+}
+form input:invalid{
+    border: 1px solid orangered;
+}
+.tai__input:not(:placeholder-shown) ~ .tai__label{
+    visibility: visible;
+    top: 0px;
+}
+.tai__input:not(:placeholder-shown) ~ .tai__icon{
+    color: rgba(43, 51, 62, 0.548);
+}
+form button:hover{
+    background: rgba(43, 51, 62, 0.788);
+}
+.tai__label{
+    line-height: 2rem;
+    font-size: 12px;
+    color: #BF4357;
+    position: relative;
+    left: -110px;
+    top: -25px;
+    font-weight: 400;
+    visibility: hidden;
+    transition: all 0.4s ease-in;
+}
+.tai__user{
+    position: absolute;
+    top: 10%;
+    right: 5%;
+    color: rgba(43, 51, 62, 0.836);
+}
+.tai__passkey{
+    position: absolute;
+    bottom: 27%;
+    right: 5%;
+    color: rgba(43, 51, 62, 0.836);
+}
+.report{
+    padding: 20px 0px;
+    width: 80%;
+    position: relative;
+    left: 0;
+    /* display: none; */
+}
+.tai__status{
+    color: #00a70e;
+    line-height: 1.8rem;
+    width: 100%;
+    position: relative;
+    left: 35%;
+    top: -20px;
+}
+.tai__report{
+    font-size: 14px;
+    color: #2B333E;
+    line-height: 1.2rem;
+}
+.loader{
+    background-image: url("https://i.pinimg.com/originals/e2/63/00/e26300c0c746d3163a0f48223c897cee.gif");
+    height: 30px;
+    width: 30px;
+    background-size: 350%;
+    background-position: center;
+    position: absolute;
+    display: none;
+}
+.loader img{
+    width: 100%;
+}
+.report__modal{
+    position: fixed;
+    height: 100vh;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.575);
+    z-index: 9999;
+    top: 0;
+    right: 0;
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    transition: all .4s ease-in;
+    -webkit-animation: all .4s ease-in;
+    -moz-animation: all .4s ease-in;
+
+}
+.modal__content{
+    position: relative;
+    background: #eeeeee;
+    width: 22rem;
+    max-width: 80vw;
+    height: auto;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.575);
+    padding: 40px 20px;
+    line-height: 1.2rem;
+    text-align: center;
+}
+.modal__icon{
+    color: orangered;
+    font-size: 42px;
+}
+.modal__content h3{
+    color: #2B333E;
+    padding: 10px 0;
+}
+.modal__content p{
+    padding-bottom: 20px 0;
+    color: #2B333E;
+}
+.modal__content a:not(.modal__cancel){
+    margin-top: 20px;
+    width: 18rem !important;
+    max-width: 100%;
+}
+.modal__cancel{
+    position: absolute;
+    color: #e2e2e2;
+    background-color: orangered !important;
+    width: 20px;
+    height: 20px;
+    top: 5%;
+    right: 8%;
+}
