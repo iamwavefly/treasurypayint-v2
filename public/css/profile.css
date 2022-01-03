@@ -124,6 +124,9 @@
   align-items: center;
 }
 .profile-container ion-icon {
+  position: absolute;
+  left: 3%;
+  bottom: 25%;
   margin-right: 5px;
   font-size: 0.87rem;
   border-radius: 3px;
@@ -178,6 +181,13 @@
   border-top: none;
   animation: fadeEffect 1s; /* Fading effect takes 1 second */
 }
+.form-wrapper > div > input {
+  min-width: 100%;
+  height: 3rem;
+  padding: 0 35px;
+  background-color: #f1f1f1;
+  margin-top: 5px;
+}
 /* Go from zero to full opacity */
 @keyframes fadeEffect {
   from {
@@ -195,7 +205,7 @@
 }
 .grid-system {
   grid-template-columns: repeat(2, 1fr) !important;
-  gap: 60px !important;
+  gap: 30px !important;
 }
 label {
   font-weight: 400;
@@ -216,11 +226,13 @@ input {
   border-right: 1px solid #eee;
 }
 .form-wrapper {
+  position: relative;
   margin-top: 1rem;
 }
 .profile-setting-btn {
   grid-column: 1 / -1;
   margin-right: auto;
+  margin-top: 2rem;
   display: flex;
 }
 .setting-btn-outline {
@@ -235,6 +247,7 @@ input {
   transition: all 0.4s ease;
 }
 .setting-btn-outline ion-icon {
+  position: relative;
   color: #c46900 !important;
 }
 .setting-btn-outline:hover ion-icon {

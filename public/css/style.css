@@ -3040,13 +3040,27 @@ p #amount {
 
 /* line 1, ../../Arafath/CL/December/234. Finance/HTML/scss/_footer.scss */
 .footer {
-  background-repeat: no-repeat;
-  background-position: center center;
-  background-repeat: no-repeat;
-  background-size: cover;
+  height: 3rem;
   background: #fff;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 4rem;
 }
-
+.footer > div:last-child {
+  margin-left: auto;
+}
+.footer > div > span,
+a {
+  margin-left: 10px;
+  font-size: 0.87rem;
+  color: #555;
+  font-weight: 400;
+}
+.footer > div > a:hover {
+  color: #c46900;
+}
 /* line 7, ../../Arafath/CL/December/234. Finance/HTML/scss/_footer.scss */
 .footer p {
   font-family: "Roboto", sans-serif !important;
@@ -3128,7 +3142,7 @@ p #amount {
 
 /* line 53, ../../Arafath/CL/December/234. Finance/HTML/scss/_footer.scss */
 .footer .footer_top .footer_widget p a:hover {
-  color: #040e27;
+  color: #c46900;
 }
 
 /* line 59, ../../Arafath/CL/December/234. Finance/HTML/scss/_footer.scss */
@@ -3148,7 +3162,7 @@ p #amount {
 
 /* line 68, ../../Arafath/CL/December/234. Finance/HTML/scss/_footer.scss */
 .footer .footer_top .footer_widget p.footer_text a.domain:hover {
-  color: #040e27;
+  color: #c46900;
   border-bottom: 1px solid #040e27;
 }
 
@@ -3185,7 +3199,7 @@ p #amount {
 
 /* line 98, ../../Arafath/CL/December/234. Finance/HTML/scss/_footer.scss */
 .footer .footer_top .footer_widget ul li a:hover {
-  color: #040e27;
+  color: #c46900;
 }
 
 /* line 104, ../../Arafath/CL/December/234. Finance/HTML/scss/_footer.scss */
@@ -7252,6 +7266,7 @@ h6 {
     z-index: 9999;
   }
   .footer__main {
+    border: 10px solid orangered;
     background: #c46900 !important;
     display: flex !important;
     justify-content: center !important;

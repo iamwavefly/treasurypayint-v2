@@ -23,7 +23,7 @@
         </div>
     </div> -->
     <div class="greet">
-        <h4 id="welcome">Account Overview</h4>
+        <h4 id="welcome">Hi, <%= user?.username %> 👋</h4>
         <p>
             <a href="#"><img src="/img/layout/home.png" style="width: 15px;"></a> 
             <a href="#"> /Dashboard</a>
@@ -31,7 +31,7 @@
     </div>
     <div class="notice_banner">
         <div class="content">
-            <h2>Welcome back, <%- first_name %>!</h2>
+            <h2>Congratulations, <%= user?.username %>!</h2>
             <p>You're 40% toward getting a free Treasury Card</p>
             <span>Save more and login daily to increase your chance of getting a free Treasury Card</span>
         </div>
@@ -40,46 +40,22 @@
         </div>
     </div>
     <!-- <div class="credit__card-wrapper ">
-        <% if (card) { %>
-        <% card.forEach(card => { %>
-        <div class="credit__card">
-            <% const regex = /(?=(?!^)(?:\d{4})+$)/g %>
-            <% const str =  card.card_number.substr(0,16) %>
-            <% const subst = ` ` %>
-            <% const result = str.replace(regex, subst) %>
     
-            <img src="/img/cards/<%= card.card_type %>.svg" class="card__profile-img" alt="" srcset="">
-            <% if (bank) { %>
-            <p class="bank__name"><%= bank.bank_name %> </p>
-            <% } %>
-            <h2><%- include('./partials/message'); %></h2>
-            <h2 class="card__number" id="card__number"><%= result %></h2>
-            <span class="card__username"><%= first_name %> <%= other_name %></span>
-            <span class="card__date"><%= card.month %>/<%= card.year %></span>
-        </div>
-        <% }) %>
-        <% } %>
-    
-        <% if (card.length == 0) { %>
-        <div class="credit__card alert-card-2">
-            <img src="/img/cards/add-card.svg" class="card__profile-img">
-        </div>
-        <% } %>
     
     </div> -->
     <div class="cards__wrapper">
         <div class="cards">
             <div class="card1">
                 <span>Available Balance</span>
-                <h2 style="font-size: 1.35rem;"><%= (user.available).toLocaleString('en-US', { style: 'currency', currency: 'USD', }) %></h2>
+                <h2 style="font-size: 1.35rem;"><%= (user?.available).toLocaleString('en-US', { style: 'currency', currency: 'USD', }) %></h2>
                 <img src="/img/layout/icon-arrow-up.svg" class="icon-arrow-up">
-                <p class="arrow-up"><%= Number(user.recent_received).toLocaleString('en-US', { style: 'currency', currency: 'USD', }) %> </p>
+                <p class="arrow-up"><%= Number(user?.recent_received).toLocaleString('en-US', { style: 'currency', currency: 'USD', }) %> </p>
                 <img src="/img/layout/icon-arrow-down.svg" class="icon-arrow-down">
                 <p class="arrow-down">$0.00</p>
             </div>
             <div class="card1">
                 <span>Pending Fund</span>
-                <h2 style="font-size: 1.35rem;"> <%= (user.pending).toLocaleString('en-US', { style: 'currency', currency: 'USD', }) %></h2>
+                <h2 style="font-size: 1.35rem;"> <%= (user?.pending).toLocaleString('en-US', { style: 'currency', currency: 'USD', }) %></h2>
                 <img src="/img/layout/icon-arrow-up.svg" class="icon-arrow-up">
                 <p class="arrow-up">$0.00</p>
                 <img src="/img/layout/icon-arrow-down.svg" class="icon-arrow-down">
@@ -87,7 +63,7 @@
             </div>
             <div class="card1">
                 <span>Reversed Fund</span>
-                <h2 style="font-size: 1.35rem;"><%= (user.reversed).toLocaleString('en-US', { style: 'currency', currency: 'USD', }) %></h2>
+                <h2 style="font-size: 1.35rem;"><%= (user?.reversed).toLocaleString('en-US', { style: 'currency', currency: 'USD', }) %></h2>
                 <img src="/img/layout/icon-arrow-up.svg" class="icon-arrow-up">
                 <p class="arrow-up">$0.00</p>
                 <img src="/img/layout/icon-arrow-down.svg" class="icon-arrow-down">
@@ -95,7 +71,7 @@
             </div>
             <div class="card1">
                 <span>Tax Fund</span>
-                <h2 style="font-size: 1.35rem;"><%= (user.tax).toLocaleString('en-US', { style: 'currency', currency: 'USD', }) %></h2>
+                <h2 style="font-size: 1.35rem;"><%= (user?.tax).toLocaleString('en-US', { style: 'currency', currency: 'USD', }) %></h2>
                 <img src="/img/layout/icon-arrow-up.svg" class="icon-arrow-up">
                 <p class="arrow-up">$0.00</p>
                 <img src="/img/layout/icon-arrow-down.svg" class="icon-arrow-down">
@@ -106,21 +82,9 @@
         <div class="card__profile card__section">
             <div class="form__wrapper">
                 <h4>Transactions</h4>
-    
-                <form  id="form_sub">
+                <div>
                     <div class="transaction__wrapper" id="transaction__wrapper">
-                        <% if (bank) { %>
-                        <button class="send__money alert-card" id="btn1">Send Money</button>
-                        <button class="withdraw alert-card" id="btn2">Withdraw</button>
-    
-                        <% } else { %>
-                        <button class="send__money alert-warning" id="btn1">Send Money</button>
-                        <button class="withdraw alert-warning" id="btn2">Withdraw</button>
-                        <% } %>
-                    </div>
-                    <div class="transaction__wrapper" id="transaction__wrapper2">
-                        <button class="send__money" id="btn3">Other Bank</button>
-                        <button class="withdraw" id="btn4">Foreign Transfer</button>
+                        <button class="send__money alert-card" id="send-money-btn">Send money/withdraw</button>
                     </div>
                     <div class="form__inner" id="form_place">
     
@@ -129,415 +93,20 @@
                         </div>
     
                     </div>
-                    <div class="form__inner" id="form__inner">
-                        <label for="">Bank Name</label>
-                        <input type="text" value="<%= bank ? bank.bank_name : '' %>" name="bank_name" readonly>
-                        <label for="">Account Name</label>
-                        <input type="text" value="<%= bank ? bank.account_name : '' %>" name="account_name" readonly>
-                        <label for="">Account Number</label>
-                        <input type="number" value="<%= bank ? bank.account_number : '' %>" name="account_number" readonly>
-                        <label for="">Amount</label>
-                        <input type="number" maxlength="80" name="amount" >
-                        <label for="">Transaction Description</label>
-                        <input type="text" name="description" value="Transfer to my local bank account " readonly>
-                    </div>
-    
-                    <div class="form__inner2" id="form__inner2">
-    
-                        <label for="">Purpose</label>
-                        <select class="form-control" id="" name="purpose">
-                            <option selected disabled>Select a purpose</option>
-                            <option value="Accounting, auditing and bookeeping services">Accounting,
-                                auditing
-                                and bookeeping services</option>
-                            <option value="Advertising services">Advertising services</option>
-                            <option value="Architectural services">Architectural services</option>
-                            <option value="Computer and related services - Other">Computer and
-                                related services
-                                - Other</option>
-                            <option value="Construction and related engineering services - Other">
-                                Construction
-                                and related engineering services - Other</option>
-                            <option value="Distribution services - Other">Distribution services -
-                                Other</option>
-                            <option value="Engineering services">Engineering services</option>
-                            <option value="Entertainment services (including theatre, live bands and circus services">
-                                Entertainment services (including theatre, live bands and circus
-                                services
-                            </option>
-                            <option value="Enviromental services">Enviromental services</option>
-                            <option value="Estacodes">Estacodes</option>
-                            <option value="Financial leasing">Financial leasing</option>
-                            <option value="Financial services - Other">Financial services - Other
-                            </option>
-                            <option value="Freight transportation">Freight transportation</option>
-                            <option value="Guarantees and commitments">Guarantees and commitments
-                            </option>
-                            <option value="Health related and social services">Health related and
-                                social
-                                services</option>
-                            <option value="Hotels and restaurants (incl. catering)">Hotels and
-                                restaurants
-                                (incl. catering)</option>
-                            <option value="Investigation and security">Investigation and security
-                            </option>
-                            <option value="Involving own or leased property">Involving own or leased
-                                property
-                            </option>
-                            <option value="Legal services">Legal services</option>
-                            <option value="Libraries, archives,museums and other cultural services">
-                                Libraries,
-                                archives,museums and other cultural services</option>
-                            <option value="Life, accident and health insurance services">Life,
-                                accident and
-                                health insurance services</option>
-                            <option value="Management consulting services">Management consulting
-                                services
-                            </option>
-                            <option value="Medical and dental services">Medical and dental services
-                            </option>
-                            <option value="News agency services">News agency services</option>
-                            <option value="Non-life insurance services">Non-life insurance services
-                            </option>
-                            <option value="On a fee or contract basis">On a fee or contract basis
-                            </option>
-                            <option value="Other business services - other">Other business services
-                                - other
-                            </option>
-                            <option value="Other education services">Other education services
-                            </option>
-                            <option value="Other transport services">Other transport services
-                            </option>
-                            <option value="Participation in issues of all kinds of securities">
-                                Participation in
-                                issues of all kinds of securities</option>
-                            <option value="Passenger transportation">Passenger transportation
-                            </option>
-                            <option value="Payment to dormicilliary account">Payment to
-                                dormicilliary account
-                            </option>
-                            <option value="Placement and supply services of personnel">Placement and
-                                supply
-                                services of personnel</option>
-                            <option value="Printing, publishing">Printing, publishing</option>
-                            <option value="Professional services - Other">Professional services -
-                                Other</option>
-                            <option value="R and D services on social sciences and humanities">R and
-                                D services
-                                on social sciences and humanities</option>
-                            <option value="Radio and television services">Radio and television
-                                services</option>
-                            <option value="Recreational, cultural and sporting services - Other">
-                                Recreational,
-                                cultural and sporting services - Other</option>
-                            <option value="Relating to aircraft">Relating to aircraft</option>
-                            <option value="Relating to other machinery and equipment">Relating to
-                                other
-                                machinery and equipment</option>
-                            <option value="Relating to other transport equipment">Relating to other
-                                transport
-                                equipment</option>
-                            <option value="Relating to ships">Relating to ships</option>
-                            <option value="Services incidental to agriculture, hunting and forestry">
-                                Services
-                                incidental to agriculture, hunting and forestry</option>
-                            <option value="Services incidental to energy distribution">Services
-                                incidental to
-                                energy distribution</option>
-                            <option value="Services incidental to manufacturing">Services incidental
-                                to
-                                manufacturing</option>
-                            <option value="Services incidental to mining">Services incidental to
-                                mining</option>
-                            <option value="Taxation services">Taxation services</option>
-                            <option value="Telecommunication services">Telecommunication services
-                            </option>
-                            <option value="Tourism and travel related services - Other">Tourism and
-                                travel
-                                related services - Other</option>
-                            <option value="Veterinary services    ">Veterinary services </option>
-                        </select>
-                        <label for="">Country</label>
-                        <select class="form-control" id="user__country" name="country">
-                            <option selected disabled>Select your country</option>
-                            <option value="Afganistan" data-count="new">Afghanistan</option>
-                            <option value="Albania" data-count="all">Albania</option>
-                            <option value="Algeria">Algeria</option>
-                            <option value="American Samoa">American Samoa</option>
-                            <option value="Andorra">Andorra</option>
-                            <option value="Angola">Angola</option>
-                            <option value="Anguilla">Anguilla</option>
-                            <option value="Antigua & Barbuda">Antigua & Barbuda</option>
-                            <option value="Argentina">Argentina</option>
-                            <option value="Armenia">Armenia</option>
-                            <option value="Aruba">Aruba</option>
-                            <option value="Australia">Australia</option>
-                            <option value="Austria">Austria</option>
-                            <option value="Azerbaijan">Azerbaijan</option>
-                            <option value="Bahamas">Bahamas</option>
-                            <option value="Bahrain">Bahrain</option>
-                            <option value="Bangladesh">Bangladesh</option>
-                            <option value="Barbados">Barbados</option>
-                            <option value="Belarus">Belarus</option>
-                            <option value="Belgium">Belgium</option>
-                            <option value="Belize">Belize</option>
-                            <option value="Benin">Benin</option>
-                            <option value="Bermuda">Bermuda</option>
-                            <option value="Bhutan">Bhutan</option>
-                            <option value="Bolivia">Bolivia</option>
-                            <option value="Bonaire">Bonaire</option>
-                            <option value="Bosnia & Herzegovina">Bosnia & Herzegovina</option>
-                            <option value="Botswana">Botswana</option>
-                            <option value="Brazil">Brazil</option>
-                            <option value="British Indian Ocean Ter">British Indian Ocean Ter
-                            </option>
-                            <option value="Brunei">Brunei</option>
-                            <option value="Bulgaria">Bulgaria</option>
-                            <option value="Burkina Faso">Burkina Faso</option>
-                            <option value="Burundi">Burundi</option>
-                            <option value="Cambodia">Cambodia</option>
-                            <option value="Cameroon">Cameroon</option>
-                            <option value="Canada">Canada</option>
-                            <option value="Cayman Islands">Cayman Islands</option>
-                            <option value="Cape Verde">Cape Verde</option>
-                            <option value="Central African Republic">Central African Republic
-                            </option>
-                            <option value="Chad">Chad</option>
-                            <option value="Chile">Chile</option>
-                            <option value="China">China</option>
-                            <option value="Christmas Island">Christmas Island</option>
-                            <option value="Cocos Island">Cocos Island</option>
-                            <option value="Colombia">Colombia</option>
-                            <option value="Comoros">Comoros</option>
-                            <option value="Congo">Congo</option>
-                            <option value="Cook Islands">Cook Islands</option>
-                            <option value="Costa Rica">Costa Rica</option>
-                            <option value="Cote DIvoire">Cote DIvoire</option>
-                            <option value="Croatia">Croatia</option>
-                            <option value="Cuba">Cuba</option>
-                            <option value="Curaco">Curacao</option>
-                            <option value="Cyprus North">Cyprus North</option>
-                            <option value="Cyprus South">Cyprus South</option>
-                            <option value="Czech Republic">Czech Republic</option>
-                            <option value="Denmark">Denmark</option>
-                            <option value="Djibouti">Djibouti</option>
-                            <option value="Dominica">Dominica</option>
-                            <option value="Dominican Republic">Dominican Republic</option>
-                            <option value="East Timor">East Timor</option>
-                            <option value="Ecuador">Ecuador</option>
-                            <option value="Egypt">Egypt</option>
-                            <option value="El Salvador">El Salvador</option>
-                            <option value="Equatorial Guinea">Equatorial Guinea</option>
-                            <option value="Eritrea">Eritrea</option>
-                            <option value="Estonia">Estonia</option>
-                            <option value="Ethiopia">Ethiopia</option>
-                            <option value="Falkland Islands">Falkland Islands</option>
-                            <option value="Faroe Islands">Faroe Islands</option>
-                            <option value="Fiji">Fiji</option>
-                            <option value="Finland">Finland</option>
-                            <option value="France">France</option>
-                            <option value="French Guiana">French Guiana</option>
-                            <option value="French Polynesia">French Polynesia</option>
-                            <option value="Gabon">Gabon</option>
-                            <option value="Gambia">Gambia</option>
-                            <option value="Georgia">Georgia</option>
-                            <option value="Germany">Germany</option>
-                            <option value="Ghana">Ghana</option>
-                            <option value="Gibraltar">Gibraltar</option>
-                            <option value="Greece">Greece</option>
-                            <option value="Greenland">Greenland</option>
-                            <option value="Grenada">Grenada</option>
-                            <option value="Guadeloupe">Guadeloupe</option>
-                            <option value="Guam">Guam</option>
-                            <option value="Guatemala">Guatemala</option>
-                            <option value="Guinea">Guinea</option>
-                            <option value="Guinea - Bissau">Guinea - Bissau</option>
-                            <option value="Guyana">Guyana</option>
-                            <option value="Haiti">Haiti</option>
-                            <option value="Honduras">Honduras</option>
-                            <option value="Hong Kong">Hong Kong</option>
-                            <option value="Hungary">Hungary</option>
-                            <option value="Iceland">Iceland</option>
-                            <option value="India">India</option>
-                            <option value="Indonesia">Indonesia</option>
-                            <option value="Iran">Iran</option>
-                            <option value="Iraq">Iraq</option>
-                            <option value="Ireland">Ireland</option>
-                            <option value="Isle of Man">Isle of Man</option>
-                            <option value="Israel">Israel</option>
-                            <option value="Italy">Italy</option>
-                            <option value="Jamaica">Jamaica</option>
-                            <option value="Japan">Japan</option>
-                            <option value="Jordan">Jordan</option>
-                            <option value="Kazakhstan">Kazakhstan</option>
-                            <option value="Kenya">Kenya</option>
-                            <option value="Kiribati">Kiribati</option>
-                            <option value="Korea North">Korea North</option>
-                            <option value="Korea Sout">Korea South</option>
-                            <option value="Kuwait">Kuwait</option>
-                            <option value="Kyrgyzstan">Kyrgyzstan</option>
-                            <option value="Laos">Laos</option>
-                            <option value="Latvia">Latvia</option>
-                            <option value="Lebanon">Lebanon</option>
-                            <option value="Lesotho">Lesotho</option>
-                            <option value="Liberia">Liberia</option>
-                            <option value="Libya">Libya</option>
-                            <option value="Liechtenstein">Liechtenstein</option>
-                            <option value="Lithuania">Lithuania</option>
-                            <option value="Luxembourg">Luxembourg</option>
-                            <option value="Macau">Macau</option>
-                            <option value="Macedonia">Macedonia</option>
-                            <option value="Madagascar">Madagascar</option>
-                            <option value="Malawi">Malawi</option>
-                            <option value="Malaysia">Malaysia</option>
-                            <option value="Maldives">Maldives</option>
-                            <option value="Mali">Mali</option>
-                            <option value="Malta">Malta</option>
-                            <option value="Marshall Islands">Marshall Islands</option>
-                            <option value="Martinique">Martinique</option>
-                            <option value="Mauritania">Mauritania</option>
-                            <option value="Mauritius">Mauritius</option>
-                            <option value="Mayotte">Mayotte</option>
-                            <option value="Mexico">Mexico</option>
-                            <option value="Micronesia">Micronesia</option>
-                            <option value="Moldova">Moldova</option>
-                            <option value="Monaco">Monaco</option>
-                            <option value="Mongolia">Mongolia</option>
-                            <option value="Montserrat">Montserrat</option>
-                            <option value="Morocco">Morocco</option>
-                            <option value="Mozambique">Mozambique</option>
-                            <option value="Myanmar">Myanmar</option>
-                            <option value="Nambia">Nambia</option>
-                            <option value="Nauru">Nauru</option>
-                            <option value="Nepal">Nepal</option>
-                            <option value="Netherlands">Netherlands (Holland, Europe)</option>
-                            <option value="Netherland Antilles">Netherland Antilles</option>
-                            <option value="New Caledonia">New Caledonia</option>
-                            <option value="New Zealand">New Zealand</option>
-                            <option value="Nicaragua">Nicaragua</option>
-                            <option value="Niger">Niger</option>
-                            <option value="Nigeria">Nigeria</option>
-                            <option value="Niue">Niue</option>
-                            <option value="Norfolk Island">Norfolk Island</option>
-                            <option value="Northern Marianas">Northern Marianas</option>
-                            <option value="Norway">Norway</option>
-                            <option value="Oman">Oman</option>
-                            <option value="Pakistan">Pakistan</option>
-                            <option value="Palau Island">Palau Island</option>
-                            <option value="Palestine">Palestine</option>
-                            <option value="Panama">Panama</option>
-                            <option value="Papua New Guinea">Papua New Guinea</option>
-                            <option value="Paraguay">Paraguay</option>
-                            <option value="Peru">Peru</option>
-                            <option value="Phillipines">Philippines</option>
-                            <option value="Pitcairn Island">Pitcairn Island</option>
-                            <option value="Poland">Poland</option>
-                            <option value="Portugal">Portugal</option>
-                            <option value="Puerto Rico">Puerto Rico</option>
-                            <option value="Qatar">Qatar</option>
-                            <option value="Republic of the Congo">Republic of the Congo</option>
-                            <option value="Reunion">Reunion</option>
-                            <option value="Romania">Romania</option>
-                            <option value="Russia">Russia</option>
-                            <option value="Rwanda">Rwanda</option>
-                            <option value="St Barthelemy">St Barthelemy</option>
-                            <option value="St Helena">St Helena</option>
-                            <option value="St Kitts-Nevis">St Kitts-Nevis</option>
-                            <option value="St Lucia">St Lucia</option>
-                            <option value="St Maarten">St Maarten</option>
-                            <option value="St Pierre & Miquelon">St Pierre & Miquelon</option>
-                            <option value="St Vincent & Grenadines">St Vincent & Grenadines</option>
-                            <option value="San Marino">San Marino</option>
-                            <option value="Sao Tome & Principe">Sao Tome & Principe</option>
-                            <option value="Saudi Arabia">Saudi Arabia</option>
-                            <option value="Senegal">Senegal</option>
-                            <option value="Serbia">Serbia</option>
-                            <option value="Seychelles">Seychelles</option>
-                            <option value="Sierra Leone">Sierra Leone</option>
-                            <option value="Singapore">Singapore</option>
-                            <option value="Slovakia">Slovakia</option>
-                            <option value="Slovenia">Slovenia</option>
-                            <option value="Solomon Islands">Solomon Islands</option>
-                            <option value="Somalia">Somalia</option>
-                            <option value="South Africa">South Africa</option>
-                            <option value="Spain">Spain</option>
-                            <option value="Sri Lanka">Sri Lanka</option>
-                            <option value="Sudan">Sudan</option>
-                            <option value="Suriname">Suriname</option>
-                            <option value="Swaziland">Swaziland</option>
-                            <option value="Sweden">Sweden</option>
-                            <option value="Switzerland">Switzerland</option>
-                            <option value="Syria">Syria</option>
-                            <option value="Taiwan">Taiwan</option>
-                            <option value="Tajikistan">Tajikistan</option>
-                            <option value="Tanzania">Tanzania</option>
-                            <option value="Thailand">Thailand</option>
-                            <option value="Togo">Togo</option>
-                            <option value="Tokelau">Tokelau</option>
-                            <option value="Tonga">Tonga</option>
-                            <option value="Trinidad & Tobago">Trinidad & Tobago</option>
-                            <option value="Tunisia">Tunisia</option>
-                            <option value="Turkey">Turkey</option>
-                            <option value="Turkmenistan">Turkmenistan</option>
-                            <option value="Turks & Caicos Is">Turks & Caicos Is</option>
-                            <option value="Tuvalu">Tuvalu</option>
-                            <option value="Uganda">Uganda</option>
-                            <option value="United Kingdom">United Kingdom</option>
-                            <option value="Ukraine">Ukraine</option>
-                            <option value="United Arab Erimates">United Arab Emirates</option>
-                            <option value="United States of America">United States of America
-                            </option>
-                            <option value="Uraguay">Uruguay</option>
-                            <option value="Uzbekistan">Uzbekistan</option>
-                            <option value="Vanuatu">Vanuatu</option>
-                            <option value="Vatican City State">Vatican City State</option>
-                            <option value="Venezuela">Venezuela</option>
-                            <option value="Vietnam">Vietnam</option>
-                            <option value="Virgin Islands (Brit)">Virgin Islands (Brit)</option>
-                            <option value="Virgin Islands (USA)">Virgin Islands (USA)</option>
-                            <option value="Wallis & Futana Is">Wallis & Futana Is</option>
-                            <option value="Yemen (North)">Yemen (North)</option>
-                            <option value="Yemen (South)">Yemen (South)</option>
-                            <option value="Zambia">Zambia</option>
-                            <option value="Zimbabwe">Zimbabwe</option>
-                        </select>
-                        <label for="">Beneficiary Bank Name</label>
-                        <input type="text" bank__name="foreign_bank_name">
-                        <label for="">Beneficiary Account Name</label>
-                        <input type="text" name="foreign_account_name">
-                        <label for="">Beneficiary Account Number</label>
-                        <input type="number" name="foreign_account_number">
-                        <label for="">Amount</label>
-                        <input type="number" name="foreign_amount">
-                        <label for="">Beneficiary Bank Branch</label>
-                        <input type="text" name="bank_branch">
-                        <label for="">Beneficiary Swift Code</label>
-                        <input type="text" name="swift_code">
-                        <label for="">Beneficiary Address</label>
-                        <input type="text" name="foreign_address">
-                        <label for="">Beneficiary City/State</label>
-                        <input type="text" name="region">
-                        <label for="">Transaction Description</label>
-                        <input type="text" name="foreign_description">
-                    </div>
-                    <input type="text" value="<%= user.id %>" name="ownby" style=" display:none; ">
-                    <div class="btn__wrapper">
-                        <button type="submit" class="procceed__btn" id="procceed__btn">Procceed &rarr;</button>
-                    </div>
-                </form>
+                </div>
             </div>
         </div>
     
         <div class="card__profile user__spec">
             <div class="dashboard__profile">
                 <div class="profile__avatar">
-                    <img src=<%= user.profile && !user.pending ? user.profile : "/img/default-avatar.png" %> alt="<%= user.username %> avatar" />
+                    <img src=<%= user?.profile && !user?.pending ? user?.profile : "/img/default-avatar.png" %> alt="<%= user?.username %> avatar" />
                 </div>
                 <div class="profile__details">
                     <h4><%- first_name %> <%- other_name %></h4>
                     <p>
-                        <%= date.toLocaleString() %> | &nbsp;
-                        <% if (user.account_status == "on") { %>
+                        <%= date?.toLocaleString() %> | &nbsp;
+                        <% if (user?.account_status == "on") { %>
                         <p style="color: rgb(11, 189, 11);"> Verified </p>
                             <% } else { %>
                         <p style="color: #ffa500;"> Pending </p>
@@ -550,32 +119,32 @@
                         <div class="icon">
                             <img src="/img/layout/user.svg" alt="" srcset="">
                         </div>
-                        <span><%= user.first_name + ' ' + user.other_name %> </span>
+                        <span><%= user?.first_name + ' ' + user?.other_name %> </span>
                     </div>
                     <div class="icon__data">
                         <div class="icon">
     
                             <img src="/img/layout/identification.svg" alt="" srcset="">
                         </div>
-                        <span><%= user.user_id %></span>
+                        <span><%= user?.user_id %></span>
                     </div>
                     <div class="icon__data">
                         <div class="icon">
                             <img src="/img/layout/email.svg" alt="" srcset="">
                         </div>
-                        <span><%= user.email.length > 25 ? user.email.substr(0,25) + "..." : user.email %></span>
+                        <span><%= user?.email?.length > 25 ? user?.email?.substr(0,25) + "..." : user?.email %></span>
                     </div>
                     <div class="icon__data">
                         <div class="icon">
                             <img src="/img/layout/phone-call.svg" alt="" srcset="">
                         </div>
-                        <span><%= user.number %></span>
+                        <span><%= user?.number %></span>
                     </div>
                     <div class="icon__data">
                         <div class="icon">
                             <img src="/img/layout/calendar.svg" alt="" srcset="">
                         </div>
-                        <span><%= user.dob.toLocaleString() %></span>
+                        <span><%= user.dob && user?.dob?.toLocaleString() %></span>
                     </div>
                     <!-- <hr> -->
                     <div class="profile__location">
@@ -583,28 +152,16 @@
                             <div class="icon">
                                 <img src="/img/layout/placeholder.svg" class="profile__location-img">
                             </div>
-                            <span><%= user.address_line1.substr(0,50) %></span>
+                            <span><%= user?.address_line1?.substr(0,50) %></span>
                         </div>
                         <div class="icon__data">
                             <div class="icon">
-                                <img src="/img/icon/globe.png" class="profile__location-img">
+                                <img src="/img/layout/placeholder.svg" class="profile__location-img">
                             </div>
-                            <span class="user__data"><%= user.state %>, <%= user.country %></span>
+                            <span class="user__data"><%= user.city %>, <%= user.country %></span>
                         </div>
                     </div>
                 </div>
-                <% if (!bank) { %>
-                <div class="add__card-home">
-                    <a href="/add-card" class="alert-bank">
-                        <div class="add__card-img">
-                            <img src="/img/layout/add button dark.svg" alt="" srcset="">
-                        </div>
-                        <p>
-                            Add Bank Account
-                        </p>
-                    </a>
-                </div>
-                <% }  %>
             </div>
         </div>
     
@@ -617,7 +174,7 @@
                 <button>Report</button>
             </div>
 
-            <% if(user.available > 0){ %>
+            <% if(user?.available > 0){ %>
                 <div id="transaction-table" class="ag-theme-alpine"></div>
              <% } %>
             

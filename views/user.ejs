@@ -38,7 +38,7 @@
                 </div>
             </div>
             <div class="formBx">
-                <form action="/users/login" method="post">
+                <form action="/users/auth/login" method="post">
                     <h2>Sign In</h2>
                     <%- include('./partials/message'); %>
                     <div class="username-field">
@@ -64,28 +64,28 @@
         </div>
         <div class="user signupBx">
             <div class="formBx">
-                <form action="/users/register" method="post">
+                <form action="/users/auth/register" method="post">
                     <h2>Create an account</h2>
                     <%- include('./partials/message'); %>
                     <div class="username-field">
                         <ion-icon name="pricetag"></ion-icon>
                         <label for="username">Username</label>
-                        <input type="text" name="username" id="username" placeholder="Choose username" />
+                        <input type="text" name="username" id="username" value="<%= typeof username != 'undefined' ? username : '' %>" placeholder="Choose username" />
                     </div>
                     <div>
                         <ion-icon  class="icon" name="person"></ion-icon>
                         <label for="first_name">First name</label>
-                        <input type="text" name="first_name" id="first_name" placeholder="First name" />
+                        <input type="text" name="first_name" id="first_name" value="<%= typeof first_name != 'undefined' ? first_name : '' %>" placeholder="First name" />
                     </div>
                     <div>
                         <ion-icon  class="icon" name="person"></ion-icon>
                         <label for="other_name">Last name</label>
-                        <input type="text" name="other_name" id="other_name" placeholder="Last name" />
+                        <input type="text" name="other_name" id="other_name" value="<%= typeof other_name != 'undefined' ? other_name : '' %>" placeholder="Last name" />
                     </div>
                     <div class="email-field">
                         <ion-icon name="mail"></ion-icon>
                         <label for="email">Email</label>
-                        <input type="email" name="email" id="email" placeholder="Email" />
+                        <input type="email" name="email" id="email" value="<%= typeof email != 'undefined' ? email : '' %>" placeholder="Email" />
                     </div>
                     <div>
                         <ion-icon name="lock-closed"></ion-icon>
@@ -97,7 +97,7 @@
                         <label for="password2">Confirm password</label>
                         <input type="password" name="password2" id="password2" placeholder="Retype password" />
                     </div>
-                    <button>Sign up</button>
+                    <button type="submit">Sign up</button>
                     <p class="signup">
                     Already have an account ?
                     <a href="/users/auth/login" onclick="toggleForm();">Sign in.</a>

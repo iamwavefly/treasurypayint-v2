@@ -1,10 +1,12 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;800&display=swap");
 :root {
   --custom_primary: #282c35;
-  --custom_secondary: #C46900;
+  --custom_secondary: #c46900;
   --custom_light: rgb(230, 230, 230);
   --light-color: #fefefe;
   --dark-color: #777;
+  --btn-bg: linear-gradient(to bottom, #c46900, #994242);
+  --btn-bg-hover: linear-gradient(to right, #c46900, #994242);
 }
 html {
   font-family: "Poppins", sans-serif;
@@ -312,18 +314,21 @@ nav li img {
   margin-top: -10px;
 }
 .footer-notice > button {
-  background-color: var(--custom_secondary);
+  height: 2.5rem;
+  font-size: 0.87rem;
+  background: linear-gradient(to bottom, #c46900, #994242);
+  box-shadow: 0 5px 10px rgba(26, 3, 3, 0.1);
   outline: 0;
   border: 0;
   color: #fff;
-  font-size: 14px;
   font-weight: 500;
   border: 0;
-  padding: 5px 20px;
+  padding: 0px 20px;
   border-radius: 10px;
   transition: all 0.4s ease;
   cursor: pointer;
-  margin-bottom: 10px;
+  position: relative;
+  bottom: 5px;
   transition: all 0.4s ease;
 }
 .footer-notice > button:hover {
@@ -553,7 +558,7 @@ nav li img {
   background-color: rgba(153, 31, 0, 0.075);
 }
 .wrapper__top .notification-panel .notif-avatar > ion-icon {
-  color: rgb(153, 31, 0);
+  color: #c46900;
   font-size: 1.2rem;
   margin-bottom: 2px;
 }
@@ -717,7 +722,7 @@ wrapper__top
   position: absolute;
 
   top: 50%;
-  left: 10.5%;
+  left: 4%;
 
   font-family: Rokkitt;
   font-style: normal;
@@ -971,41 +976,34 @@ wrapper__top
   margin-bottom: 1rem;
 }
 .transaction__wrapper button {
+  width: 90% !important;
+  margin: 0 auto;
+  display: grid;
+  place-items: center;
+  grid-column: 1 / -1;
   border: none;
   position: relative;
   font-family: Roboto;
   text-transform: capitalize;
-  font-size: 0.75rem;
-  /* letter-spacing: 0.02em; */
-  color: #555;
+  height: 2.5rem;
+  font-size: 0.87rem;
+  background: var(--btn-bg);
+  box-shadow: 0 5px 10px rgba(26, 3, 3, 0.1);
+  color: #fff;
+  text-decoration: none;
   font-weight: 500;
   cursor: pointer;
   width: 100%;
   padding: 8px 10px;
-  border-radius: 20px;
+  border-radius: 10px;
+  opacity: 1;
   outline: none;
+  transition: all 0.4s ease;
 }
-
-.transaction__wrapper button.clicked {
-  color: rgb(226, 226, 226);
-  font-size: 12px;
-  padding: 8px 10px;
-
-  background: var(--custom_secondary);
-  width: 100%;
+.transaction__wrapper button:hover {
+  background: var(--btn-bg-hover);
+  opacity: 0.8;
 }
-
-/* .transaction__wrapper {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 2.5rem;
-    width: 16rem;
-    margin-left: -1rem;
-    background: rgba(237, 237, 237, 0.7);
-    border-radius: 20px;
-} */
-
 .form__wrapper form label {
   display: block;
   font-family: Roboto;
@@ -1126,6 +1124,7 @@ input {
   font-weight: 500;
 }
 .profile__details p {
+  color: #555;
   font-size: 0.875rem !important;
 }
 .profile__data {
@@ -1218,9 +1217,16 @@ input {
   justify-content: center;
   font-family: Roboto;
   font-weight: 500;
-  background: var(--custom_secondary);
+  background: var(--btn-bg);
   border-radius: 0 0 20px 20px;
   box-shadow: 0 -5px 10px rgba(29, 29, 29, 0.062);
+  cursor: pointer;
+  opacity: 1;
+  transition: all 0.4s ease;
+}
+.add__card-home:hover {
+  background: var(--btn-bg-hover);
+  opacity: 0.8;
 }
 .add__card-home.top {
   background: var(--custom_primary);
@@ -1252,12 +1258,12 @@ input {
   height: 2rem;
   border-radius: 50%;
   background: rgba(8, 8, 8, 0.13);
-  /* position: absolute;
-    left: 3rem; */
+  display: grid;
+  place-items: center;
 }
-.add__card-img img {
-  width: 100%;
-  padding: 10px;
+.add__card-img ion-icon {
+  font-size: 1rem;
+  color: #fff;
 }
 
 .search__btn img {
@@ -1467,7 +1473,7 @@ p {
 }
 .notice_banner span {
   display: block;
-  color: rgb(153, 31, 0);
+  color: #c46900;
   background-color: rgba(153, 31, 0, 0.075);
   padding: 10px;
   font-size: 0.75rem;
@@ -1929,6 +1935,8 @@ p {
   width: 40rem;
   height: auto;
   min-height: 20vh;
+  max-height: 90vh;
+  overflow: auto;
   background: #fff;
   border-radius: 10px;
   z-index: -1;
@@ -1988,7 +1996,7 @@ p {
   align-items: center;
 }
 .image_upload_container > .modal_footer button {
-  background-color: var(--custom_secondary);
+  background: var(--btn-bg);
   outline: 0;
   border: 0;
   color: #fff;
@@ -2162,6 +2170,7 @@ p {
   display: grid;
   place-items: center;
   overflow: hidden;
+  margin: 1rem 0;
 }
 .password-passcode-container > .passcode-banner > img {
   width: 100%;
@@ -2186,10 +2195,17 @@ p {
   color: #888;
   font-style: 0.87rem;
   margin-top: 10px;
+  text-align: center;
 }
 .password-passcode-container .passcode-area {
   margin: 1rem auto auto;
   text-align: center;
+}
+.address-field {
+  grid-column: 1 / -1;
+}
+.row-field {
+  grid-column: 1 / -1;
 }
 .password-passcode-container .passcode-area > input {
   background-color: #fff;
@@ -2227,13 +2243,60 @@ p {
   margin: 20px auto auto;
   grid-gap: 10px;
 }
+.password-passcode-container > .password-form-wrapper > .btn-wrapper {
+  display: grid;
+  grid-column: 1 / -1;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 15px;
+}
+.password-passcode-container > .password-form-wrapper > .btn-wrapper > button {
+  grid-column: unset;
+}
+.password-passcode-container
+  > .password-form-wrapper
+  > .btn-wrapper
+  > button:first-child {
+  background: transparent;
+  border: 1px solid #c46900;
+  color: #c46900;
+}
+.password-passcode-container
+  > .password-form-wrapper#update-card-form
+  > div:nth-child(2) {
+  grid-column: 1 / -1;
+}
+.password-passcode-container
+  > .password-form-wrapper#update-card-form
+  > div:nth-child(3) {
+  grid-column: 1 / -1;
+  margin-top: 5px;
+}
+.password-passcode-container
+  > .password-form-wrapper#update-card-form
+  > div:nth-child(3)
+  > span {
+  color: #555;
+}
+.password-passcode-container
+  > .password-form-wrapper#update-card-form
+  > div:nth-child(3)
+  > div {
+  display: grid;
+  width: 100%;
+  grid-template-columns: repeat(2, 1fr) 2fr;
+  grid-gap: 15px;
+  margin-top: 10px;
+}
 .password-passcode-container > .password-form-wrapper > div:first-child {
   grid-column: 1 / -1;
   width: 100%;
 }
-.password-passcode-container > .password-form-wrapper input {
+.password-passcode-container > .password-form-wrapper input,
+select {
   border: 1px solid #f1f1f1;
   height: 3rem;
+  width: 100%;
+  color: #888;
   border-radius: 4px;
   margin-top: 10px;
   padding: 0 15px;
@@ -2242,7 +2305,7 @@ p {
   color: #555;
 }
 .password-passcode-container > .password-form-wrapper button {
-  background: var(--custom_secondary);
+  background: var(--btn-bg);
   width: 100%;
   margin: 20px 0;
   grid-column: 1 / -1;
@@ -2253,6 +2316,20 @@ p {
   border-radius: 10px;
   cursor: pointer;
   transition: all 0.4s ease-in;
+}
+.password-passcode-container > .password-form-wrapper a {
+  background: var(--btn-bg);
+  width: 100%;
+  margin: 20px 0;
+  grid-column: 1 / -1;
+  color: #f4f5f7;
+  outline: none;
+  padding: 10px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.4s ease-in;
+  text-align: center;
 }
 .password-passcode-container > .password-form-wrapper button:hover {
   opacity: 0.9;

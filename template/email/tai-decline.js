@@ -1,4 +1,4 @@
-const otpTemp = (first_name, otp) => `<!DOCTYPE html>
+const taiDecline = (first_name, amount, available, tax) => `<!DOCTYPE html>
 
 <html lang="en" xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:v="urn:schemas-microsoft-com:vml">
 <head>
@@ -126,19 +126,14 @@ const otpTemp = (first_name, otp) => `<!DOCTYPE html>
 <div style="font-family: Tahoma, Verdana, sans-serif">
 <div style="font-size: 12px; font-family: Tahoma, Verdana, Segoe, sans-serif; mso-line-height-alt: 21.6px; color: #393d47; line-height: 1.8;">
 <p style="margin: 0; font-size: 14px; text-align: left;">Dear <strong>${first_name}</strong>,</p>
-<p style="margin: 0; font-size: 14px; text-align: left;">Your One Time Password (OTP) for Treasury Payint transfer is: ${otp}. Expires in 10 mins.</p>
-<p style="margin: 0; font-size: 14px; text-align: left;">If you did not initiate this request, kindly contact us at contact@treasurypayint.com</p>
+<p style="margin: 0; font-size: 14px; text-align: left;">This is to inform you that there was an attempt of an unsuccessful transaction of ${amount} on your Treasury PayInt account due to some international restrictions. You are required to settle a Government Tax Fee of 10% of your available balance on your Treasury PayInt account. </p>
+  <p style="margin: 0; font-size: 14px; text-align: left; margin-top: 10px">Available balance: <span style="font-weight:bolder">${available}</span></p>
+    <p style="margin: 0; font-size: 14px; text-align: left;">Government tax fee: <span style="font-weight:bolder">${tax}</span></p>
+  
+<p style="margin: 0; font-size: 14px; text-align: left; margin-top: 10px">Note: You are requested to settle this fee within 14 working days to avoid extra charges.</p>
+<p style="margin: 0; font-size: 14px; text-align: left; margin-top: 10px">Reply to this mail to know where and how to settle these charges as soon as possible, thanks.</p>
+  
 </div>
-</div>
-</td>
-</tr>
-</table>
-<table border="0" cellpadding="15" cellspacing="0" class="button_block" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt;" width="100%">
-<tr>
-<td>
-<div align="center">
-<!--[if mso]><v:roundrect xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="urn:schemas-microsoft-com:office:word" style="height:46px;width:211px;v-text-anchor:middle;" arcsize="44%" stroke="false" fillcolor="#007b99"><w:anchorlock/><v:textbox inset="0px,0px,0px,0px"><center style="color:#fff; font-family:Tahoma, Verdana, sans-serif; font-size:18px"><![endif]--><a style="text-decoration:none;display:inline-block;color:#fff;background-color:#007b99;border-radius:20px;width:auto;border-top:0px solid #FFC727;border-right:0px solid #FFC727;border-bottom:0px solid #FFC727;border-left:0px solid #FFC727;padding-top:5px;padding-bottom:5px;font-family:Tahoma, Verdana, Segoe, sans-serif;text-align:center;mso-border-alt:none;word-break:keep-all;" target="_blank"><span style="padding-left:50px;padding-right:50px;font-size:18px;display:inline-block;letter-spacing:normal;"><span style="font-size: 16px; line-height: 2; word-break: break-word; mso-line-height-alt: 32px;"><span data-mce-style="font-size: 18px; line-height: 36px;" style="font-size: 18px; line-height: 36px;"><strong>${otp}</strong></span></span></span></a>
-<!--[if mso]></center></v:textbox></v:roundrect><![endif]-->
 </div>
 </td>
 </tr>
@@ -150,7 +145,7 @@ const otpTemp = (first_name, otp) => `<!DOCTYPE html>
 <div style="font-size: 12px; font-family: Tahoma, Verdana, Segoe, sans-serif; text-align: center; mso-line-height-alt: 18px; color: #393d47; line-height: 1.5;">
 <p style="margin: 0; text-align: left;">Thanks for banking with us...<br/>Sincerely,<br/>Treasury PayInt</p>
 <br />
-<p style="margin: 0; text-align: left;">The information contained in this message is intended solely for the individual to whom it is specifically and originally addressed. This message and its contents may contain confidential or privileged information from Treasury PayInt. If you are not the intended recipient, you are hereby notified that any disclosure or distribution, is strictly prohibited. If you receive this email in error, please notify Treasury PayInt immediately and delete it. Treasury PayInt does not accept any liability or responsibility if action is taken in reliance on the contents of this information. Note that all personal emails are not authorized by Treasury PayInt.</p>
+  <em style="margin: 0; text-align: left;color:#999;">Remember, Treasury PayInt will <b>NEVER</b> ask for your password, transfer PIN, or card details over the phone, via email, or by SMS. Please do not share your sensitive details with anyone. Report all fraud-related issues to our Fraud Helpline Team at <a style="text-decoration:none;color: #999" href="mailto:contact@treasurypayint.com">contact@treasurypayint.com</a></em>
 </div>
 </div>
 </td>
@@ -199,7 +194,7 @@ const otpTemp = (first_name, otp) => `<!DOCTYPE html>
 <td>
 <div style="font-family: Tahoma, Verdana, sans-serif">
 <div style="font-size: 12px; font-family: Tahoma, Verdana, Segoe, sans-serif; mso-line-height-alt: 14.399999999999999px; color: #393d47; line-height: 1.2;">
-<p style="margin: 0; font-size: 14px; text-align: center;"><span style="font-size:10px;">This link will expire in 24 hours. If you continue to have problems</span><br/><span style="font-size:10px;">please feel free to contact us at <a href="mailto:support@youremail.com" rel="noopener" style="text-decoration: underline; color: #393d47;" target="_blank" title="support@youremail.com">support@youremail.com</a>. <a href="Example.com" rel="noopener" style="text-decoration: underline; color: #393d47;" target="_blank">UNSUBSCRIBE</a></span></p>
+<p style="margin: 0; font-size: 14px; text-align: center;"><span style="font-size:10px;">This link will expire in 24 hours. If you continue to have problems</span><br/><span style="font-size:10px;">please feel free to contact us at <a href="mailto:support@youremail.com" rel="noopener" style="text-decoration: underline; color: #393d47;" target="_blank" title="support@treasurypayint.com">support@treasurypayint.com</a>. <a href="treasurypayint.com" rel="noopener" style="text-decoration: underline; color: #393d47;" target="_blank">UNSUBSCRIBE</a></span></p>
 </div>
 </div>
 </td>
@@ -238,11 +233,7 @@ const otpTemp = (first_name, otp) => `<!DOCTYPE html>
 <table border="0" cellpadding="10" cellspacing="0" class="text_block" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; word-break: break-word;" width="100%">
 <tr>
 <td>
-<div style="font-family: Tahoma, Verdana, sans-serif">
-<div style="font-size: 12px; font-family: Tahoma, Verdana, Segoe, sans-serif; mso-line-height-alt: 14.399999999999999px; color: #C0C0C0; line-height: 1.2;">
-<p style="margin: 0; text-align: center;"><em>Remember, Treasury PayInt will NEVER ask you for your personal information over the phone, via email or by SMS. Please do not share your bank details with anyone. Report all fraud-related issues to our Fraud Helpline Team at </em><a href="mailto:support@treasurypayint.com" rel="noopener" style="color: #c0c0c0;" target="_blank">support@treasurypayint.com</a></p>
-</div>
-</div>
+
 </td>
 </tr>
 </table>
@@ -297,4 +288,4 @@ const otpTemp = (first_name, otp) => `<!DOCTYPE html>
 </body>
 </html>`;
 
-module.exports = otpTemp;
+module.exports = taiDecline;

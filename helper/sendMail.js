@@ -6,7 +6,7 @@ const isRequired = () => {
   throw new Error("param is required");
 };
 
-const sendMail = (
+const sendMail = async (
   receiver = isRequired(),
   title = isRequired(),
   htmlBody = isRequired()

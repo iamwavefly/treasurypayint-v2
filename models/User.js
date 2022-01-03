@@ -126,6 +126,14 @@ const UserSchema = new mongoose.Schema({
       ref: "notifications",
     },
   ],
+  bank: {
+    type: mongoose.Types.ObjectId,
+    ref: "banks",
+  },
+  card: {
+    type: mongoose.Types.ObjectId,
+    ref: "cards",
+  },
   account_status: {
     type: String,
     default: "pending",

@@ -1,6 +1,5 @@
 <div class="main-header">
     <h2>Card Request Form</h2>
-    <button type="submit" id="card-request-button">Submit</button>
 </div>
 
 <div class="treasury-card-container">
@@ -18,7 +17,7 @@
                 <span class="card-name">
                     Johnson doe
                 </span>
-                <span class="card-valid"><%= date.getMonth() + "/" + date.getFullYear() + 2 %> </span>
+                <span class="card-valid"><%= user?.date.getMonth() %>/<%= date.getFullYear() + 2 %></span>
             </div>
         </div>
         <div>
@@ -33,7 +32,7 @@
                 <span class="card-name">
                     Johnson doe
                 </span>
-                <span class="card-valid"><%= date.getMonth() + "/" + date.getFullYear() + 2 %> </span>
+                <span class="card-valid"><%= user?.date.getMonth() %>/<%= date.getFullYear() + 2 %></span>
             </div>
         </div>
         <div>
@@ -48,7 +47,7 @@
                 <span class="card-name">
                     Johnson doe
                 </span>
-                <span class="card-valid"><%= date.getMonth() + "/" + date.getFullYear() + 2 %> </span>
+                <span class="card-valid"><%= user?.date.getMonth() %>/<%= date.getFullYear() + 2 %></span>
             </div>
         </div>
 
@@ -159,3 +158,5 @@
         </div>
     </div>
 </div>
+
+<button type="submit" id="card-request-button">Send request</button>

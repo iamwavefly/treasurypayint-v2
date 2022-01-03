@@ -124,6 +124,7 @@ input {
   color: #555;
 }
 .wallet-container > div:first-child > div > .wallet-card-content {
+  position: relative;
   width: 100%;
   height: 60%;
   display: flex;
@@ -265,6 +266,9 @@ input {
   color: #333;
 }
 .custom-alert {
+  position: absolute;
+  bottom: -50%;
+  left: 0%;
   width: 100%;
   height: 3rem;
   margin: 0 auto;
@@ -273,7 +277,6 @@ input {
   outline: 0;
   font-weight: 500;
   font-size: 0.875rem;
-  margin-top: 6rem;
   cursor: pointer;
   transition: all 0.4s ease;
 }
@@ -302,29 +305,26 @@ input {
 }
 .wallet-container > div:nth-child(2) > div:first-child > .card-number {
   position: absolute;
-  transform: translate(-50%, -50%);
-  top: 38%;
-  left: 52%;
+  top: 26%;
+  left: 30%;
   color: #f1f1f1;
   font-size: 1.8rem;
   font-weight: 500;
   font-family: "Barlow Condensed", sans-serif;
-  white-space: nowrap;
+  text-align: left;
 }
 .wallet-container > div:nth-child(2) > div:first-child > .bank-name {
   position: absolute;
-  transform: translate(-50%, -50%);
-  top: 10%;
-  left: 32.5%;
+  top: 2%;
+  left: 18%;
   color: #cecece;
   font-size: 0.87rem;
   white-space: nowrap;
 }
 .wallet-container > div:nth-child(2) > div:first-child > .card-holder {
   position: absolute;
-  transform: translate(-50%, -50%);
-  top: 95%;
-  left: 32%;
+  top: 90%;
+  left: 18%;
   font-weight: 400;
   color: #cecece;
   font-style: italic;
@@ -401,6 +401,7 @@ input {
   position: relative;
   background-color: #1d2423;
   color: #fff;
+  height: 2.5rem;
 }
 .transfer-wrapper .tabs > .btn-wrapper > input:first-child + label::before {
   content: "";
@@ -414,6 +415,7 @@ input {
   position: relative;
   background-color: #1d2423;
   color: #fff;
+  height: 2.5rem;
 }
 .transfer-wrapper .tabs > .btn-wrapper > input.tab2 + label::before {
   content: "";
@@ -469,6 +471,9 @@ input {
   overflow: auto;
   display: grid;
 }
+.tab-panels::-webkit-scrollbar {
+  width: 0;
+}
 .payment-dest {
   width: 100%;
   height: auto;
@@ -503,6 +508,7 @@ input {
   display: grid;
   grid-template-columns: repeat(2, 1fr) !important;
   grid-gap: 10px;
+  grid-row-gap: 20px;
   width: 100%;
   transition: all 0.4s ease;
 }
@@ -523,6 +529,7 @@ input {
   outline: 0;
   border: 0;
   color: #555;
+  margin-top: auto;
 }
 .payment-form select {
   background-color: #f1f1f1;
@@ -536,15 +543,23 @@ input {
 .payment-form input::placeholder {
   color: #555;
 }
-#error-field {
+.error-field {
+  position: absolute;
   color: #c46900;
-  font-size: 0.87rem;
-  margin-top: 5px;
+  font-size: 0.78rem;
+  background: rgb(231, 225, 217);
+  padding: 2px;
+  border-radius: 5px;
+  bottom: 10px;
   transition: all 0.4s ease;
   opacity: 0;
+  transform: translateY(-10%);
 }
-.show-error {
+.error-field.show-error {
+  position: relative;
   opacity: 1 !important;
+  margin-bottom: -20px;
+  transform: translateY(0);
 }
 
 .action-button-wrapper {
@@ -577,7 +592,7 @@ input {
   cursor: pointer;
   transition: all 0.4s ease;
   opacity: 1;
-  margin-bottom: 10px;
+  margin: auto 0;
   background: linear-gradient(to bottom, #c46900, #994242);
   box-shadow: 0 5px 10px rgba(26, 3, 3, 0.1);
 }

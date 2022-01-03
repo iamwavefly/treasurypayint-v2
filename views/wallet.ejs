@@ -6,7 +6,7 @@
                 <button><ion-icon name="wallet-sharp"></ion-icon></button>
             </div>
             <div class="wallet-card-content">
-                <h3><%= user.available.toLocaleString('en-US', { style: 'currency', currency: 'USD', }) %> </h3>
+                <h3><%= user.available > 0 ? user.available.toLocaleString('en-US', { style: 'currency', currency: 'USD', }) : "0.00" %> </h3>
             </div>
             <div class="wallet-card-footer">
                 <img src="/img/layout/icon-arrow-up.svg" class="icon-arrow-up">
@@ -50,7 +50,7 @@
                     </div>
                     <p><input type="checkbox" name="email_alert" id="email_alert" checked data-user_id=<%= user.id %>  class="notif_alert" /><label for="email_alert"></label></p>
                 </div>
-                <div class="wallet-card footer ">
+                <div class="wallet-card footer">
                     <button class="custom-alert">Custom alert</button>
                 </div>
             </div>
@@ -59,17 +59,17 @@
     <div>
         <div class="wallet-card-wrapper">
             <h3 class="card-number">
-                0000 0000 0000 0000
+                <%= card ? card?.card_number.toString().replace(/\d{4}(?=.)/g, '$& ') : "0000 0000 0000 0000".replace(/ /g,'') %> 
             </h3>
             <span class="bank-name">
-                Treasury Pay Int.
+                <%= bank ? bank.bank_name : "Treasury Pay Int." %> 
             </span>
             <span class="card-holder">
-                <%= user.first_name + ' ' +user.other_name %> 
+                <%= user.first_name + ' ' + user.other_name %> 
             </span>
             <% const date = new Date() %> 
-            <span class="card-valid"><%= date.getFullYear() + 2 + "/" + date.getMonth() %> </span>
-            <img src="/img/cards/mastercard.svg" alt="">
+            <span class="card-valid"><%= card?.month + "/" + card?.year %> </span>
+            <img src="/img/cards/<%= card ? card?.card_type + "_card" : "master_card" %>.svg" alt="">
         </div>
         <div class="transfer-wrapper">
             <h2 class="title">Transactions</h2>
@@ -80,7 +80,7 @@
                     <input type="radio" name="tabset"  data-tab="2" id="tab2" class="wallet-tab tab2">
                     <label for="tab2">Request</label>
                     <div class="tab-panels">
-                        <form id="wallet-form" class="send-panel tab-panel">
+                        <form id="wallet-form" class="send-panel">
                             <!-- <div class="payment-dest">
                                 
                             </div> -->
@@ -102,8 +102,8 @@
                                 </div>
                                 <div>
                                     <label for="dest">Amount</label>
-                                    <input type="number" id="amount-field" required placeholder="$0.00">
-                                    <span id="error-field"></span>
+                                    <input type="number" id="amount-field" required placeholder="$0.00" />
+                                    <div id="error-field" class="error-field"></div>
                                 </div>
                             </div>
                             <div class="payment-form" id="wallet-temp-form"></div>
@@ -111,11 +111,12 @@
                                 <input type="text" id="wallet-trans-reason" placeholder="Reason for transaction">
                             </div>
                             <div class="action-button-wrapper">
-                                <input type="number" placeholder="Input otp" id="otp-input">
+                                <input oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" 
+                                type = "number" maxlength="6" placeholder="Input otp" id="otp-input" />
                                 <button id="wallet-button">Get OTP</button>
                             </div>
                         </form>
-                        <form id="tabset-2" class="request-panel tab-panel">
+                        <form id="tabset-2" class="request-panel">
                             <div class="payment-dest">
                                 <label for="dest">Account number</label>
                                 <input type="number" id="request-account-numb" placeholder="User account number">

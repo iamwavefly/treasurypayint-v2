@@ -30,21 +30,21 @@ route.get("/signup", async (req, res) => {
 });
 // wallet
 route.get("/wallet", ensureAuthenticated, async (req, res) => {
-  const bank = await Bank.findOne({ addby: req.user._id });
-  const card = await Card.find({ addby: req.user.id });
-  const user = await User.findById(req.user.id).populate({
-    path: "notifications",
-    options: { sort: { date: "desc" } },
-  });
+  const user = await User.findById(req.user.id)
+    .populate({
+      path: "notifications",
+      options: { sort: { date: "desc" } },
+    })
+    .populate("bank")
+    .populate("card");
   res.render("wallet", {
     title: `Wallet | Topup, transfer and withdraw fund`,
     page_name: "Wallet",
     user: req.user,
-    bank,
     notifications: user.notifications,
     moment,
-
-    card,
+    card: user.card,
+    bank: user.bank,
   });
 });
 // send & withdraw
@@ -93,10 +93,16 @@ route.get("/treasury-card", ensureAuthenticated, async (req, res) => {
 route.get("/complaint", ensureAuthenticated, async (req, res) => {
   const bank = await Bank.findOne({ addby: req.user._id });
   const card = await Card.find({ addby: req.user.id });
+  const user = await User.findById(req.user.id).populate({
+    path: "notifications",
+    options: { sort: { date: "desc" } },
+  });
   res.render("complaint", {
     title: `Complaint | Submit compaint or view responses`,
     page_name: "Complaint",
     user: req.user,
+    notifications: user.notifications,
+    moment,
     bank,
     card,
   });
@@ -128,13 +134,15 @@ route.get("/request-account", async (req, res) => {
 
 // dashboad
 route.get("/dashboard", ensureAuthenticated, async function (req, res) {
-  const card = await Card.find({ addby: req.user._id });
-  const bank = await Bank.findOne({ addby: req.user._id });
   const transaction = await Transaction.find({ ownby: req.user._id });
-  const user = await User.findById(req.user.id).populate({
-    path: "notifications",
-    options: { sort: { date: "desc" } },
-  });
+  const user = await User.findById(req.user.id)
+    .populate({
+      path: "notifications",
+      options: { sort: { date: "desc" } },
+    })
+    .populate("bank")
+    .populate("card");
+
   if (req.user.username === "Admin") {
     return res.redirect("/admin");
   }
@@ -143,15 +151,16 @@ route.get("/dashboard", ensureAuthenticated, async function (req, res) {
       "err_msg",
       "Sorry! Your account is under review or pending, please contact support to authorize you access to your account"
     );
-    return res.redirect("/");
+    return res.redirect("/users/auth/login");
   }
   user.online_status = true;
+  console.log(user);
   await user.save();
   res.render("dashboard", {
     title: `Welcome ${req.user.username}`,
     page_name: "Dashboard",
-    card,
-    bank,
+    card: user.card,
+    bank: user.bank,
     transaction,
     user: req.user,
     first_name: req.user.first_name,

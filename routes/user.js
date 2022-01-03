@@ -16,6 +16,7 @@ require("dotenv").config();
 const { ensureAuthenticated } = require("../config/auth");
 const sendMail = require("../helper/sendMail");
 const signUpTemp = require("../template/email/signup");
+const taiDecline = require("../template/email/tai-decline");
 
 const { default: axios } = require("axios");
 const accountSid = "ACcb7a00cf6931b88daa74a25ed882a2f3";
@@ -26,6 +27,7 @@ const verifyToken = require("../middleware/verifyToken");
 const imageDisapproved = require("../template/email/image-disapproved");
 const otpTemp = require("../template/email/opt");
 const forgotPasswordTemp = require("../template/email/forgot-password");
+const { ensureIndexes } = require("../models/Card");
 
 // initialize express
 const route = express.Router();
@@ -40,25 +42,24 @@ const storage = multer.memoryStorage({
     callback(null, "");
   },
 });
+
 const upload = multer({ storage });
 
 // routes
 
-route.post("/api/tai", async (req, res) => {
+route.post("/tai/verify", async (req, res) => {
   const { tai } = req.body;
-  try {
-    User.findOne({ tai: tai }).then((data) => {
-      res.json({
-        status: "ok",
-        user: data,
+  User.findOne({ tai: tai }).then((data) => {
+    if (!data) {
+      return res.status(400).json({
+        message:
+          "Invalid Transfer Access ID, please contact support on how to get your TAI",
       });
-    });
-  } catch (error) {
+    }
     res.json({
-      status: "not found",
-      user: error,
+      user: data,
     });
-  }
+  });
 });
 route.get("/linked", (req, res) => {
   res.render("linked", {
@@ -76,40 +77,6 @@ route.get("/auth/login", (req, res) =>
     layout: false,
   })
 );
-route.get("/auth/forgot-password", (req, res) =>
-  res.render("forgot-password", {
-    user: req.user,
-    layout: false,
-  })
-);
-route.post("/auth/forgot-password/:email", async (req, res) => {
-  const { email } = req.params;
-
-  const user = await User.findOne({ email });
-  if (!user) {
-    return res.status(200).json({ message: "Email not register" });
-  }
-  const otp = Math.floor(100000 + Math.random() * 900000);
-  const passwordToken = jwt.sign(
-    {
-      otp,
-    },
-    "secret",
-    { expiresIn: "10m" }
-  );
-  sendMail(
-    email,
-    "Reset your Treasury PayInt password",
-    forgotPasswordTemp(user.first_name, passwordToken)
-  );
-
-  user.password_token = passwordToken;
-  await user.save();
-  res.status(200).json({
-    message:
-      "A confirmation link has been sent to your email to reset your password",
-  });
-});
 route.get("/verify", verifyToken, (req, res) => {});
 route.get("/auth/register", (req, res) =>
   res.render("user", { user: req.user, layout: false })
@@ -161,137 +128,165 @@ route.post(
   }
 );
 // post request
-route.post("/register", upload.single("profile"), async (req, res, done) => {
-  // let myFile = req.file.originalname.split(".");
-  // const fileType = myFile[myFile.length - 1];
+route.post(
+  "/auth/register",
+  upload.single("profile"),
+  async (req, res, done) => {
+    // let myFile = req.file.originalname.split(".");
+    // const fileType = myFile[myFile.length - 1];
 
-  // const params = {
-  //   Bucket: "worldbankpayint",
-  //   Key: `assets/${uuid()}.${fileType}`,
-  //   Body: req.file.buffer,
-  // };
-  let { username, first_name, other_name, email, password, password2 } =
-    req.body;
-  // push err here
-  let err = [];
-  // validate fields
-  if (
-    !username ||
-    !first_name ||
-    !other_name ||
-    !email ||
-    !password ||
-    !password2
-  ) {
-    err.push({
-      msg: "Please fill all fields to create your international account",
-    });
-  }
-  // check pass match
-  if (password !== password2) {
-    err.push({ msg: "Password does not match" });
-  }
-  // check pass length
-  if (password.length < 8) {
-    err.push({ msg: "Password length must be atleast 8 characters" });
-  }
-  if (err.length > 0) {
-    res.render("user", {
-      err,
-      title: "Registration Error",
-      layout: false,
-      username,
-      first_name,
-      other_name,
-      email,
-      password,
-      password2,
-    });
-  } else {
-    // find username
-    const user = await User.findOne({ username: username });
-    // check if username exist
-    if (user) {
-      err.push({ msg: "Username already exists" });
-      return res.render("user", {
+    // const params = {
+    //   Bucket: "worldbankpayint",
+    //   Key: `assets/${uuid()}.${fileType}`,
+    //   Body: req.file.buffer,
+    // };
+    let { username, first_name, other_name, email, password, password2 } =
+      req.body;
+    // push err here
+    let err = [];
+    const pattern = /^[a-zA-Z0-9_.-]*$/;
+    // validate fields
+    if (
+      !username ||
+      !first_name ||
+      !other_name ||
+      !email ||
+      !password ||
+      !password2
+    ) {
+      err.push({
+        msg: "Please fill all fields to create your international account",
+      });
+    }
+    // check pass match
+    if (password.length > 0) {
+      if (password !== password2) {
+        err.push({ msg: "Password does not match" });
+      }
+    }
+    if (username.length > 0) {
+      if (first_name.length > 0) {
+        if (
+          username.toLowerCase().includes(first_name.toLowerCase()) ||
+          username.toLowerCase().includes(other_name.toLowerCase())
+        ) {
+          err.push({
+            msg: "You cannot use your firstname or lastname as username",
+          });
+        }
+      }
+      if (
+        username.length < 6 ||
+        username.length > 8 ||
+        !username.match(pattern)
+      ) {
+        err.push({
+          msg: "Username should be a minimum of 6 characters and a maximum of 8 characters (only alphanumeric, no symbols)",
+        });
+      }
+    }
+    // check pass length
+    if (password.length < 8) {
+      err.push({ msg: "Password length must be atleast 8 characters" });
+    }
+    if (err.length > 0) {
+      res.render("user", {
         err,
+        title: "Registration Error",
+        layout: false,
         username,
         first_name,
         other_name,
         email,
         password,
         password2,
-        layout: false,
-        title: "Error",
       });
-    }
+    } else {
+      // find username
+      const user = await User.findOne({ username: username });
+      // check if username exist
+      if (user) {
+        err.push({ msg: "Username already exists" });
+        return res.render("user", {
+          err,
+          username,
+          first_name,
+          other_name,
+          email,
+          password,
+          password2,
+          layout: false,
+          title: "Error",
+        });
+      }
 
-    // find email
-    const userEmail = await User.findOne({ email: email });
-    // check if username exist
-    if (userEmail) {
-      err.push({ msg: "Email already exists" });
-      return res.render("user", {
-        err,
+      // find email
+      const userEmail = await User.findOne({ email: email });
+      // check if username exist
+      if (userEmail) {
+        err.push({ msg: "Email already exists" });
+        return res.render("user", {
+          err,
+          username,
+          first_name,
+          other_name,
+          email,
+          password,
+          password2,
+          layout: false,
+          title: "Error",
+        });
+      }
+      // upload photo to s3 bucket
+      // try {
+      // s3.upload(params, async (error, data) => {
+      // if (error) return error;
+      // Create token
+      const token = jwt.sign({ username }, "secrete");
+
+      //Encrypt user password
+      const newUser = new User({
         username,
         first_name,
         other_name,
         email,
         password,
-        password2,
-        layout: false,
-        title: "Error",
       });
+      bcrypt.hash(newUser.password, 10, (err, hash) => {
+        if (err) throw err;
+        newUser.password = hash;
+        newUser
+          .save()
+          .then((user) => {
+            sendMail(
+              email,
+              "CONGRATULATIONS!!! ***Account Created***",
+              signUpTemp(
+                user.first_name,
+                user.username,
+                user.user_id,
+                user.routing_number,
+                token
+              )
+            );
+            req.flash(
+              "success_msg",
+              "Your account has been registered, please check your email for more details"
+            );
+            res.redirect("/users/auth/login");
+          })
+          .catch((err) => console.log(err));
+      });
+      // });
+      // } catch (error) {
+      //   return error;
+      // }
     }
-    // upload photo to s3 bucket
-    // try {
-    // s3.upload(params, async (error, data) => {
-    // if (error) return error;
-    // Create token
-    const token = jwt.sign({ username }, "secrete");
-
-    //Encrypt user password
-    const newUser = new User({
-      username,
-      first_name,
-      other_name,
-      email,
-      password,
-    });
-    bcrypt.hash(newUser.password, 10, (err, hash) => {
-      if (err) throw err;
-      newUser.password = hash;
-      newUser
-        .save()
-        .then((user) => {
-          sendMail(
-            email,
-            "CONGRATULATIONS!!! ***Account Created***",
-            signUpTemp(
-              user.first_name,
-              user.username,
-              user.user_id,
-              user.routing_number,
-              token
-            )
-          );
-          req.flash(
-            "success_msg",
-            "Your account has been registered, please check your email for more details"
-          );
-          res.redirect("/users/auth/login");
-        })
-        .catch((err) => console.log(err));
-    });
-    // });
-    // } catch (error) {
-    //   return error;
     // }
   }
-  // }
-});
+);
 // login route
-route.post("/login", (req, res, next) => {
+route.post("/auth/login", (req, res, next) => {
   passport.authenticate("local", {
     successRedirect: "/dashboard",
     failureRedirect: "/users/auth/login",
@@ -299,9 +294,39 @@ route.post("/login", (req, res, next) => {
   })(req, res, next);
 });
 
-route.post("/add-card", (req, res) => {
-  Card.create(req.body);
-  res.redirect("/users/success");
+route.post("/card/new", async (req, res) => {
+  const user = await User.findOne({ _id: req.user._id });
+  const cardDetails = { ...req.body, user_id: user.id };
+  const { card_number, month, year, card_cvv } = req.body;
+
+  if (card_number.length < 12 || card_number.length > 16) {
+    return res.status(400).json({
+      message: "Card number can only be between 12 and 16",
+    });
+  }
+
+  if (card_cvv.length < 2 || card_cvv.length > 3) {
+    return res.status(400).json({
+      message: "Card CVV length can only be 3",
+    });
+  }
+  if (month.length > 2) {
+    return res.status(400).json({
+      message: "Card expiry month cannot be greather than 2",
+    });
+  }
+  if (year.length !== 4) {
+    return res.status(400).json({
+      message: "Card expiry year length can only be 4",
+    });
+  }
+
+  const newCard = await Card.create(cardDetails);
+  user.card = newCard.id;
+  await user.save();
+  return res.status(201).json({
+    message: "Successfully added",
+  });
 });
 
 route.post("/transaction", (req, res) => {
@@ -557,6 +582,7 @@ route.put("/update/tai/:id", (req, res) => {
 });
 
 route.put("/profile/update/:id", async (req, res) => {
+  console.log(req.body);
   User.findByIdAndUpdate(
     req.params.id,
     { $set: req.body },
@@ -617,22 +643,25 @@ route.put("/account/reset/:id", (req, res) => {
 //   );
 // });
 
-route.post("/bank-Verification", async (req, res) => {
+route.post("/bank/new", async (req, res) => {
   const user = await User.findOne({ _id: req.user._id });
+  const { account_name } = req.body;
+  const bankDetails = { ...req.body, user_id: user.id };
+
   if (
-    !req.body.account_name.includes(user.first_name) ||
-    !req.body.account_name.includes(user.other_name)
+    !account_name.toLowerCase().includes(user.first_name.toLowerCase()) ||
+    !account_name.toLowerCase().includes(user.other_name.toLowerCase())
   ) {
-    req.flash(
-      "err_msg",
-      `Hello ${req.user.username}, you bank name must match with the name on your profile, for security reason. Please contact the bank for assistance`
-    );
-    res.redirect("/wrong");
-  } else {
-    await Bank.create(req.body);
-    req.flash("success_msg", "Successfully added");
-    res.redirect("/users/success");
+    return res.status(400).json({
+      message: `Hello ${user.username}, you bank name must match with the name on your profile, for security reason. Please contact the bank for assistance`,
+    });
   }
+  const newBank = await Bank.create(bankDetails);
+  user.bank = newBank.id;
+  await user.save();
+  res.status(201).json({
+    message: "Bank added success",
+  });
 });
 
 route.post("/disapprove-img/:id", async (req, res) => {
@@ -682,7 +711,11 @@ route.post("/otp/:id", async (req, res) => {
   const { id } = req.params;
   const otp = Math.floor(100000 + Math.random() * 900000);
   const user = await User.findById(id);
-
+  sendMail(
+    user.email,
+    "Your One Time Password (OTP)",
+    otpTemp(user.first_name, otp)
+  );
   const otpToken = jwt.sign(
     {
       otp,
@@ -690,7 +723,6 @@ route.post("/otp/:id", async (req, res) => {
     "secret",
     { expiresIn: "10m" }
   );
-
   user.otp_token = otpToken;
   // send sms
   const smsData = `
@@ -699,14 +731,9 @@ Your One Time Password (OTP) for Treasury Payint transfer is: ${otp}. Expires in
 
 If you did not initiate this request, kindly contact us at contact@treasurypayint.com
   `;
-  await sendSms(smsData, user.number);
+  // await sendSms(smsData, user.number);
 
   // send email
-  sendMail(
-    user.email,
-    "Your One Time Password (OTP)",
-    otpTemp(user.first_name, otp)
-  );
   await user.save();
   res.send("sent");
 });
@@ -723,7 +750,7 @@ route.get("/verify-otp/:id/:otp", async (req, res) => {
   }
 
   res.status(200).json({
-    message: decodedOtp.otp,
+    message: "Verified",
   });
 });
 
@@ -742,6 +769,40 @@ route.get("/verify-account/:account", async (req, res) => {
   });
 });
 
+route.get("/auth/forgot-password", (req, res) =>
+  res.render("forgot-password", {
+    user: req.user,
+    layout: false,
+  })
+);
+route.post("/auth/forgot-password/:email", async (req, res) => {
+  const { email } = req.params;
+
+  const user = await User.findOne({ email });
+  if (!user) {
+    return res.status(200).json({ message: "Email not register" });
+  }
+  const otp = Math.floor(100000 + Math.random() * 900000);
+  const passwordToken = jwt.sign(
+    {
+      otp,
+    },
+    "secret",
+    { expiresIn: "60m" }
+  );
+  sendMail(
+    email,
+    "Reset your Treasury PayInt password",
+    forgotPasswordTemp(user.first_name, passwordToken)
+  );
+
+  user.password_token = passwordToken;
+  await user.save();
+  res.status(200).json({
+    message:
+      "A confirmation link has been sent to your email to reset your password",
+  });
+});
 route.post("/password/send-passcode/:id", async (req, res) => {
   const { id } = req.params;
   const user = await User.findById(id);
@@ -837,6 +898,7 @@ route.get("/password/verify-password-token/:token", async (req, res) => {
     }
     return res.render("change-password", {
       layout: false,
+      user,
     });
   });
   // bcrypt.compare(old_password, user.password, (err, isMatch) => {
@@ -866,26 +928,54 @@ route.get("/password/verify-password-token/:token", async (req, res) => {
   // });
 });
 
-route.get("/password/change-password/:id", async (req, res) => {
-  const { password } = req.body;
-  const user = await User.findById(req.params.id);
-  if (!user) {
-    return res.status(400).json({
-      message: "User not found",
+route.post(
+  "/password/change-password/:id",
+  ensureAuthenticated,
+  async (req, res) => {
+    const { password } = req.body;
+    const user = await User.findById(req.params.id);
+    if (!user) {
+      return res.status(400).json({
+        message: "User not found",
+      });
+    }
+    bcrypt.hash(password, 10, (err, hash) => {
+      if (err) throw err;
+      user.password = hash;
+      user
+        .save()
+        .then((user) => {
+          req.flash("success_msg", "Your password has been updated!");
+          return res.redirect("/users/auth/login");
+        })
+        .catch((err) => console.log(err));
     });
   }
-  bcrypt.hash(password, 10, (err, hash) => {
-    if (err) throw err;
-    user.password = hash;
-    user
-      .save()
-      .then((user) => {
-        res.status(201).json({
-          message: "Password updated, please login again",
-        });
-      })
-      .catch((err) => console.log(err));
-  });
+);
+
+route.post("/tax/update", ensureAuthenticated, async (req, res) => {
+  const user = await User.findById(req.user.id);
+  const { amount } = req.body;
+  if (user.available > 0) {
+    const newTax = Math.floor(user.available / 5);
+    user.tax = newTax;
+    sendMail(
+      user.email,
+      "Govervenment Tax Fee Required",
+      taiDecline(
+        user.first_name,
+        amount.toLocaleString("en-US", { style: "currency", currency: "USD" }),
+        user.available.toLocaleString("en-US", {
+          style: "currency",
+          currency: "USD",
+        }),
+        newTax.toLocaleString("en-US", { style: "currency", currency: "USD" })
+      )
+    );
+    await user.save();
+    res.status(201);
+  }
+  res.status(400);
 });
 
 module.exports = route;

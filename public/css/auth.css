@@ -277,12 +277,13 @@ form > button {
   grid-column: 1 / -1;
   width: 100%;
   margin-top: 20px;
-  background-image: linear-gradient(
+  /* background-image: linear-gradient(
     to right,
     #f46b45 0%,
     #eea849 51%,
     #f46b45 100%
-  );
+  ); */
+  background-image: linear-gradient(to right, #c46900 0%, #994242 100%);
   padding: 15px 45px;
   text-align: center;
   text-transform: uppercase;
@@ -294,6 +295,7 @@ form > button {
   outline: 0;
   cursor: pointer;
   display: block;
+  border-radius: 10px;
 }
 
 form > button:hover {
@@ -397,7 +399,7 @@ section .container.active .signinBx .imgBx {
 .alert.alert-dismissible > button {
   outline: 0;
   border: 0;
-  width: 20px;
+  min-width: 20px;
   height: 20px;
   border-radius: 50%;
 }

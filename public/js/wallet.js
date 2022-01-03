@@ -18,15 +18,3 @@ notifAlert.forEach((res) => {
       });
   });
 });
-
-// walletTab.forEach((res) => {
-//   res.addEventListener("change", (event) => {
-//     const { name, checked } = event.target;
-//     const contentId = event.target.getAttribute("data-tab");
-//     const content = document.getElementById(`tabset-${contentId}`);
-//     if (checked) {
-//       content.classList.add("show-wallet-form");
-//       res.classList.add("active");
-//     }
-//   });
-// });
