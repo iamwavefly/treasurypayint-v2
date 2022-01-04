@@ -23,9 +23,9 @@
         </div>
       </li>
       <li>
-        <span>Date of birth</span>
+        <span>Routing number</span>
         <div>
-          <ion-icon name="calendar-clear"></ion-icon><%= user?.dob %>
+          <ion-icon name="key"></ion-icon><%= user?.routing_number %>
         </div>
       </li>
       <li>
@@ -37,7 +37,7 @@
       <li>
         <span>Mobile number</span>
         <div>
-          <ion-icon name="call"></ion-icon><%= user?.number %>
+          <ion-icon name="call"></ion-icon>+<%= user?.number %>
         </div>
       </li>
     </div>
@@ -120,7 +120,7 @@
           <label for="">State</label>
           <div class="form-wrapper-content">
             <ion-icon name="navigate"></ion-icon>
-            <input type="text" readonly name="state" required value="<%= user?.state %> ">
+            <input type="text" readonly name="state" required value="<%= user?.region %> ">
           </div>
         </div> 
         <div class="form-wrapper">

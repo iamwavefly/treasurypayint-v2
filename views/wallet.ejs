@@ -10,7 +10,7 @@
             </div>
             <div class="wallet-card-footer">
                 <img src="/img/layout/icon-arrow-up.svg" class="icon-arrow-up">
-                <p class="arrow-up"><%= Number(user.recent_received).toLocaleString('en-US', { style: 'currency', currency: 'USD', }) %> </p>
+                <p class="arrow-up"><%= Number(user.recent_received ? user.recent_received : 00).toLocaleString('en-US', { style: 'currency', currency: 'USD', }) %> </p>
                 <img src="/img/layout/icon-arrow-down.svg" class="icon-arrow-down">
                 <p class="arrow-down">$0.00</p>
             </div>

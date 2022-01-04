@@ -15,11 +15,8 @@
 button#card-request-button {
   height: 2.5rem;
   min-width: 6rem;
-  margin-left: auto;
-  margin-top: 1rem;
   position: relative;
   padding: 0 15px;
-  right: 6%;
   outline: 0;
   border: 0;
   border-radius: 10px;
@@ -171,11 +168,16 @@ button#card-request-button {
   width: 100%;
   height: 2rem;
   margin-top: 2rem !important;
-  grid-column: 1 / -1;
   display: flex;
   align-items: center;
+  justify-content: space-between;
 }
-.form-wrapper.agreement > input {
+.form-wrapper.agreement > span {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+}
+.form-wrapper.agreement > span > input {
   width: 15px !important;
   height: 15px !important;
   padding: 0;
@@ -183,6 +185,7 @@ button#card-request-button {
   position: relative !important;
   filter: hue-rotate(160deg);
   cursor: pointer;
+  margin-right: 10px !important;
 }
 .form-wrapper.agreement > input:checked + label {
   padding: 0;
@@ -191,6 +194,7 @@ button#card-request-button {
   margin-top: auto;
   margin-bottom: auto;
   margin-left: 10px;
+  width: fit-content;
 }
 .form-wrapper.agreement > label::before {
   display: none;

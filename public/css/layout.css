@@ -2203,6 +2203,15 @@ p {
 }
 .address-field {
   grid-column: 1 / -1;
+  position: relative;
+}
+.address-field > .emogi {
+  position: absolute;
+  right: 0;
+  top: 0;
+  border: 1px solid red;
+  height: 1.5rem;
+  width: 2rem;
 }
 .row-field {
   grid-column: 1 / -1;
@@ -2290,6 +2299,17 @@ p {
 .password-passcode-container > .password-form-wrapper > div:first-child {
   grid-column: 1 / -1;
   width: 100%;
+  position: relative;
+}
+.password-passcode-container > .password-form-wrapper > div:first-child > p {
+  position: absolute;
+  bottom: -15px;
+  background-color: #ecebeb;
+  color: #888;
+  padding: 15px 15px 11px;
+}
+.password-passcode-container > .password-form-wrapper > div:first-child > input {
+  padding-left: 4.5rem;
 }
 .password-passcode-container > .password-form-wrapper input,
 select {

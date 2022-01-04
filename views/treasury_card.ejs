@@ -6,7 +6,7 @@
     <% const date = new Date() %> 
     <div>
         <div>
-            <img src="/img/cards/mastercard.svg" alt="">
+            <img src="/img/cards/master_card.svg" alt="">
             <div class="card-content">
                 <h2 class="card-number">
                     0000 0000 0000 0000
@@ -21,7 +21,7 @@
             </div>
         </div>
         <div>
-            <img src="/img/cards/visa-card.svg" alt="">
+            <img src="/img/cards/visa_card.svg" alt="">
             <div class="card-content">
                 <h2 class="card-number">
                     0000 0000 0000 0000
@@ -36,7 +36,7 @@
             </div>
         </div>
         <div>
-            <img src="/img/cards/discover.svg" alt="">
+            <img src="/img/cards/discover_card.svg" alt="">
             <div class="card-content">
                 <h2 class="card-number">
                     0000 0000 0000 0000
@@ -124,7 +124,7 @@
             </div>
             <div class="form-wrapper">
                 <label for="">Routine number</label>
-                <input required type="number" placeholder="e.g. 846-93-6479">
+                <input required type="number" placeholder="e.g. 846936479">
             </div>
             <div class="form-wrapper">
                 <label for="">Card type</label>
@@ -154,9 +154,11 @@
             </div>
         </form>
         <div class="form-wrapper agreement">
-            <input type="checkbox" id="treasury-card-agreement"><label for="treasury-card-agreement">I agree to the terms and conditions.</label> 
+            <span>
+                <input type="checkbox" id="treasury-card-agreement"><label for="treasury-card-agreement">I agree to the terms and conditions.</label> 
+            </span>
+            <button type="submit" id="card-request-button">Send request</button>
         </div>
     </div>
 </div>
 
-<button type="submit" id="card-request-button">Send request</button>

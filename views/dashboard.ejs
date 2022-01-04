@@ -39,17 +39,14 @@
             <img src="/img/archievement.svg" alt="">
         </div>
     </div>
-    <!-- <div class="credit__card-wrapper ">
     
-    
-    </div> -->
     <div class="cards__wrapper">
         <div class="cards">
             <div class="card1">
                 <span>Available Balance</span>
                 <h2 style="font-size: 1.35rem;"><%= (user?.available).toLocaleString('en-US', { style: 'currency', currency: 'USD', }) %></h2>
                 <img src="/img/layout/icon-arrow-up.svg" class="icon-arrow-up">
-                <p class="arrow-up"><%= Number(user?.recent_received).toLocaleString('en-US', { style: 'currency', currency: 'USD', }) %> </p>
+                <p class="arrow-up"><%= Number(user?.recent_received ? user?.recent_received : 00).toLocaleString('en-US', { style: 'currency', currency: 'USD', }) %> </p>
                 <img src="/img/layout/icon-arrow-down.svg" class="icon-arrow-down">
                 <p class="arrow-down">$0.00</p>
             </div>
