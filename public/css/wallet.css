@@ -267,6 +267,7 @@ input {
 }
 .custom-alert {
   position: absolute;
+  background: #f1f1f1;
   bottom: -50%;
   left: 0%;
   width: 100%;
@@ -274,11 +275,16 @@ input {
   margin: 0 auto;
   border-radius: 10px;
   border: 1px solid #f1f1f1;
+  color: #555;
   outline: 0;
   font-weight: 500;
   font-size: 0.875rem;
   cursor: pointer;
   transition: all 0.4s ease;
+}
+.custom-alert.active {
+  background: var(--btn-bg);
+  color: #f1f1f1;
 }
 .custom-alert:hover {
   box-shadow: rgba(29, 29, 29, 0.05);

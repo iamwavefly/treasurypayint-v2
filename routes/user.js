@@ -705,7 +705,6 @@ route.post("/alert/:type/:action/:id", (req, res) => {
   });
   console.log(req.params);
 });
-module.exports = route;
 
 route.post("/otp/:id", async (req, res) => {
   const { id } = req.params;

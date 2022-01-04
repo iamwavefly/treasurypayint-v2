@@ -354,7 +354,7 @@
 
 
                     <li class="<%= page_name === 'Card' && 'active' %>"><ion-icon name="card"></ion-icon><a href="treasury-card">My Treasury Card</a></li>
-                    <li class="<%= page_name === 'Complaint' && 'active' %>"><ion-icon name="warning"></ion-icon><a href="/complaint">Complaint</a></li>
+                    <li class="<%= page_name === 'Complaint' && 'active' %>"><ion-icon name="warning"></ion-icon><a href="mailto:contact@treasurypayint.com">Complaint</a></li>
                     <li class="<%= page_name === 'Profile' && 'active' %>"><ion-icon name="person"></ion-icon><a href="/profile">Profile</a></li>
                     <!-- <li class="<%= page_name === 'Setting' && 'active' %>"><i class="lni lni-cog"></i><a href="/setting">Account Setting</a></li> -->
 
@@ -372,7 +372,7 @@
                 </div>
                 <h3><span>New</span> treasury card</h3>
                 <p>Borderless customer loyalty card</p>
-                <button onclick="openModal('profile-img')">Apply now</button>
+                <button onclick="window.location.href='treasury-card'">Apply now</button>
             </div>
         </div>
         <div class="right">
@@ -430,7 +430,8 @@
                     <li><a href="send-withdraw">Send - withdraw</a></li>
                     <li><a href="pay-services">Pay Services</a></li>
                     <li><a href="treasury-card">My Treasury Card</a></li>
-                    <li><a href="complaint">Complaint</a></li>
+                    <!-- <li><a href="complaint">Complaint</a></li> -->
+                    <li><a href="mailto:contact@treasurypayint.com">Complaint</a></li>
                     <li><a href="/profile">Profile</a></li>
                     <li><a href="/profile">Account Setting</a></li>
                     <li><a href="/users/logout">Logout</a></li>
@@ -479,6 +480,9 @@
     const updateCardForm = document.querySelector("#update-card-form")
     const taiInput = document.querySelector("#tai_input")
     const taiBtn = document.querySelector("#tai_btn")
+    const smsAlert = document.querySelector("#sms_alert");
+    const emailAlert = document.querySelector("#email_alert");
+    const customAlertBtn = document.querySelector("#custom-alert-btn");
 
     const pageName = '<%= page_name %>'
     const availableBal = '<%= user?.available %>'
@@ -490,7 +494,39 @@
     const bank = '<%= user?.bank %>'
     const card = '<%= user?.card %>'
 
-    amountField?.addEventListener("input", (event) => {
+    let smsChecked = true;
+    let emailChecked = true;
+
+    const checkAlert = () => {
+        if (!smsChecked || !emailChecked) {
+            customAlertBtn.classList.add("active")
+        } else {
+            customAlertBtn.classList.remove("active")
+        }
+
+        if(!emailChecked) {
+            setTimeout(() => {
+                emailAlert.checked = true
+                emailChecked = true
+            }, 1000);
+            return showToast("Sorry, you can't turn off email notification", "error")
+        }
+    };
+
+    smsAlert.addEventListener("change", (event) => {
+        const { checked } = event.target;
+        smsChecked = checked;
+        checkAlert();
+        return showToast("SMS notification updated", "success")
+    });
+
+    emailAlert.addEventListener("change", (event) => {
+        const { checked } = event.target;
+        emailChecked = checked;
+        checkAlert();
+    });
+
+    amountField.addEventListener("input", (event) => {
         const {value} = event.target
         if(Number(value) > Number(availableBal)){
             errorField.classList.add("show-error")
@@ -674,8 +710,8 @@
         )
         .then((response) => response.json())
         .then((data) => {
-            const { city, country } = data;
-            updateUserLocation(city, country);
+            const { city, region, country } = data;
+            updateUserLocation(city, region, country);
         })
         .catch((err) => {
             const { message } = err;
@@ -683,13 +719,13 @@
         });
     }
 
-    const updateUserLocation = (city, country) => {
+    const updateUserLocation = (city, region, country) => {
         fetch(`http://localhost:4000/users/profile/update/<%= user.id %>`, {
             method: "PUT",
             headers: {
             "Content-Type": "application/json",
             },
-            body: JSON.stringify({ city, country }),
+            body: JSON.stringify({ city, region, country }),
         })
         .then((response) => response.json())
         .then((data) => {
