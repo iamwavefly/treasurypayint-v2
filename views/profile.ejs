@@ -13,31 +13,31 @@
       <li>
         <span>Username</span>
         <div>
-          <ion-icon name="person"></ion-icon><%= user?.username %>
+          <%= user?.username %>
         </div>
       </li>
       <li>
         <span>Account number</span>
         <div>
-          <ion-icon name="key"></ion-icon><%= user?.user_id %>
+          <%= user?.user_id %>
         </div>
       </li>
       <li>
         <span>Routing number</span>
         <div>
-          <ion-icon name="key"></ion-icon><%= user?.routing_number %>
+          <%= user?.routing_number %>
         </div>
       </li>
       <li>
         <span>Email</span>
         <div>
-          <ion-icon name="mail"></ion-icon><%= user?.email.length > 25 ? user?.email.substr(0, 25) + "..." : user?.email %>
+          <%= user?.email.length > 25 ? user?.email.substr(0, 25) + "..." : user?.email %>
         </div>
       </li>
       <li>
         <span>Mobile number</span>
         <div>
-          <ion-icon name="call"></ion-icon><%= "+" + user?.country_code + user?.number %>
+          <%= "+" + user?.country_code + user?.number %>
         </div>
       </li>
     </div>
