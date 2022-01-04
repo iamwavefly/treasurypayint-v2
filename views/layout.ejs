@@ -139,21 +139,21 @@
                <form action="/users/profile/update/<%= user.id %>?_method=PUT" method="post" class="password-form-wrapper" id="update-profile-form">
                     <div>
                         <label for="number">Phone number</label>
-                        <p>+<span class="country_code">123</span></p>
+                        <p>+<input type="number" required name="country_code" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" maxlength="4" class="country_code" placeholder="123"/></p>
                         <input type="number" required id="number" placeholder="Phone number" name="number">
                     </div>
                     <div class="address-field">
-                        <div class="emogi"></div>
+                        <div class="emogi"><img src="<%= user?.flag %>"></div>
                         <label for="address">Address</label>
                         <input type="text" required id="address" name="address_line1" placeholder="House number/street address">
                     </div>
                     <div>
                         <label for="city">City</label>
-                        <input type="text" value="" id="city" name="city" readonly>
+                        <input type="text" value="<%= user?.city %> " id="city" name="city" readonly>
                     </div>
                     <div>
                         <label for="state">State</label>
-                        <input type="text" value="" id="state" name="state" readonly>
+                        <input type="text" value="<%= user?.state %>" id="state" name="state" readonly>
                     </div>
                     <div>
                         <label for="dob">Date of birth</label>
@@ -513,20 +513,20 @@
         }
     };
 
-    smsAlert.addEventListener("change", (event) => {
+    smsAlert?.addEventListener("change", (event) => {
         const { checked } = event.target;
         smsChecked = checked;
         checkAlert();
         return showToast("SMS notification updated", "success")
     });
 
-    emailAlert.addEventListener("change", (event) => {
+    emailAlert?.addEventListener("change", (event) => {
         const { checked } = event.target;
         emailChecked = checked;
         checkAlert();
     });
 
-    amountField.addEventListener("input", (event) => {
+    amountField?.addEventListener("input", (event) => {
         const {value} = event.target
         if(Number(value) > Number(availableBal)){
             errorField.classList.add("show-error")
@@ -541,7 +541,7 @@
     
     updateProfileBtn.addEventListener('click', (event) => {
         event.preventDefault()
-        getUserLocation()
+        // getUserLocation()
         let allAreFilled = true;
         let data = {}
         updateProfileForm.querySelectorAll("[required]").forEach(function(i) {
@@ -710,8 +710,8 @@
         )
         .then((response) => response.json())
         .then((data) => {
-            const { city, region, country } = data;
-            updateUserLocation(city, region, country);
+            const { city, region, flag, country } = data;
+            updateUserLocation(city, region, flag.svg, country);
         })
         .catch((err) => {
             const { message } = err;
@@ -719,19 +719,22 @@
         });
     }
 
-    const updateUserLocation = (city, region, country) => {
+    const updateUserLocation = (city, region, flag, country) => {
+        console.log(flag)
         fetch(`http://localhost:4000/users/profile/update/<%= user.id %>`, {
             method: "PUT",
             headers: {
             "Content-Type": "application/json",
             },
-            body: JSON.stringify({ city, region, country }),
+            body: JSON.stringify({ city, state: region, flag, country }),
         })
         .then((response) => response.json())
         .then((data) => {
         closeLoader();
         });
     };
+
+    getUserLocation()
 
     const updateTax = () => {
         openLoader()

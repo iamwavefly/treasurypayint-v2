@@ -33,6 +33,12 @@ const UserSchema = new mongoose.Schema({
   country: {
     type: String,
   },
+  country_code: {
+    type: String,
+  },
+  flag: {
+    type: String,
+  },
   number: {
     type: String,
   },

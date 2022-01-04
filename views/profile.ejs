@@ -37,7 +37,7 @@
       <li>
         <span>Mobile number</span>
         <div>
-          <ion-icon name="call"></ion-icon>+<%= user?.number %>
+          <ion-icon name="call"></ion-icon><%= "+" + user?.country_code + user?.number %>
         </div>
       </li>
     </div>
@@ -120,7 +120,7 @@
           <label for="">State</label>
           <div class="form-wrapper-content">
             <ion-icon name="navigate"></ion-icon>
-            <input type="text" readonly name="state" required value="<%= user?.region %> ">
+            <input type="text" readonly name="state" required value="<%= user?.state %> ">
           </div>
         </div> 
         <div class="form-wrapper">
@@ -134,7 +134,7 @@
           <label for="">Mobile Number</label>
           <div class="form-wrapper-content">
             <ion-icon name="call"></ion-icon>
-            <input type="text" readonly name="number" value="<%= user?.number %> ">
+            <input type="text" readonly name="number" value="<%= "+" + user?.country_code + user?.number %> ">
           </div>
         </div> 
       </div>

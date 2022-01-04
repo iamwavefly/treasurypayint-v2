@@ -135,7 +135,7 @@
                         <div class="icon">
                             <img src="/img/layout/phone-call.svg" alt="" srcset="">
                         </div>
-                        <span><%= user?.number %></span>
+                        <span><%=  "+" + user?.country_code + user?.number %></span>
                     </div>
                     <div class="icon__data">
                         <div class="icon">
@@ -155,7 +155,7 @@
                             <div class="icon">
                                 <img src="/img/layout/placeholder.svg" class="profile__location-img">
                             </div>
-                            <span class="user__data"><%= user.city %>, <%= user.country %></span>
+                            <span class="user__data"><%= user.state %>, <%= user.country %></span>
                         </div>
                     </div>
                 </div>
