@@ -12,7 +12,7 @@ html {
   padding: 0;
 }
 body {
-  background-color: rgb(255, 248, 248);
+  /* background-color: rgb(255, 248, 248); */
   overflow: auto;
   padding: 0;
   position: relative;
@@ -77,28 +77,133 @@ body {
   -o-transition: 0.3s;
   transition: 0.3s;
 }
-.logo {
+/* ========= Main Section-Starts======== */
+/* ========= Index Header ======== */
+#index_header {
   position: relative;
-  right: 50px;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
+  height: 5rem;
+  width: 100%;
+  z-index: 999;
+}
+#index_header .row {
+  justify-content: space-around;
   align-items: center;
-  overflow: hidden;
-  width: 20em;
-  height: 5em;
-  /* background: #f5f5f5; */
-  /* border: 1px solid #f5f5f5; */
+  padding: 0 1rem;
 }
-.logo img {
-  width: 3em;
+#index_header .logo {
+  width: 15rem;
+  height: 5rem;
 }
-
-.logo span {
-  position: relative;
+#index_header .logo .row {
+  justify-content: start;
+  line-height: 5rem;
+}
+#index_header .logo img {
+  width: 3rem;
+}
+.lead {
   color: #f5f5f5;
   font-weight: 500;
 }
+#index_header a:hover {
+  color: #c46900;
+}
+#index_header #navigation > li {
+  margin-left: 1rem;
+}
+#index_header #navigation > li:first-child {
+  margin-left: 0;
+}
+#index_header #navigation > li > a {
+  color: #fff;
+}
+#index_header #navigation > li > a:hover {
+  color: #c46900;
+}
+.Appointment .phone_num {
+  color: #fff;
+}
+.Appointment .phone_num:hover {
+  color: #c46900;
+}
+.boxed-btn4 {
+  background: transparent;
+  border: 1px solid #c46900;
+  border-radius: 5px;
+  color: #c46900;
+  cursor: pointer;
+  display: block;
+  padding: 11px 20px;
+  transition: 0.3s;
+  margin-left: 2rem;
+  font-weight: 500;
+}
+.slider_area {
+  background-image: linear-gradient(rgba(153, 40, 40, 0.3), rgba(112, 10, 10, 0.3)), url(../img/banner/banner.png);
+  background-size: cover;
+  position: absolute;
+  height: 100vh;
+  width: 100%;
+  top: 0;
+  font-family: "Roboto", sans-serif;
+}
+.slider_area .slider_text {
+  padding-top: 3rem;
+  max-width: 43.75rem;
+}
+.slider_area .slider_text h3 {
+  font-size: 3.75rem;
+  font-weight: 400;
+  line-height: 74px;
+  margin-bottom: 40px;
+  color: #fff;
+}
+.boxed-btn3 {
+  background: #c46900;
+  color: #fff;
+  padding: 11px 20px;
+  font-weight: 500;
+  border: 0;
+  border: 1px solid transparent;
+  border-radius: 5px;
+  text-transform: capitalize;
+  transition: 0.3s;
+  cursor: pointer;
+}
+#index_menu {
+  display: none;
+}
+/* x======== Index Header =======x */
+
+
+/* x======== Index Footer =======x */
+.footer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 3rem;
+  width: 100%;
+  background: #fff;
+  padding: 0 3rem;
+}
+.footer .row {
+  align-items: center;
+  justify-content: space-between;
+  height: 3rem;
+}
+.footer a {
+  margin-left: 1rem;
+}
+.footer a:first-child {
+  margin-left: 0;
+}
+.footer a:hover {
+  color: #c46900;
+}
+/* x======== Index Footer =======x */
+/* x======== Main Section-Starts=======x */
+
+
 .user-login-form {
   box-shadow: rgba(0, 0, 0, 0.6) 0 10px 10px;
 }
@@ -582,27 +687,208 @@ h3 {
   margin-bottom: 50px !important;
 }
 
-/* ======TGN Style====== */
-/* .index {
-  border: 1px solid red;
-  height: 100vh;
-  z-index: 99999; */
-  /* overflow: hidden; */
-/* } */
-/* x=====TGN Style=====x */
+/* ========================================================================================>>>>
 
-@media (max-width: 682px) {
-  .footer {
-    grid-template-columns: 1fr !important;
-    justify-content: center !important;
-    text-align: center;
-    padding: 0 1rem !important;
-  }
+|\\\\          ////| ||||||||||||||||  |||||||||||||||  ||||||||||||||||           /\
+||\\\\        ////|| ||||||||||||||||  |||||||||||||||  ||||||||||||||||          //\\
+|||\\\\      ////||| ||||              ||||       ||||        ||||               ///\\\
+||||\\\\    ////|||| ||||              ||||       ||||        ||||              ////\\\\
+|||| \\\\  //// |||| ||||||||||||||||  ||||       ||||        ||||             ////  \\\\
+||||  \\\\////  |||| ||||||||||||||||  ||||       ||||        ||||            ////    \\\\
+||||   \\\///   |||| ||||              ||||       ||||        ||||           ////||||||\\\\
+||||    \\//    |||| ||||              ||||       ||||        ||||          ////||||||||\\\\
+||||     \/     |||| ||||||||||||||||  |||||||||||||||  ||||||||||||||||   ////          \\\\
+||||            |||| ||||||||||||||||  |||||||||||||||  ||||||||||||||||  ////            \\\\
 
-  .footer > div:last-child {
-    margin-left: 0 !important;
+||||||||||||||||     ||||        ||||  |||||||||||||||  ||||||||||||||||  ||||             ||||
+||||||||||||||||     ||||        ||||  |||||||||||||||  ||||||||||||||||  ||||             ||||
+||||        ||||     ||||        ||||  ||||             ||||        ||||  ||||             ||||
+||||        ||||     ||||        ||||  ||||             ||||        ||||  ||||             ||||
+||||        ||||     ||||        ||||  |||||||||||||||  ||||||||||||||||  |||||||||||||||||||||
+||||        ||||     ||||        ||||  |||||||||||||||  ||||||||||||||||  |||||||||||||||||||||
+||||     \\\||||     ||||        ||||  ||||             ||||     \\\\                      ||||
+||||      \\||||\    ||||        ||||  ||||             ||||      \\\\                     ||||
+||||||||||||||||\\   ||||||||||||||||  |||||||||||||||  ||||       \\\\   |||||||||||||||||||||      
+||||||||||||||||\\\  ||||||||||||||||  |||||||||||||||  ||||        \\\\  |||||||||||||||||||||
+
+<<<<=============================================================================================*/
+
+/* Desktops and large screens */
+@media (max-width: 1200px) {
+  
+}
+
+/* Small screens and laptops */
+@media (max-width: 1024px) {
+  .Appointment {
+    display: none;
   }
 }
+
+/* iPads and tablets */
+@media (max-width: 768px) {
+  #index_header {
+    position: absolute;
+    transition: 0.5s ease;
+    overflow: hidden;
+  }
+  #index_header.active {
+    background-color: #f5f5f5;
+    height: auto;
+  }
+  #index_header .row {
+    flex-direction: column;
+    justify-content: start;
+    align-items: flex-start;
+  }
+  #index_header .logo {
+    width: auto;
+    margin-bottom: 1.5rem;
+    height: 4rem;
+  }
+  .lead.active {
+    color: #666;
+  }
+  #index_header .logo img {
+    margin-top: 1rem;
+  }
+  #index_header .logo .row {
+    flex-direction: row !important;
+    justify-content: start;
+  }
+  #index_header #navigation > li {
+    margin-left: 0.5rem;
+    margin-bottom: 1rem;
+  }
+  #index_header #navigation > li:first-child {
+    margin-left: 0.5rem;
+  }
+  #index_header #navigation > li > a {
+    color: #333;
+  } 
+  .Appointment {
+    display: block;
+  }
+  .Appointment a {
+    margin-bottom: 1rem;
+  }
+  .Appointment .phone_num {
+    margin-left: 0.5rem;
+    color: #333;
+  }
+  .boxed-btn4 {
+    margin-left: 0.5rem;
+    margin-top: 1rem;
+  }
+  .slider_area {
+    height: 35rem;
+  }
+  .slider_area .slider_text {
+    padding-top: 6.5rem;
+    max-width: 30rem;
+  }
+  .slider_area .slider_text h3 {
+    font-size: 3rem;
+    line-height: 60px;
+  }
+  #index_menu {
+    display: block;
+    position: absolute;
+    right: 5%;
+    top: 1.5rem;
+    color: #fff;
+    cursor: pointer;
+    background-color: #e7881a;
+    padding: 5px 8px 0;
+    font-size: 1.2rem;
+  }
+}
+
+/* Bigger Mobiles */
+@media (max-width: 682px) {
+  .footer {
+    height: 3.5rem !important;
+  }
+  .footer .row {
+    flex-direction: column;
+    justify-content: center;
+  }
+}
+
+/* Mobile devices */
+@media (max-width: 480px) {
+  .container {
+    margin-left: 1rem !important;
+  }
+  .slider_area {
+    background-position: right;
+  }
+  .slider_area .slider_text {
+    max-width: 20rem;
+    margin-bottom: 0;
+  }
+  .slider_area .slider_text h3 {
+    font-size: 2rem;
+    line-height: 45px;
+  }
+  .footer {
+    height: 3rem !important;
+    padding: 0 !important;
+  }
+}
+
+/* Smallest Mobites */
+@media (max-width: 320px) {
+  .container {
+    margin-left: initial !important;
+  }
+  #index_header .logo {
+    margin-left: -0.8rem;
+  }
+  .slider_area .slider_text h3 {
+    margin-bottom: 3rem;
+    font-size: 1.5rem;
+    line-height: 35px;
+  }
+  .boxed-btn3,
+  .boxed-btn4 {
+    padding: 8px 15px;
+  }
+  .footer div > span {
+    font-size: 0.7rem;
+  }
+  .footer a {
+    font-size: 0.75rem;
+    margin-left: 0.5rem;
+  }
+}
+
+/* ========================================================================================>>>>
+
+|\\\\          ////| ||||||||||||||||  |||||||||||||||  ||||||||||||||||           /\
+||\\\\        ////|| ||||||||||||||||  |||||||||||||||  ||||||||||||||||          //\\
+|||\\\\      ////||| ||||              ||||       ||||        ||||               ///\\\
+||||\\\\    ////|||| ||||              ||||       ||||        ||||              ////\\\\
+|||| \\\\  //// |||| ||||||||||||||||  ||||       ||||        ||||             ////  \\\\
+||||  \\\\////  |||| ||||||||||||||||  ||||       ||||        ||||            ////    \\\\
+||||   \\\///   |||| ||||              ||||       ||||        ||||           ////||||||\\\\
+||||    \\//    |||| ||||              ||||       ||||        ||||          ////||||||||\\\\
+||||     \/     |||| ||||||||||||||||  |||||||||||||||  ||||||||||||||||   ////          \\\\
+||||            |||| ||||||||||||||||  |||||||||||||||  ||||||||||||||||  ////            \\\\
+
+||||||||||||||||     ||||        ||||  |||||||||||||||  ||||||||||||||||  ||||             ||||
+||||||||||||||||     ||||        ||||  |||||||||||||||  ||||||||||||||||  ||||             ||||
+||||        ||||     ||||        ||||  ||||             ||||        ||||  ||||             ||||
+||||        ||||     ||||        ||||  ||||             ||||        ||||  ||||             ||||
+||||        ||||     ||||        ||||  |||||||||||||||  ||||||||||||||||  |||||||||||||||||||||
+||||        ||||     ||||        ||||  |||||||||||||||  ||||||||||||||||  |||||||||||||||||||||
+||||     \\\||||     ||||        ||||  ||||             ||||     \\\\                      ||||
+||||      \\||||\    ||||        ||||  ||||             ||||      \\\\                     ||||
+||||||||||||||||\\   ||||||||||||||||  |||||||||||||||  ||||       \\\\   |||||||||||||||||||||      
+||||||||||||||||\\\  ||||||||||||||||  |||||||||||||||  ||||        \\\\  |||||||||||||||||||||
+
+<<<<=============================================================================================*/
+
 
 
 @media (min-width: 768px) and (max-width: 991px) {
@@ -648,33 +934,6 @@ h3 {
   outline: none;
 }
 
-/* line 24, ../../Arafath/CL/December/234. Finance/HTML/scss/_btn.scss */
-.boxed-btn3 {
-  /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#F91842+0,fd8e5e+100 */
-  background: #c46900;
-  color: #fff;
-  display: inline-block;
-  padding: 11px 29px 13px 29px;
-  font-family: "Roboto", sans-serif;
-  font-size: 16px;
-  font-weight: 500;
-  border: 0;
-  border: 1px solid transparent;
-  -webkit-border-radius: 5px;
-  -moz-border-radius: 5px;
-  border-radius: 5px;
-  text-align: center;
-  color: #fff !important;
-  margin-top: 30px;
-  margin-bottom: 10px !important;
-  text-transform: capitalize;
-  -webkit-transition: 0.3s;
-  -moz-transition: 0.3s;
-  -o-transition: 0.3s;
-  transition: 0.3s;
-  cursor: pointer;
-}
-
 /* line 43, ../../Arafath/CL/December/234. Finance/HTML/scss/_btn.scss */
 .boxed-btn3:hover {
   color: #c46900 !important;
@@ -687,28 +946,7 @@ h3 {
   outline: none;
 }
 
-/* line 52, ../../Arafath/CL/December/234. Finance/HTML/scss/_btn.scss */
-.boxed-btn4 {
-  display: inline-block;
-  padding: 11px 29px 13px 29px;
-  font-family: "Roboto", sans-serif;
-  font-size: 16px;
-  font-weight: 500;
-  -webkit-border-radius: 5px;
-  -moz-border-radius: 5px;
-  border-radius: 5px;
-  text-align: center;
-  color: #fff !important;
-  text-transform: capitalize;
-  -webkit-transition: 0.3s;
-  -moz-transition: 0.3s;
-  -o-transition: 0.3s;
-  transition: 0.3s;
-  cursor: pointer;
-  color: #c46900 !important;
-  border: 1px solid #c46900;
-  background: transparent;
-}
+
 
 /* line 67, ../../Arafath/CL/December/234. Finance/HTML/scss/_btn.scss */
 .boxed-btn4:hover {
@@ -1099,90 +1337,6 @@ h3 {
   top: -33px;
 }
 
-/* line 1, ../../Arafath/CL/December/234. Finance/HTML/scss/_header.scss */
-.header-area {
-  left: 0;
-  right: 0;
-  width: 100%;
-  top: 0;
-  z-index: 9;
-  position: absolute;
-}
-
-@media (max-width: 767px) {
-  /* line 1, ../../Arafath/CL/December/234. Finance/HTML/scss/_header.scss */
-  .header-area {
-    padding-top: 0;
-  }
-}
-
-@media (min-width: 768px) and (max-width: 991px) {
-  /* line 1, ../../Arafath/CL/December/234. Finance/HTML/scss/_header.scss */
-  .header-area {
-    padding-top: 0;
-  }
-}
-
-/* line 16, ../../Arafath/CL/December/234. Finance/HTML/scss/_header.scss */
-.header-area .main-header-area {
-  background: #fff;
-  background: transparent;
-  padding: 0px 150px;
-}
-
-/* line 20, ../../Arafath/CL/December/234. Finance/HTML/scss/_header.scss */
-.header-area .main-header-area.details_nav_bg {
-  background: #727272;
-  padding-bottom: 0;
-}
-
-@media (max-width: 767px) {
-  /* line 20, ../../Arafath/CL/December/234. Finance/HTML/scss/_header.scss */
-  .header-area .main-header-area.details_nav_bg {
-    padding-bottom: 10px;
-  }
-}
-
-/* line 27, ../../Arafath/CL/December/234. Finance/HTML/scss/_header.scss */
-.header-area .main-header-area.details_nav {
-  background: #001d38;
-}
-
-@media (max-width: 767px) {
-  /* line 16, ../../Arafath/CL/December/234. Finance/HTML/scss/_header.scss */
-  .header-area .main-header-area {
-    padding: 10px 10px;
-  }
-}
-
-@media (min-width: 768px) and (max-width: 991px) {
-  /* line 16, ../../Arafath/CL/December/234. Finance/HTML/scss/_header.scss */
-  .header-area .main-header-area {
-    padding: 10px 10px;
-  }
-}
-
-@media (min-width: 992px) and (max-width: 1200px) {
-  /* line 16, ../../Arafath/CL/December/234. Finance/HTML/scss/_header.scss */
-  .header-area .main-header-area {
-    padding: 0px 20px;
-  }
-}
-
-@media (min-width: 1200px) and (max-width: 1500px) {
-  /* line 16, ../../Arafath/CL/December/234. Finance/HTML/scss/_header.scss */
-  .header-area .main-header-area {
-    padding: 0px 20px;
-  }
-}
-
-@media (min-width: 1501px) and (max-width: 1800px) {
-  /* line 16, ../../Arafath/CL/December/234. Finance/HTML/scss/_header.scss */
-  .header-area .main-header-area {
-    padding: 0px 50px;
-  }
-}
-
 /* line 47, ../../Arafath/CL/December/234. Finance/HTML/scss/_header.scss */
 .header-area .main-header-area .logo-img {
   text-align: center;
@@ -1223,24 +1377,6 @@ h3 {
   .header-area .main-header-area .logo-img img {
     width: 70px;
   }
-}
-
-/* line 73, ../../Arafath/CL/December/234. Finance/HTML/scss/_header.scss */
-.header-area .main-header-area .Appointment {
-  display: -webkit-box;
-  display: -moz-box;
-  display: -ms-flexbox;
-  display: -webkit-flex;
-  display: flex;
-  -webkit-align-items: center;
-  -moz-align-items: center;
-  -ms-align-items: center;
-  align-items: center;
-  -webkit-justify-content: flex-end;
-  -moz-justify-content: flex-end;
-  -ms-justify-content: flex-end;
-  justify-content: flex-end;
-  -ms-flex-pack: flex-end;
 }
 
 /* line 77, ../../Arafath/CL/December/234. Finance/HTML/scss/_header.scss */
@@ -1594,107 +1730,6 @@ h3 {
 /* line 4, ../../Arafath/CL/December/234. Finance/HTML/scss/_slider.scss */
 .slider_bg_2 {
   background-image: url(../img/banner/banner_2.png);
-}
-
-/* line 7, ../../Arafath/CL/December/234. Finance/HTML/scss/_slider.scss */
-.slider_area {
-  position: relative;
-  height: 100vh;
-  width: 100%;
-  z-index: 0;
-}
-
-/* line 10, ../../Arafath/CL/December/234. Finance/HTML/scss/_slider.scss */
-.slider_area::before {
-  background: #461515;
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  content: "";
-  opacity: 0.4;
-}
-
-/* line 20, ../../Arafath/CL/December/234. Finance/HTML/scss/_slider.scss */
-.slider_area .single_slider {
-  height: 900px;
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center center;
-}
-
-/* line 25, ../../Arafath/CL/December/234. Finance/HTML/scss/_slider.scss */
-.slider_area .single_slider.single_listing {
-  height: 500px;
-}
-
-@media (max-width: 767px) {
-  /* line 20, ../../Arafath/CL/December/234. Finance/HTML/scss/_slider.scss */
-  .slider_area .single_slider {
-    height: auto;
-  }
-}
-
-@media (min-width: 768px) and (max-width: 991px) {
-  /* line 20, ../../Arafath/CL/December/234. Finance/HTML/scss/_slider.scss */
-  .slider_area .single_slider {
-    height: 700px;
-  }
-}
-
-@media (max-width: 767px) {
-  /* line 34, ../../Arafath/CL/December/234. Finance/HTML/scss/_slider.scss */
-  .slider_area .single_slider .slider_text {
-    margin-top: 90px;
-    margin-bottom: 20px;
-  }
-}
-
-/* line 39, ../../Arafath/CL/December/234. Finance/HTML/scss/_slider.scss */
-.slider_area .single_slider .slider_text h3 {
-  font-family: "Roboto", sans-serif;
-  font-size: 60px;
-  font-weight: 400;
-  line-height: 74px;
-  margin-bottom: 40px;
-  color: #fff;
-}
-
-@media (max-width: 767px) {
-  /* line 39, ../../Arafath/CL/December/234. Finance/HTML/scss/_slider.scss */
-  .slider_area .single_slider .slider_text h3 {
-    font-size: 30px;
-    margin-bottom: 30px;
-    line-height: 40px;
-    padding: 20px;
-  }
-}
-
-@media (min-width: 768px) and (max-width: 991px) {
-  /* line 39, ../../Arafath/CL/December/234. Finance/HTML/scss/_slider.scss */
-  .slider_area .single_slider .slider_text h3 {
-    font-size: 34px;
-    line-height: 1.4;
-    margin-bottom: 35px;
-  }
-}
-
-@media (min-width: 992px) and (max-width: 1200px) {
-  /* line 39, ../../Arafath/CL/December/234. Finance/HTML/scss/_slider.scss */
-  .slider_area .single_slider .slider_text h3 {
-    font-size: 40px;
-    line-height: 1.4;
-  }
-}
-
-@media (min-width: 1200px) and (max-width: 1500px) {
-  /* line 39, ../../Arafath/CL/December/234. Finance/HTML/scss/_slider.scss */
-  .slider_area .single_slider .slider_text h3 {
-    font-size: 60px;
-    font-weight: 400;
-    line-height: 74px;
-  }
 }
 
 /* line 66, ../../Arafath/CL/December/234. Finance/HTML/scss/_slider.scss */
@@ -3064,33 +3099,6 @@ p #amount {
   }
 }
 
-/* line 1, ../../Arafath/CL/December/234. Finance/HTML/scss/_footer.scss */
-.footer {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  height: 3rem;
-  width: 100%;
-  background: #fff;
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  justify-content: space-between;
-  align-items: center;
-  padding: 0 4rem;
-}
-.footer > div:last-child {
-  margin-left: auto;
-}
-.footer > div > span,
-a {
-  margin-left: 10px;
-  font-size: 0.87rem;
-  color: #555;
-  font-weight: 400;
-}
-.footer > div > a:hover {
-  color: #c46900;
-}
 /* line 7, ../../Arafath/CL/December/234. Finance/HTML/scss/_footer.scss */
 .footer p {
   font-family: "Roboto", sans-serif !important;

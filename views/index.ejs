@@ -47,77 +47,35 @@
             <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
         <![endif]-->
 
-    <!-- header-start -->
-    <header>
-        <div class="header-area ">
-            <div id="sticky-header" class="main-header-area">
-                <div class="container-fluid ">
-                    <%- include("./partials/_header.ejs") %>
-                </div>
-            </div>
-        </div>
-    </header>
-
-    <!-- header-end -->
-    <div class="loader">
-        <img src="../img/loader.gif" alt="loading...">
-    </div>
-
-    <!-- slider_area_start -->
+    <!-- Main Section-Start -->
     <div class="slider_area">
-        <div class="single_slider  d-flex align-items-center slider_bg_1">
-            <div class="container">
-                <div class="row align-items-center justify-content-center">
-                    <div class="col-lg-7 col-md-6">
-                        <div class="slider_text">
-                            <h3 data-aos="fade-right">Go Beyond Your
-                                Imagination With Fast & Secure Banking.</h3>
-                            <div class="sldier_btn" data-aos="fade-up" data-aos-delay="500">
-                                <a href="/users/auth/login" class="boxed-btn3">Get started</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-5 col-md-6">
-                        <!-- <div class="payment_form white-bg" data-aos="fade-in-right" data-aos-delay="500">
-                            <div class="info text-center">
-                                <h4>You're Welcome</h4>
-                                <p class="mt-3">Please enter your credentials to Access Your Account.</p>
-                            </div>
-                            <form action="/users/auth/login" method="POST">
-                                <div class="form user-login">
-                                    <div class="row">
-                                        <div class="col-lg-12">
-                                            <div class="single_input">
-                                                <ion-icon  class="icon" name="person"></ion-icon>
-                                                <input type="text" class="form-control" autocomplete="off"
-                                                    autofocus="true" placeholder="Enter your username" name="username">
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-12">
-                                            <div class="single_input">
-                                                <ion-icon class="icon" name="lock-closed"></ion-icon>
-                                                <input type="password" autocomplete="off" class="form-control"
-                                                    placeholder="Securely enter your password" name="password">
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
 
-                                <p>Don't have account yet? <a style="color: #9b3d3d; opacity: 0.8;" href="/users/auth/register">Open Account</a>
-                                </p>
-                                <div class="submit_btn">
-                                    <button class="boxed-btn3" type="submit">Sign In</button>
-                                </div>
-                                <span class="forgot-password">Forgot your password? <a style="color: #9b3d3d; opacity: 0.8;" href="/users//auth/forgot-password">Click here</a></span>
-                            </form>
-                        </div> -->
-                    </div>
+        <!-- header-start -->
+        <%- include("./partials/_header.ejs") %>
+        <!-- header-end -->
+
+        <div class="loader">
+            <img src="../img/loader.gif" alt="loading...">
+        </div>
+
+        <!-- slider_area_start -->
+        <div class="container">
+            <div class="slider_text">
+                <h3 data-aos="fade-right">Go Beyond Your Imagination With Fast & Secure Banking.</h3>
+
+                <div class="sldier_btn" data-aos="fade-up" data-aos-delay="500">
+                    <a href="/users/auth/login" class="boxed-btn3">Get started</a>
                 </div>
-            </div>
+            </div>  
         </div>
         <!-- slider_area_end -->
+        
+        <!-- Footer-Start -->
         <%- include('./partials/_footer.ejs') %>
+        <!-- Footer---End -->
     </div>
+    <!-- Main Section-Ends -->
+
 </body>
 <!-- Core scripts -->
 <script src="/js/pace.js"></script>
@@ -149,14 +107,21 @@
         duration: 1200,
     })
 
+    var index_header = document.querySelector("#index_header");
+    var index_menu = document.querySelector("#index_menu");
+    var lead = document.querySelector(".lead");
+
+    function menu() {
+        index_header.classList.toggle("active");
+        lead.classList.toggle("active");
+    }
+
 </script>
 
 <script src="../js/country.js"></script>
 <script src="../js/signup.js"></script>
 <script src="js/main.js"></script>
 <script src="../js/loader.js"></script>
-
-<!-- /welcome -->
 
 </body>
 
