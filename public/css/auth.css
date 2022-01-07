@@ -10,12 +10,12 @@ body {
 }
 section {
   position: relative;
+  width: 100%;
   min-height: 100vh;
-  background-color: #f8dd30;
-  display: flex;
+  /* background-color: #f8dd30; */
+  /* display: flex;
   justify-content: center;
-  align-items: center;
-  /* padding: 20px; */
+  align-items: center; */
 }
 
 section .container {
@@ -34,6 +34,21 @@ section .container .user {
   width: 100%;
   height: 100%;
   display: flex;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+
+section .container .user .formBx {
+  position: relative;
+  width: 50%;
+  height: 100%;
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  transition: 0.5s;
+  border: 1px solid green;
 }
 
 section .container .user .imgBx {
@@ -53,18 +68,6 @@ section .container .user .imgBx img {
   object-fit: cover;
 }
 
-section .container .user .formBx {
-  position: relative;
-  width: 50%;
-  height: 100%;
-  background: #fff;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  padding: 40px;
-  transition: 0.5s;
-}
 
 section .container .user .formBx form h2 {
   font-size: 18px;
@@ -105,7 +108,6 @@ section .container .user .formBx form input[type="submit"] {
 
 section .container .user .formBx form .signup {
   position: relative;
-  margin-top: 20px;
   font-size: 12px;
   letter-spacing: 1px;
   color: #555;
@@ -128,7 +130,6 @@ section .container .imgBx.forgot-password {
   background-repeat: no-repeat !important;
   background-size: cover !important;
 }
-/* sign up banner content */
 section .container .signupBx > .imgBx {
   display: flex;
   justify-content: center;
@@ -224,6 +225,9 @@ section .container .signupBx .formBx {
 section .container.active .signupBx .formBx {
   left: 0;
   background-color: #fafafa;
+  padding: 3rem 0;
+  height: fit-content;
+  overflow-y: scroll;
 }
 section .container.active .signupBx .formBx > form {
   width: 70%;
@@ -243,7 +247,7 @@ form > div {
 }
 form > div ion-icon {
   position: absolute;
-  bottom: 29%;
+  bottom: 28%;
   left: 14px;
   color: #888;
   z-index: 99;
@@ -277,12 +281,6 @@ form > button {
   grid-column: 1 / -1;
   width: 100%;
   margin-top: 20px;
-  /* background-image: linear-gradient(
-    to right,
-    #f46b45 0%,
-    #eea849 51%,
-    #f46b45 100%
-  ); */
   background-image: linear-gradient(to right, #c46900 0%, #994242 100%);
   padding: 15px 45px;
   text-align: center;
@@ -295,7 +293,6 @@ form > button {
   outline: 0;
   cursor: pointer;
   display: block;
-  border-radius: 10px;
 }
 
 form > button:hover {
@@ -366,20 +363,6 @@ section .container.active .signinBx .imgBx {
   left: -100%;
 }
 
-@media (max-width: 991px) {
-  section .container {
-    max-width: 400px;
-  }
-
-  section .container .imgBx {
-    display: none;
-  }
-
-  section .container .user .formBx {
-    width: 100%;
-  }
-}
-
 .alert.alert-dismissible {
   grid-column: 1 / -1;
   width: 100%;
@@ -422,3 +405,163 @@ section .container.active .signinBx .imgBx {
   background-color: rgb(30, 70, 32);
   color: #fff;
 }
+
+
+/* ========================================================================================>>>>
+
+|\\\\          ////| ||||||||||||||||  |||||||||||||||  ||||||||||||||||           /\
+||\\\\        ////|| ||||||||||||||||  |||||||||||||||  ||||||||||||||||          //\\
+|||\\\\      ////||| ||||              ||||       ||||        ||||               ///\\\
+||||\\\\    ////|||| ||||              ||||       ||||        ||||              ////\\\\
+|||| \\\\  //// |||| ||||||||||||||||  ||||       ||||        ||||             ////  \\\\
+||||  \\\\////  |||| ||||||||||||||||  ||||       ||||        ||||            ////    \\\\
+||||   \\\///   |||| ||||              ||||       ||||        ||||           ////||||||\\\\
+||||    \\//    |||| ||||              ||||       ||||        ||||          ////||||||||\\\\
+||||     \/     |||| ||||||||||||||||  |||||||||||||||  ||||||||||||||||   ////          \\\\
+||||            |||| ||||||||||||||||  |||||||||||||||  ||||||||||||||||  ////            \\\\
+
+||||||||||||||||     ||||        ||||  |||||||||||||||  ||||||||||||||||  ||||             ||||
+||||||||||||||||     ||||        ||||  |||||||||||||||  ||||||||||||||||  ||||             ||||
+||||        ||||     ||||        ||||  ||||             ||||        ||||  ||||             ||||
+||||        ||||     ||||        ||||  ||||             ||||        ||||  ||||             ||||
+||||        ||||     ||||        ||||  |||||||||||||||  ||||||||||||||||  |||||||||||||||||||||
+||||        ||||     ||||        ||||  |||||||||||||||  ||||||||||||||||  |||||||||||||||||||||
+||||     \\\||||     ||||        ||||  ||||             ||||     \\\\                      ||||
+||||      \\||||\    ||||        ||||  ||||             ||||      \\\\                     ||||
+||||||||||||||||\\   ||||||||||||||||  |||||||||||||||  ||||       \\\\   |||||||||||||||||||||      
+||||||||||||||||\\\  ||||||||||||||||  |||||||||||||||  ||||        \\\\  |||||||||||||||||||||
+
+<<<<=============================================================================================*/
+
+/* Desktops and large screens */
+@media (max-width: 1200px) {
+  
+}
+
+/* Small screens and laptops */
+@media (max-width: 1024px) {
+  section .container .user .formBx {
+    z-index: 999;
+    padding: 0;
+  }
+  section .container .user .formBx form .signup {
+    font-size: 0.75rem;
+    letter-spacing: 0.5px;
+  }
+  section .container .user .imgBx {
+    display: none;
+  }
+  section .container .user {
+    justify-content: center;
+    background: linear-gradient(
+      135deg,
+      rgba(68, 18, 16, 0.8) 10%,
+      rgba(75, 59, 2, 0.8) 100%
+    ),
+    url("/img/signup.jpg");
+    background-position: center;
+    background-size: cover;;
+  }
+}
+
+/* Below 980px */
+@media (max-width: 980px) {
+  
+}
+
+/* iPads and tablets */
+@media (max-width: 768px) {
+  section .container .user .formBx {
+    width: 85%;
+  }
+  section .container.active .signupBx .formBx .firstname-field {
+    grid-column: 1 / -1;
+  }
+  section .container.active .signupBx .formBx .lastname-field {
+    grid-column: 1 / -1;
+  }
+  section .container.active .signupBx .formBx .password-field {
+    grid-column: 1 / -1;
+  }
+}
+
+/* Bigger Mobiles */
+@media (max-width: 682px) {
+
+}
+
+/* Mobile devices */
+@media (max-width: 480px) {
+  section .container .user {
+    background: none;
+  }
+  section .container .user .formBx {
+    width: 100%;
+  }
+  label {
+    font-size: 0.85rem;
+    font-stretch: 0.5rem;
+  }
+  input {
+    height: 2.5rem;
+    padding: 0 30px !important;
+  }
+  form > button {
+    margin-top: 20px;
+    height: 2.5rem;
+    padding: 0 20px;
+  }
+  .password-field a {
+    font-size: 0.75rem;
+  }
+  form > div ion-icon {
+    left: 10px;
+  }
+  ::placeholder {
+    font-size: 0.85rem;
+  }
+}
+
+/* Smallest Mobites */
+@media (max-width: 320px) {
+  section .container.active .signupBx .formBx > form {
+    width: 80%;
+}
+  section .container .user .formBx form .signup {
+    font-size: 0.67rem;
+    letter-spacing: 0.5px;
+  }
+  section .container .user .formBx form h2 {
+    font-size: 14px;
+  }
+  input {
+    height: 2.5rem;
+    padding: 0 30px !important;
+  }
+}
+
+/* ========================================================================================>>>>
+
+|\\\\          ////| ||||||||||||||||  |||||||||||||||  ||||||||||||||||           /\
+||\\\\        ////|| ||||||||||||||||  |||||||||||||||  ||||||||||||||||          //\\
+|||\\\\      ////||| ||||              ||||       ||||        ||||               ///\\\
+||||\\\\    ////|||| ||||              ||||       ||||        ||||              ////\\\\
+|||| \\\\  //// |||| ||||||||||||||||  ||||       ||||        ||||             ////  \\\\
+||||  \\\\////  |||| ||||||||||||||||  ||||       ||||        ||||            ////    \\\\
+||||   \\\///   |||| ||||              ||||       ||||        ||||           ////||||||\\\\
+||||    \\//    |||| ||||              ||||       ||||        ||||          ////||||||||\\\\
+||||     \/     |||| ||||||||||||||||  |||||||||||||||  ||||||||||||||||   ////          \\\\
+||||            |||| ||||||||||||||||  |||||||||||||||  ||||||||||||||||  ////            \\\\
+
+||||||||||||||||     ||||        ||||  |||||||||||||||  ||||||||||||||||  ||||             ||||
+||||||||||||||||     ||||        ||||  |||||||||||||||  ||||||||||||||||  ||||             ||||
+||||        ||||     ||||        ||||  ||||             ||||        ||||  ||||             ||||
+||||        ||||     ||||        ||||  ||||             ||||        ||||  ||||             ||||
+||||        ||||     ||||        ||||  |||||||||||||||  ||||||||||||||||  |||||||||||||||||||||
+||||        ||||     ||||        ||||  |||||||||||||||  ||||||||||||||||  |||||||||||||||||||||
+||||     \\\||||     ||||        ||||  ||||             ||||     \\\\                      ||||
+||||      \\||||\    ||||        ||||  ||||             ||||      \\\\                     ||||
+||||||||||||||||\\   ||||||||||||||||  |||||||||||||||  ||||       \\\\   |||||||||||||||||||||      
+||||||||||||||||\\\  ||||||||||||||||  |||||||||||||||  ||||        \\\\  |||||||||||||||||||||
+
+<<<<=============================================================================================*/

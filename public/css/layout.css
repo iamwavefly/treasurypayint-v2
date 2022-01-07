@@ -16,9 +16,20 @@ body {
   overflow-y: auto;
   font-family: "Poppins", sans-serif;
 }
-body::-webkit-scrollbar {
-  width: 5px;
+/* ===========Scroll-Bar============ */
+*::-webkit-scrollbar {
+  width: 0.5rem;
+  scroll-behavior: smooth;
 }
+ 
+*::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+}
+ 
+*::-webkit-scrollbar-thumb {
+  background-color: #eee;
+}
+/* x==========Scroll-Bar===========x */
 *:focus {
   outline: none;
 }
@@ -347,6 +358,11 @@ nav li img {
   overflow-y: auto;
   margin-bottom: 2rem;
 }
+/* ===========Scroll-Bar============ */
+.right::-webkit-scrollbar {
+  display: none;
+}
+/* x==========Scroll-Bar===========x */
 
 /* .header {
   position: relative;
@@ -609,6 +625,7 @@ wrapper__top
   border-radius: 50%;
   padding: 2px;
   object-fit: cover;
+  object-position: top;
   width: 100%;
   height: 100%;
   cursor: pointer;
@@ -1099,7 +1116,7 @@ input {
   justify-content: center;
   align-items: center;
   width: 120px;
-  height: 180px;
+  height: 120px;
   box-sizing: border-box;
   border: 4px solid #23242c1a;
   border-radius: 50%;
@@ -1109,7 +1126,8 @@ input {
 .profile__avatar > img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: cover !important;
+  object-position: top !important;
   border-radius: 50%;
   padding: 2px;
 }
@@ -1873,6 +1891,14 @@ p {
   border: 1px solid #eee;
   border-radius: 20px;
   padding: 20px 30px;
+}
+body::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+}
+ 
+body::-webkit-scrollbar-thumb {
+  background-color: darkgrey;
+  outline: 1px solid slategrey;
 }
 .transactions_grid .table_container > .table_header {
   position: relative;

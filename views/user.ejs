@@ -72,12 +72,12 @@
                         <label for="username">Username</label>
                         <input type="text" name="username" id="username" value="<%= typeof username != 'undefined' ? username : '' %>" placeholder="Choose username" />
                     </div>
-                    <div>
+                    <div class="firstname-field">
                         <ion-icon  class="icon" name="person"></ion-icon>
                         <label for="first_name">First name</label>
                         <input type="text" name="first_name" id="first_name" value="<%= typeof first_name != 'undefined' ? first_name : '' %>" placeholder="First name" />
                     </div>
-                    <div>
+                    <div class="lastname-field">
                         <ion-icon  class="icon" name="person"></ion-icon>
                         <label for="other_name">Last name</label>
                         <input type="text" name="other_name" id="other_name" value="<%= typeof other_name != 'undefined' ? other_name : '' %>" placeholder="Last name" />
@@ -87,12 +87,12 @@
                         <label for="email">Email</label>
                         <input type="email" name="email" id="email" value="<%= typeof email != 'undefined' ? email : '' %>" placeholder="Email" />
                     </div>
-                    <div>
+                    <div class="password-field">
                         <ion-icon name="lock-closed"></ion-icon>
                         <label for="password">Choose password</label>
                         <input type="password" name="password" id="password" placeholder="Choose password" />
                     </div>
-                    <div>
+                    <div class="password-field">
                         <ion-icon name="lock-closed"></ion-icon>
                         <label for="password2">Confirm password</label>
                         <input type="password" name="password2" id="password2" placeholder="Retype password" />
@@ -112,12 +112,6 @@
                     <h2>Treasury PayInt <span>int'l &trade;</span></h2>
                     <p>Move your money with the most trusted online banking without stress or delay.</p>
                 </div>
-                <!-- <div class="features">
-                    <li><ion-icon name="alarm-sharp"></ion-icon> 24/7 uptime services</li>
-                    <li><ion-icon name="wallet-sharp"></ion-icon> 100+ payment sources</li>
-                    <li><ion-icon name="call-sharp"></ion-icon> Deciated support</li>
-                    <li><ion-icon name="globe-sharp"></ion-icon> Most trusted online banking</li>
-                </div> -->
                 <div class="support">
                     <a href="mailto:support@treasurypayint.com">contact@treasurypayint.com</a>
                 </div>
