@@ -60,11 +60,10 @@ section .container .user .formBx {
   height: 100%;
   background: #fff;
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
   transition: 0.5s;
-  overflow-y: scroll !important;
+  overflow-y: scroll;
 }
 
 section .container .user .imgBx {
@@ -128,7 +127,6 @@ section .container .user .formBx form .signup {
   letter-spacing: 1px;
   color: #555;
   text-transform: uppercase;
-  padding-bottom: 3rem;
 }
 
 section .container .user .formBx form .signup a {
@@ -241,7 +239,8 @@ section .container .signupBx .formBx {
 section .container.active .signupBx .formBx {
   left: 0;
   background-color: #fafafa;
-  padding: 5rem 0;
+  padding-top: 4rem;
+  margin-bottom: 5rem !important;
   height: 100vh;
 }
 section .container.active .signupBx .formBx > form {
@@ -295,11 +294,12 @@ section .container.active .signupBx .formBx .username-field,
 }
 form > button {
   grid-column: 1 / -1;
-  width: 100%;
   margin-top: 20px;
-  background-image: linear-gradient(to right, #c46900 0%, #994242 100%);
+  background-image: linear-gradient(
+    to right, 
+    #c46900 0%, 
+    #994242 100%);
   padding: 15px 45px;
-  text-align: center;
   text-transform: uppercase;
   transition: 0.5s;
   background-size: 200% auto;
@@ -308,7 +308,6 @@ form > button {
   border: 0;
   outline: 0;
   cursor: pointer;
-  display: block;
 }
 
 form > button:hover {
@@ -318,7 +317,7 @@ form > button:hover {
 }
 section .container.active .signupBx .formBx > form > p {
   grid-column: 1 / -1;
-  width: 100%;
+  height: 5rem;
 }
 a {
   color: #cf750e !important;
@@ -522,6 +521,12 @@ section .container.active .signinBx .imgBx {
   }
   ::placeholder {
     font-size: 0.85rem;
+  }
+  section .container.active .signupBx .formBx {
+    left: 0;
+    background-color: #fafafa;
+    padding: 5rem 0 8rem !important;
+    height: 100vh;
   }
 }
 

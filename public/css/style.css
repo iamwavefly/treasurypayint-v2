@@ -155,6 +155,7 @@ body {
   width: 100%;
   top: 0;
   font-family: "Roboto", sans-serif;
+  overflow: hidden;
 }
 .slider_area .slider_text h3 {
   font-size: 3.75rem;
