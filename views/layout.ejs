@@ -332,21 +332,16 @@
     <div class="wrapper">
         <div class="sidebar__nav">
             <div class="brand__logo">
-                <img src="/img/layout/treasurypayint-logo.svg" alt="treasury pay   ">
+                <img src="/img/logo.svg" alt="treasury pay">
+                <span>Treasury PayInt</span>
             </div>
-            <!-- <div class="brand__name">
-                Treasury | PayInt
-            </div>
-            <div class="brand__tag">
-                Powered by Treasury PayInt
-            </div> -->
             <nav>
                 <div class="navbar">
                     <li class="<%= page_name === 'Dashboard' && 'active' %>"><ion-icon name="speedometer"></ion-icon><a href="/dashboard">Dashboard</a></li>
                     <div class="line"></div>
 
                     <li class="<%= page_name === 'Wallet' && 'active' %>"><ion-icon name="wallet"></ion-icon><a href="/wallet">Wallet</a></li>
-                    <li class="<%= page_name === 'Withdraw' && 'active' %>"><ion-icon name="swap-horizontal"></ion-icon><a href="https://www.booking.com" >Booking & Rdeservation</a></li>
+                    <li class="<%= page_name === 'Withdraw' && 'active' %>"><ion-icon name="swap-horizontal"></ion-icon><a href="https://www.booking.com" target="_blank">Booking & Rdeservation</a></li>
                     <li class="<%= page_name === 'Services' && 'active' %>"><ion-icon name="bag"></ion-icon><a href="https://www.likelyhire.com" target="_blank">Pay Services</a></li>
 
 
@@ -439,16 +434,15 @@
                     <li><a href="/users/logout">Logout</a></li>
                 </div>
             </div>
-            <div class="menu" id="menu">
-                <img src="/img/icon/menu.png" id="menu_img">
-            </div>
-            <div class="menu close" id="menu_close">
-                <img src="/img/icon/menu-close.png" id="menu_img">
-            </div>
 
-
-
-            </nav>
+           <div class="mobile__toggler">
+                <div class="menu" id="menu">
+                    <img src="/img/layout/menu.png" id="menu_img">
+                </div>
+                <div class="menu close" id="menu_close">
+                    <img src="/img/layout/menu-close.png" id="menu_img">
+                </div>
+           </div>
         </div>
     </div>
 </body>
