@@ -1766,7 +1766,7 @@ p {
   display: grid;
   grid-template-columns: 1fr;
   grid-gap: 20px;
-  padding-bottom: 1rem;
+  padding-bottom: 3rem;
 }
 .transactions_grid .table_header {
   display: flex;
