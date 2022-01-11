@@ -467,15 +467,14 @@ nav li img {
   display: flex;
 }
 .wrapper__top > div {
-  position: relative;
   margin: 0 6px;
   cursor: pointer;
 }
 .wrapper__top .notification-container {
   position: absolute;
-  right: 0;
-  top: 120%;
-  width: 20rem;
+  right: 5%;
+  top: 4.5rem;
+  width: 18rem;
   height: auto;
   min-height: 10rem;
   max-height: 30rem;
@@ -2471,7 +2470,10 @@ select {
 
 /* Smallest Mobites */
 @media (max-width: 320px) {
-  
+  .wrapper__top .notification-container {
+    right: 5%;
+    width: 16rem;
+  }
 }
 
 /* Samsung Fold Mobites */

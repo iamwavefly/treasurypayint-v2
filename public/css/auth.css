@@ -528,6 +528,9 @@ section .container.active .signinBx .imgBx {
     padding: 5rem 0 8rem !important;
     height: 100vh;
   }
+  section .container.active .signupBx .formBx > form > p {
+    height: 8rem;
+  }
 }
 
 /* Smallest Mobites */
