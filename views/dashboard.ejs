@@ -1,27 +1,4 @@
 <div class="container">
-    <!-- <div class="modal_container" data-modal="profile-img">
-        <div class="modal_content">
-            <div class="image_upload_container">
-                <div class="modal_header"><h3>Upload profile image</h3><button onclick="closeModal()"><i class="lni lni-plus"></i></button></div>
-                <input style="position: absolute; visibility: hidden" type="file" id="upload-img-input">
-                <div class="success_msg" id="success-msg"></div>
-                <div class="img-requirement">
-                    <div>
-                        <img src="/img/instruction.svg" alt="instruction">
-                    </div>
-                </div>
-                <div class="img-drop-zone" id="drop-zone">
-                    <i class="lni lni-cloud-upload"></i>
-                    <h3>Drag & drop to upload</h3>
-                    <span class="browse-file" id="browse-file">or browse</span>
-                </div>
-                <div class="modal_footer">
-                    <span id="file_name">Please, upload clear and professional picture showing your face.</span>
-                    <button id="submit-user-image">Upload</button>
-                </div>
-            </div>
-        </div>
-    </div> -->
     <div class="greet">
         <h4 id="welcome">Hi, <%= user?.username %> 👋</h4>
         <p>
@@ -31,7 +8,7 @@
     </div>
     <div class="notice_banner">
         <div class="content">
-            <h2>Congratulations, <%= user?.username %>!</h2>
+            <h2>Congratulations,</h2>
             <p>You're 40% toward getting a free Treasury Card</p>
             <span>Save more and login daily to increase your chance of getting a free Treasury Card</span>
         </div>
@@ -44,35 +21,75 @@
         <div class="cards">
             <div class="card1">
                 <span>Available Balance</span>
-                <h2 style="font-size: 1.35rem;"><%= (user?.available).toLocaleString('en-US', { style: 'currency', currency: 'USD', }) %></h2>
-                <img src="/img/layout/icon-arrow-up.svg" class="icon-arrow-up">
-                <p class="arrow-up"><%= Number(user?.recent_received ? user?.recent_received : 00).toLocaleString('en-US', { style: 'currency', currency: 'USD', }) %> </p>
-                <img src="/img/layout/icon-arrow-down.svg" class="icon-arrow-down">
-                <p class="arrow-down">$0.00</p>
+                <h2 style="font-size: 1.35rem; outline: none !important;"><%= (user?.available).toLocaleString('en-US', { style: 'currency', currency: 'USD', }) %></h2>
+                <div class="card1-content">
+                    <div class="card1-left">
+                        <div class="card1-left-img">
+                            <img src="/img/layout/icon-arrow-up.svg" class="icon-arrow-up">
+                        </div>
+                        <p class="arrow-up"><%= Number(user?.recent_received ? user?.recent_received : 00).toLocaleString('en-US', { style: 'currency', currency: 'USD', }) %> </p>
+                    </div>
+                    <div class="card1-right">
+                        <div class="card1-right-img">
+                            <img src="/img/layout/icon-arrow-down.svg" class="icon-arrow-down">
+                        </div>
+                        <p class="arrow-down">$0.00</p>
+                    </div>
+                </div>
             </div>
             <div class="card1">
                 <span>Pending Fund</span>
-                <h2 style="font-size: 1.35rem;"> <%= (user?.pending).toLocaleString('en-US', { style: 'currency', currency: 'USD', }) %></h2>
-                <img src="/img/layout/icon-arrow-up.svg" class="icon-arrow-up">
-                <p class="arrow-up">$0.00</p>
-                <img src="/img/layout/icon-arrow-down.svg" class="icon-arrow-down">
-                <p class="arrow-down">$0.00</p>
+                <h2 style="font-size: 1.35rem; outline: none !important;"> <%= (user?.pending).toLocaleString('en-US', { style: 'currency', currency: 'USD', }) %></h2>
+                <div class="card1-content">
+                    <div class="card1-left">
+                        <div class="card1-left-img">
+                            <img src="/img/layout/icon-arrow-up.svg" class="icon-arrow-up">
+                        </div>
+                        <p class="arrow-up">$0.00</p>
+                    </div>
+                    <div class="card1-right">
+                        <div class="card1-right-img">
+                            <img src="/img/layout/icon-arrow-down.svg" class="icon-arrow-down">
+                        </div>
+                        <p class="arrow-down">$0.00</p>
+                    </div>
+                </div>
             </div>
             <div class="card1">
                 <span>Reversed Fund</span>
-                <h2 style="font-size: 1.35rem;"><%= (user?.reversed).toLocaleString('en-US', { style: 'currency', currency: 'USD', }) %></h2>
-                <img src="/img/layout/icon-arrow-up.svg" class="icon-arrow-up">
-                <p class="arrow-up">$0.00</p>
-                <img src="/img/layout/icon-arrow-down.svg" class="icon-arrow-down">
-                <p class="arrow-down">$0.00</p>
+                <h2 style="font-size: 1.35rem; outline: none !important;"><%= (user?.reversed).toLocaleString('en-US', { style: 'currency', currency: 'USD', }) %></h2>
+                <div class="card1-content">
+                    <div class="card1-left">
+                        <div class="card1-left-img">
+                            <img src="/img/layout/icon-arrow-up.svg" class="icon-arrow-up">
+                        </div>
+                        <p class="arrow-up">$0.00</p>
+                    </div>
+                    <div class="card1-right">
+                        <div class="card1-right-img">
+                            <img src="/img/layout/icon-arrow-down.svg" class="icon-arrow-down">
+                        </div>
+                        <p class="arrow-down">$0.00</p>
+                    </div>
+                </div>
             </div>
             <div class="card1">
                 <span>Tax Fund</span>
-                <h2 style="font-size: 1.35rem;"><%= (user?.tax).toLocaleString('en-US', { style: 'currency', currency: 'USD', }) %></h2>
-                <img src="/img/layout/icon-arrow-up.svg" class="icon-arrow-up">
-                <p class="arrow-up">$0.00</p>
-                <img src="/img/layout/icon-arrow-down.svg" class="icon-arrow-down">
-                <p class="arrow-down">$0.00</p>
+                <h2 style="font-size: 1.35rem; outline: none !important;"><%= (user?.tax).toLocaleString('en-US', { style: 'currency', currency: 'USD', }) %></h2>
+                <div class="card1-content">
+                    <div class="card1-left">
+                        <div class="card1-left-img">
+                            <img src="/img/layout/icon-arrow-up.svg" class="icon-arrow-up">
+                        </div>
+                        <p class="arrow-up">$0.00</p>
+                    </div>
+                    <div class="card1-right">
+                        <div class="card1-right-img">
+                            <img src="/img/layout/icon-arrow-down.svg" class="icon-arrow-down">
+                        </div>
+                        <p class="arrow-down">$0.00</p>
+                    </div>
+                </div>
             </div>
         </div>
     

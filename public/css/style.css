@@ -719,11 +719,6 @@ h3 {
 
 <<<<=============================================================================================*/
 
-/* Desktops and large screens */
-@media (max-width: 1200px) {
-  
-}
-
 /* Small screens and laptops */
 @media (max-width: 1024px) {
   .slider_area .slider_text h3 {

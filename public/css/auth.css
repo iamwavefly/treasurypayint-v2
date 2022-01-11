@@ -9,14 +9,31 @@ body {
   font-family: "Montserrat", sans-serif;
   overflow: hidden;
 }
+/* Custom Scrollbar Starts Here */
+body::-webkit-scrollbar {
+  display: none;
+}
+::-webkit-scrollbar {
+  width: 5px;
+}
+::-webkit-scrollbar-track {
+  background: #7e7e7e17;
+  box-shadow: inset rgb(190, 190, 190) 0 0 10px;
+}
+::-webkit-scrollbar-thumb {
+  background-image: linear-gradient(
+    120deg,
+    rgba(0, 30, 53, 0.61) 0%,
+    rgba(0, 16, 29, 0.582) 100%
+  );
+  border-radius: 40px;
+}
+/* Custom Scrollbar Starts Here */
+
 section {
   position: relative;
   width: 100%;
   height: 100vh;
-  /* background-color: #f8dd30; */
-  /* display: flex;
-  justify-content: center;
-  align-items: center; */
 }
 
 section .container {
@@ -317,6 +334,7 @@ section .container.active .signupBx .imgBx {
 section .container .signinBx .formBx {
   left: 0%;
   background-color: #fafafa;
+  overflow: hidden !important;
 }
 section .container .signinBx .formBx > form {
   width: 70%;
@@ -432,11 +450,6 @@ section .container.active .signinBx .imgBx {
 
 <<<<=============================================================================================*/
 
-/* Desktops and large screens */
-@media (max-width: 1200px) {
-  
-}
-
 /* Small screens and laptops */
 @media (max-width: 1024px) {
   section .container .user .formBx {
@@ -463,11 +476,6 @@ section .container.active .signinBx .imgBx {
   }
 }
 
-/* Below 980px */
-@media (max-width: 980px) {
-  
-}
-
 /* iPads and tablets */
 @media (max-width: 768px) {
   section .container .user .formBx {
@@ -482,11 +490,6 @@ section .container.active .signinBx .imgBx {
   section .container.active .signupBx .formBx .password-field {
     grid-column: 1 / -1;
   }
-}
-
-/* Bigger Mobiles */
-@media (max-width: 682px) {
-
 }
 
 /* Mobile devices */
