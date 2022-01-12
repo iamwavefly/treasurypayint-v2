@@ -2284,8 +2284,8 @@ select {
     width: 100%;
     height: 100vh;
     background: var(--btn-bg);
-    transition: all 0.2s ease-in;
-    transform: translateY(-130%);
+    transition: all 0.3s ease-in;
+    transform: translateY(-200%);
     padding: 2rem;
     z-index: 999;
   }

@@ -4,7 +4,7 @@
 
 <div class="treasury-card-container">
     <% const date = new Date() %> 
-    <div>
+    <div class="card-container-cards">
         <div>
             <img src="/img/cards/master_card.svg" alt="">
             <div class="card-content">
@@ -17,7 +17,8 @@
                 <span class="card-name">
                     Johnson doe
                 </span>
-                <span class="card-valid"><%= user?.date.getMonth() %>/<%= date.getFullYear() + 2 %></span>
+                <!-- <span class="card-valid"><%= user?.date.getMonth() %>/<%= date.getFullYear() + 2 %></span> -->
+                <span class="card-valid">28/<%= date.getFullYear() + 2 %></span>
             </div>
         </div>
         <div>
@@ -32,7 +33,8 @@
                 <span class="card-name">
                     Johnson doe
                 </span>
-                <span class="card-valid"><%= user?.date.getMonth() %>/<%= date.getFullYear() + 2 %></span>
+                <!-- <span class="card-valid"><%= user?.date.getMonth() %>/<%= date.getFullYear() + 2 %></span> -->
+                <span class="card-valid">28/<%= date.getFullYear() + 2 %></span>
             </div>
         </div>
         <div>
@@ -47,116 +49,123 @@
                 <span class="card-name">
                     Johnson doe
                 </span>
-                <span class="card-valid"><%= user?.date.getMonth() %>/<%= date.getFullYear() + 2 %></span>
+                <!-- <span class="card-valid"><%= user?.date.getMonth() %>/<%= date.getFullYear() + 2 %></span> -->
+                <span class="card-valid">28/<%= date.getFullYear() + 2 %></span>
             </div>
         </div>
 
     </div>
     <div class="treasury-form-container">
-        <div class="header">
-            <h2>Personal information</h2>
-        </div>
-        <form action="" class="card-request-form" id="card-request-form">
-            <div class="form-wrapper">
-                <label for="">First name</label>
-                <input type="text" required placeholder="e.g.Johnson">
+        <form action="" id="card-request-form">
+            <div class="header">
+                <h2>Personal information</h2>
             </div>
-            <div class="form-wrapper">
-                <label for="">Last name</label>
-                <input type="text" required placeholder="e.g. Doe">
-            </div>
-            <div class="form-wrapper">
-                <label for="">House address</label>
-                <select class="form-control" required name="address_line1">
-                    <option selected disabled value="">Select your address</option>
-                    <option value="<%= user.address_line1 %>"><%= user.address_line1 %></option>
-                </select>
-            </div>
-            <div class="form-wrapper">
-                <label for="">City</label>
-                <select class="form-control" required name="city">
-                    <option selected disabled value="">Select your city</option>
-                    <option value="<%= user.city %>"><%= user.city %></option>
-                </select>
-            </div>
-            <div class="form-wrapper">
-                <label for="">State</label>
-                <select class="form-control" required name="state">
-                    <option selected disabled value="">Select your state</option>
-                    <option value="<%= user.state %>"><%= user.state %></option>
-                </select>
-            </div>
-            <div class="form-wrapper">
-                <label for="">Country</label>
-                <select class="form-control" required name="country">
-                    <option selected disabled value="">Select your country</option>
-                    <option value="<%= user.country %>"><%= user.country %></option>
-                  </select>
-            </div>
-            <div class="form-wrapper">
-                <label for="">Gender</label>
-                <select>
-                    <option disabled selected value="">Select your gender</option>
-                    <option value="Male">Male</option>
-                    <option value="Female">Female</option>
-                    <option value="Other">Other</option>
-                </select>
-            </div>
-            <div class="form-wrapper">
-                <label for="">Date of birth</label>
-                <input required type="date" id="card-request-dob">
-            </div>
-            <div class="form-wrapper">
-                <label for="">Email</label>
-                <input required type="email" placeholder="e.g. contact@treasurypayint.com">
-            </div>
-            <div class="form-wrapper">
-                <label for="">Mobile number</label>
-                <input required type="number" placeholder="e.g. +15033746936">
+            <div class="card-request-form">
+                <div class="form-wrapper">
+                    <label for="">First name</label>
+                    <input type="text" required placeholder="e.g.Johnson">
+                </div>
+                <div class="form-wrapper">
+                    <label for="">Last name</label>
+                    <input type="text" required placeholder="e.g. Doe">
+                </div>
+                <div class="form-wrapper">
+                    <label for="">House address</label>
+                    <select class="form-control" required name="address_line1">
+                        <option selected disabled value="">Select your address</option>
+                        <option value="<%= user.address_line1 %>"><%= user.address_line1 %></option>
+                    </select>
+                </div>
+                <div class="form-wrapper">
+                    <label for="">City</label>
+                    <select class="form-control" required name="city">
+                        <option selected disabled value="">Select your city</option>
+                        <option value="<%= user.city %>"><%= user.city %></option>
+                    </select>
+                </div>
+                <div class="form-wrapper">
+                    <label for="">State</label>
+                    <select class="form-control" required name="state">
+                        <option selected disabled value="">Select your state</option>
+                        <option value="<%= user.state %>"><%= user.state %></option>
+                    </select>
+                </div>
+                <div class="form-wrapper">
+                    <label for="">Country</label>
+                    <select class="form-control" required name="country">
+                        <option selected disabled value="">Select your country</option>
+                        <option value="<%= user.country %>"><%= user.country %></option>
+                      </select>
+                </div>
+                <div class="form-wrapper">
+                    <label for="">Gender</label>
+                    <select>
+                        <option disabled selected value="">Select your gender</option>
+                        <option value="Male">Male</option>
+                        <option value="Female">Female</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </div>
+                <div class="form-wrapper">
+                    <label for="">Date of birth</label>
+                    <input required type="date" id="card-request-dob">
+                </div>
+                <div class="form-wrapper">
+                    <label for="">Email</label>
+                    <input required type="email" placeholder="e.g. contact@treasurypayint.com">
+                </div>
+                <div class="form-wrapper">
+                    <label for="">Mobile number</label>
+                    <input required type="number" placeholder="e.g. +15033746936">
+                </div>
             </div>
 
             <div class="header">
                 <h2>Account details & card choice</h2>
             </div>
-            <div class="form-wrapper">
-                <label for="">Account number</label>
-                <input required type="number" placeholder="e.g. 6873297510">
-            </div>
-            <div class="form-wrapper">
-                <label for="">Routine number</label>
-                <input required type="number" placeholder="e.g. 846936479">
-            </div>
-            <div class="form-wrapper">
-                <label for="">Card type</label>
-                <select required name="" id="">
-                    <option selected disabled value="">Select card type</option>
-                    <option value="Visa">Visa</option>
-                    <option value="MasterCard">MasterCard</option>
-                    <option value="Discover">Discover</option>
-                </select>
-            </div>
-            <div class="form-wrapper">
-                <label for="">Alert type</label>
-                <select required name="" id="">
-                    <option selected disabled value="">Select alert type</option>
-                    <option value="Sms">Sms</option>
-                    <option value="Email">Email</option>
-                    <option value="Sms & Email">Sms & Email</option>
-                </select>
-            </div>
-            <div class="form-wrapper">
-                <label for="">Name on card</label>
-                <select required name="" id="">
-                    <option selected disabled value="">Select name format</option>
-                    <option value="Sms">First name then last name</option>
-                    <option value="Email">Last name then first name</option>
-                </select>
+            <div class="card-request-form">
+                <div class="form-wrapper">
+                    <label for="">Account number</label>
+                    <input required type="number" placeholder="e.g. 6873297510">
+                </div>
+                <div class="form-wrapper">
+                    <label for="">Routine number</label>
+                    <input required type="number" placeholder="e.g. 846936479">
+                </div>
+                <div class="form-wrapper">
+                    <label for="">Card type</label>
+                    <select required name="" id="">
+                        <option selected disabled value="">Select card type</option>
+                        <option value="Visa">Visa</option>
+                        <option value="MasterCard">MasterCard</option>
+                        <option value="Discover">Discover</option>
+                    </select>
+                </div>
+                <div class="form-wrapper">
+                    <label for="">Alert type</label>
+                    <select required name="" id="">
+                        <option selected disabled value="">Select alert type</option>
+                        <option value="Sms">Sms</option>
+                        <option value="Email">Email</option>
+                        <option value="Sms & Email">Sms & Email</option>
+                    </select>
+                </div>
+                <div class="form-wrapper">
+                    <label for="">Name on card</label>
+                    <select required name="" id="">
+                        <option selected disabled value="">Select name format</option>
+                        <option value="Sms">First name then last name</option>
+                        <option value="Email">Last name then first name</option>
+                    </select>
+                </div>
             </div>
         </form>
-        <div class="form-wrapper agreement">
-            <span>
-                <input type="checkbox" id="treasury-card-agreement"><label for="treasury-card-agreement">I agree to the terms and conditions.</label> 
-            </span>
+        <span class="agreement">
+            <input type="checkbox" id="treasury-card-agreement">
+            <label for="treasury-card-agreement">I agree to the terms and conditions.</label> 
+        </span>
+        <div class="card-request-btn">
+            <a href="http://treasurypayint.com/dashboard">Cancel</a>
             <button type="submit" id="card-request-button">Send request</button>
         </div>
     </div>
