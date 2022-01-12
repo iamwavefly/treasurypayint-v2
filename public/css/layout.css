@@ -17,6 +17,7 @@ h2 {
 body {
   background: rgb(252, 252, 255);
   font-family: "Poppins", sans-serif;
+  overflow: hidden;
 }
 /* Custom Scrollbar Starts Here */
 body::-webkit-scrollbar {
@@ -117,7 +118,7 @@ input::placeholder {
   top: 20px;
   left: 8%;
   background-size: cover;
-  margin: auto auto;
+  margin: 1rem auto;
 }
 .brand__logo img {
   width: auto;
@@ -178,6 +179,9 @@ nav {
   transition: all 0.4s ease;
   border-radius: 5px;
 }
+.navbar li:last-child {
+  margin-bottom: 2rem;
+} 
 .navbar li:hover {
   background-color: rgba(2, 16, 37, 0.04);
 }
@@ -329,10 +333,10 @@ nav li img {
   min-width: 100%;
   display: flex;
   flex-direction: column;
-  height: auto;
+  height: 100vh;
   margin-left: auto;
-  overflow-y: auto;
   margin-bottom: 2rem;
+  overflow: hidden;
 }
 
 .header {
@@ -1537,13 +1541,8 @@ p {
   .alert-img img {
     display: none;
   }
-  .right {
-    height: auto;
-    min-height: 130rem;
-  }
   .notice_banner {
     grid-template-columns: 1fr;
-    /* grid-template-rows: 40% 60%; */
     width: 100%;
     width: 100%;
     min-height: 20rem;
@@ -2085,21 +2084,22 @@ p {
   margin-top: 0;
   background-color: transparent;
 }
-.password-passcode-container
-  > .password-form-wrapper
-  > div:first-child
-  > input {
-  padding-left: 4.5rem;
-}
 .password-passcode-container > .password-form-wrapper input,
 select {
-  border: 1px solid #f1f1f1;
-  height: 3rem;
   width: 100%;
-  color: #888;
-  border-radius: 4px;
-  margin-top: 10px;
+  height: 2.5rem;
   padding: 0 15px;
+  margin-top: 10px;
+  margin-bottom: 0 !important;
+  background-color: #f1f1f1;
+  color: #555;
+  border: 1px solid #f1f1f1;
+  border-radius: 0 !important;
+  transition: 0.5s;
+}
+.password-passcode-container > .password-form-wrapper input:focus,
+.password-passcode-container > .password-form-wrapper select:focus {
+  border: 1px solid #c46900;
 }
 .password-passcode-container > .password-form-wrapper label {
   color: #555;
@@ -2113,7 +2113,6 @@ select {
   outline: none;
   padding: 10px;
   border: none;
-  border-radius: 10px;
   cursor: pointer;
   transition: all 0.4s ease-in;
 }

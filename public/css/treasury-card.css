@@ -27,7 +27,9 @@ button#card-request-button:hover {
   transform: scale(1.1);
   background: linear-gradient(to bottom, #994242, #c46900);
 }
-
+.treasury-card-content {
+  overflow-y: scroll;
+}
 .treasury-card-container {
   padding: 0 40px;
   display: grid;
@@ -36,7 +38,7 @@ button#card-request-button:hover {
   width: 100%;
   height: auto;
   position: relative;
-  overflow-x: hidden;
+  padding-bottom: 3rem;
 }
 .treasury-card-container .card-container-cards {
   position: relative;
@@ -345,27 +347,46 @@ button#card-request-button:hover {
 
 /* Mobile devices */
 @media (max-width: 480px) {
-  
-}
-
-@media (max-width: 405px) {
-  /* .main-header {
+  .main-header {
     justify-content: center;
     padding: 2rem 0;
   }
-  .treasury-card-container {
-    padding: 0;
-    justify-content: center;
-  }
   .treasury-card-container > div:first-child {
-    grid-template-rows: repeat(3, 9rem);
-    width: 15.5rem;
     margin: auto;
   }
   .treasury-card-container > .treasury-form-container {
-    width: 15.5rem;
+    width: 20rem;
     margin: auto;
-  } */
+  }
+}
+
+@media (max-width: 405px) {
+  .treasury-card-container {
+    padding: 0 0 3rem;
+  }
+  .treasury-card-container > div:first-child {
+    grid-template-rows: repeat(3, 10rem);
+    width: 17rem;
+  }
+  .treasury-card-container > div:first-child .card-content > .card-number {
+    top: 3.2rem;
+    right: 1.9rem;
+    font-size: 1.4rem;
+  }
+  .treasury-card-container > div:first-child .card-content > .card-valid {
+    top: 7.5rem;
+    right: 1.8rem;
+    font-size: 0.65rem;
+  }
+  .treasury-card-container > .treasury-form-container {
+    width: 17rem;
+  }
+  .treasury-card-container .treasury-form-container .form-wrapper > input {
+    width: 88.8%;
+  }
+  .treasury-card-container .treasury-form-container .form-wrapper > select {
+    width: 88.8%;
+  }
   .card-request-btn {
     flex-direction: column;
     align-items: flex-start;
@@ -382,23 +403,24 @@ button#card-request-button:hover {
 
 /* Smallest Mobites */
 @media (max-width: 320px) {
-  .main-header {
-    justify-content: center;
-    padding: 2rem 0;
-  }
   .treasury-card-container {
-    padding: 0;
     justify-content: center;
   }
   .treasury-card-container > div:first-child {
     grid-template-rows: repeat(3, 9rem);
     width: 15.5rem;
-    margin: auto;
+  }
+  .treasury-card-container > div:first-child .card-content > .card-number {
+    top: 2.95rem;
+    right: 2.1rem;
+    font-size: 1.2rem;
+  }
+  .treasury-card-container > div:first-child .card-content > .card-valid {
+    top: 6.65rem;
+    font-size: 0.55rem;
   }
   .treasury-card-container > .treasury-form-container {
     width: 15.5rem;
-    margin: auto;
-    border: 1px solid blue;
     padding: 0 1rem 1.5rem;
   }
   .treasury-card-container .treasury-form-container .form-wrapper > input {
