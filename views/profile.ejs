@@ -1,184 +1,186 @@
-<div class="profile-container">
+<div class="profile-content">
+  <div class="profile-container">
 
-  <div class="profile-info">
-    <div class="profile-avatar">
-      <img src="<%= user?.profile %>" alt="<%= user?.username %> ">
-    </div>
-    <div class="profile-name">
-      <h2><%= user?.fullname %> </h2>
-      <span><%= 'Joined: ' + moment(user?.date).fromNow() %> </span>
-      <span class="profile-status"> <div class="<%= user?.online_status ? 'online' : 'offline' %>"></div><span><%= user?.online_status ? 'Online' : 'Offline' %></span> </span>
-    </div>
-    <div>
-      <li>
-        <span>Username</span>
-        <div>
-          <%= user?.username %>
-        </div>
-      </li>
-      <li>
-        <span>Account number</span>
-        <div>
-          <%= user?.user_id %>
-        </div>
-      </li>
-      <li>
-        <span>Routing number</span>
-        <div>
-          <%= user?.routing_number %>
-        </div>
-      </li>
-      <li>
-        <span>Email</span>
-        <div>
-          <%= user?.email.length > 25 ? user?.email.substr(0, 25) + "..." : user?.email %>
-        </div>
-      </li>
-      <li>
-        <span>Mobile number</span>
-        <div>
-          <%= "+" + user?.country_code + user?.number %>
-        </div>
-      </li>
-    </div>
-  </div>
-  <div class="profile-ticket">
-    <div class="header">
-      <h2>Settings</h2>
-    </div>
-    <h2><%- include('./partials/message'); %></h2>
-    <div class="tabs">
-      <div class="tablinks tab active" onclick="openPanel(event, 'profile-setting')">
-        <button for="profile-setting-tab">Profile setting</button>
+    <div class="profile-info">
+      <div class="profile-avatar">
+        <img src="<%= user?.profile %>" alt="<%= user?.username %> ">
       </div>
-      <div class="tablinks tab" onclick="openPanel(event, 'security')">
-        <button for="security">Privacy & Security</button>
+      <div class="profile-name">
+        <h2><%= user?.fullname %> </h2>
+        <span><%= 'Joined: ' + moment(user?.date).fromNow() %> </span>
+        <span class="profile-status"> <div class="<%= user?.online_status ? 'online' : 'offline' %>"></div><span><%= user?.online_status ? 'Online' : 'Offline' %></span> </span>
       </div>
-      <div class="tab">
-        <button class="tablinks" for="notifications">Notifications</button>
-      </div>
-      <div class="tab">
-        <button class="tablinks" for="usage">Usage & statistic</button>
+      <div>
+        <li>
+          <span>Username</span>
+          <div>
+            <%= user?.username %>
+          </div>
+        </li>
+        <li>
+          <span>Account number</span>
+          <div>
+            <%= user?.user_id %>
+          </div>
+        </li>
+        <li>
+          <span>Routing number</span>
+          <div>
+            <%= user?.routing_number %>
+          </div>
+        </li>
+        <li>
+          <span>Email</span>
+          <div>
+            <%= user?.email.length > 25 ? user?.email.substr(0, 25) + "..." : user?.email %>
+          </div>
+        </li>
+        <li>
+          <span>Mobile number</span>
+          <div>
+            <%= "+" + user?.country_code + user?.number %>
+          </div>
+        </li>
       </div>
     </div>
-    <!-- tab content 👇 -->
-    <form class="profile-setting tab-panel grid-system" action="/users/profile/update/<%= user?.id %>?_method=PUT" method="post" id="profile-setting" style="display: grid;">
-      <div class="profile-setting-content">
-        <div class="form-wrapper">
-          <label for="">Full Name</label>
-          <div class="form-wrapper-content">
-            <ion-icon name="person"></ion-icon>
-            <input type="text" readonly value="<%= user?.fullname %>">
-          </div>
-        </div>  
-        <div class="form-wrapper">
-          <label for="">Email</label>
-          <div class="form-wrapper-content">
-            <ion-icon name="mail"></ion-icon>
-            <input type="email" readonly value="<%= user?.email %>">
-          </div>
-        </div>  
-        <div class="form-wrapper">
-          <label for="">Daily Limit</label>
-          <div class="form-wrapper-content">
-            <ion-icon name="hand-right"></ion-icon>
-            <input type="text" readonly value="$1,000.00">
-          </div>
-        </div>  
-        <div class="form-wrapper">
-          <label for="">Gender</label>
-          <div class="form-wrapper-content">
-            <ion-icon name="transgender"></ion-icon>
-            <input type="text" readonly value="<%= user?.gender %>">
-          </div>
+    <div class="profile-ticket">
+      <div class="header">
+        <h2>Settings</h2>
+      </div>
+      <h2><%- include('./partials/message'); %></h2>
+      <div class="tabs">
+        <div class="tablinks tab active" onclick="openPanel(event, 'profile-setting')">
+          <button for="profile-setting-tab">Profile setting</button>
         </div>
-        <div class="form-wrapper">
-          <label for="">Date of Birth</label>
-          <div class="form-wrapper-content">
-            <ion-icon name="calendar"></ion-icon>
-            <input type="text" readonly value="<%= user?.dob %>">
-          </div>
+        <div class="tablinks tab" onclick="openPanel(event, 'security')">
+          <button for="security">Privacy & Security</button>
+        </div>
+        <div class="tab">
+          <button class="tablinks" for="notifications">Notifications</button>
+        </div>
+        <div class="tab">
+          <button class="tablinks" for="usage">Usage & statistic</button>
         </div>
       </div>
-
-      <div class="profile-setting-content">
-        <div class="form-wrapper">
-          <label for="">Address</label>
-          <div class="form-wrapper-content">
-            <ion-icon name="location"></ion-icon>
-            <input type="text" readonly name="address_line1" required value="<%= user?.address_line1 %> ">
+      <!-- tab content 👇 -->
+      <form class="profile-setting tab-panel grid-system" action="/users/profile/update/<%= user?.id %>?_method=PUT" method="post" id="profile-setting" style="display: grid;">
+        <div class="profile-setting-content">
+          <div class="form-wrapper">
+            <label for="">Full Name</label>
+            <div class="form-wrapper-content">
+              <ion-icon name="person"></ion-icon>
+              <input type="text" readonly value="<%= user?.fullname %>">
+            </div>
+          </div>  
+          <div class="form-wrapper">
+            <label for="">Email</label>
+            <div class="form-wrapper-content">
+              <ion-icon name="mail"></ion-icon>
+              <input type="email" readonly value="<%= user?.email %>">
+            </div>
+          </div>  
+          <div class="form-wrapper">
+            <label for="">Daily Limit</label>
+            <div class="form-wrapper-content">
+              <ion-icon name="hand-right"></ion-icon>
+              <input type="text" readonly value="$1,000.00">
+            </div>
+          </div>  
+          <div class="form-wrapper">
+            <label for="">Gender</label>
+            <div class="form-wrapper-content">
+              <ion-icon name="transgender"></ion-icon>
+              <input type="text" readonly value="<%= user?.gender %>">
+            </div>
           </div>
-        </div>  
-        <div class="form-wrapper">
-          <label for="">City</label>
-          <div class="form-wrapper-content">
-            <ion-icon name="navigate-circle"></ion-icon>
-            <input type="text" readonly name="city" required value="<%= user?.city %> ">
+          <div class="form-wrapper">
+            <label for="">Date of Birth</label>
+            <div class="form-wrapper-content">
+              <ion-icon name="calendar"></ion-icon>
+              <input type="text" readonly value="<%= user?.dob %>">
+            </div>
           </div>
         </div>
-        <div class="form-wrapper">
-          <label for="">State</label>
-          <div class="form-wrapper-content">
-            <ion-icon name="navigate"></ion-icon>
-            <input type="text" readonly name="state" required value="<%= user?.state %> ">
+  
+        <div class="profile-setting-content">
+          <div class="form-wrapper">
+            <label for="">Address</label>
+            <div class="form-wrapper-content">
+              <ion-icon name="location"></ion-icon>
+              <input type="text" readonly name="address_line1" required value="<%= user?.address_line1 %> ">
+            </div>
+          </div>  
+          <div class="form-wrapper">
+            <label for="">City</label>
+            <div class="form-wrapper-content">
+              <ion-icon name="navigate-circle"></ion-icon>
+              <input type="text" readonly name="city" required value="<%= user?.city %> ">
+            </div>
           </div>
-        </div> 
-        <div class="form-wrapper">
-          <label for="">Country</label>
-          <div class="form-wrapper-content">
-            <ion-icon name="earth"></ion-icon>
-            <input type="text" readonly name="country" required value="<%= user?.country %> ">
-          </div>
-        </div> 
-        <div class="form-wrapper">
-          <label for="">Mobile Number</label>
-          <div class="form-wrapper-content">
-            <ion-icon name="call"></ion-icon>
-            <input type="text" readonly name="number" value="<%= "+" + user?.country_code + user?.number %> ">
-          </div>
-        </div> 
+          <div class="form-wrapper">
+            <label for="">State</label>
+            <div class="form-wrapper-content">
+              <ion-icon name="navigate"></ion-icon>
+              <input type="text" readonly name="state" required value="<%= user?.state %> ">
+            </div>
+          </div> 
+          <div class="form-wrapper">
+            <label for="">Country</label>
+            <div class="form-wrapper-content">
+              <ion-icon name="earth"></ion-icon>
+              <input type="text" readonly name="country" required value="<%= user?.country %> ">
+            </div>
+          </div> 
+          <div class="form-wrapper">
+            <label for="">Mobile Number</label>
+            <div class="form-wrapper-content">
+              <ion-icon name="call"></ion-icon>
+              <input type="text" readonly name="number" value="<%= "+" + user?.country_code + user?.number %> ">
+            </div>
+          </div> 
+        </div>
+        <div class="profile-setting-btn">
+          <button class="setting-btn-outline" id="profile-edit-btn"> Edit</button>
+          <button class="setting-btn" id="profile-submit-btn"> Save</button>
+        </div>
+      </form>
+  
+      <div class="security tab-panel" id="security">
+        <div class="security-content">
+          <div class="form-wrapper">
+            <div class="form-wrapper-content">
+              <label for="">Password</label>
+              <p>Change your password to a new one.</p>
+            </div>
+            <button id="change-password" class="setting-btn btn-right">Change Password</button>
+          </div> 
+          <div class="form-wrapper">
+            <div class="form-wrapper-content">
+              <label for="">Transfer Access ID</label>
+              <p>Change your old TAI to a new TAI.</p>
+            </div>
+            <button class="setting-btn btn-right">Request TAI</button>
+          </div> 
+          <div class="form-wrapper">
+            <div class="form-wrapper-content">
+              <label for="">Login Two-Factor Verification</label>
+              <p>On</p>
+            </div>
+            <button class="setting-btn btn-right">Turn Off</button>
+          </div> 
+          <div class="form-wrapper">
+            <div class="form-wrapper-content">
+              <label for="">Delete Account</label>
+              <p>When you delete your Treasury Payint account, you won't be able to recover it again.</p>
+            </div>
+            <button class="setting-btn btn-right">Delete my account</button>
+          </div> 
+        </div>
       </div>
-      <div class="profile-setting-btn">
-        <button class="setting-btn-outline" id="profile-edit-btn"> Edit</button>
-        <button class="setting-btn" id="profile-submit-btn"> Save</button>
+  
+      <div class="profile-setting tab-panel" id="privacy-setting">
+        Privacy Setting
       </div>
-    </form>
-
-    <div class="security tab-panel" id="security">
-      <div class="security-content">
-        <div class="form-wrapper">
-          <div class="form-wrapper-content">
-            <label for="">Password</label>
-            <p>Change your password to a new one.</p>
-          </div>
-          <button id="change-password" class="setting-btn btn-right">Change Password</button>
-        </div> 
-        <div class="form-wrapper">
-          <div class="form-wrapper-content">
-            <label for="">Transfer Access ID</label>
-            <p>Change your old TAI to a new TAI.</p>
-          </div>
-          <button class="setting-btn btn-right">Request TAI</button>
-        </div> 
-        <div class="form-wrapper">
-          <div class="form-wrapper-content">
-            <label for="">Login Two-Factor Verification</label>
-            <p>On</p>
-          </div>
-          <button class="setting-btn btn-right">Turn Off</button>
-        </div> 
-        <div class="form-wrapper">
-          <div class="form-wrapper-content">
-            <label for="">Delete Account</label>
-            <p>When you delete your Treasury Payint account, you won't be able to recover it again.</p>
-          </div>
-          <button class="setting-btn btn-right">Delete my account</button>
-        </div> 
-      </div>
-    </div>
-
-    <div class="profile-setting tab-panel" id="privacy-setting">
-      Privacy Setting
     </div>
   </div>
 </div>

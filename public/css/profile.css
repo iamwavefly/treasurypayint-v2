@@ -1,11 +1,15 @@
+.profile-content {
+  overflow-y: scroll;
+}
 .profile-container {
+  padding: 0 40px;
   display: grid;
   grid-template-columns: 20rem 1fr;
-  grid-gap: 20px;
+  grid-gap: 30px;
   width: 100%;
-  background-color: #f7f7f7;
   height: auto;
-  max-height: 100vh;
+  position: relative;
+  padding-bottom: 3rem;
 }
 .profile-container > .profile-info {
   background-color: #ffff;
@@ -127,7 +131,7 @@
 .profile-container ion-icon {
   position: absolute;
   left: 3%;
-  bottom: 25%;
+  bottom: 17%;
   margin-right: 5px;
   font-size: 0.87rem;
   border-radius: 3px;
@@ -138,21 +142,44 @@
   font-size: 1.37rem;
 }
 .profile-ticket > .tabs {
-  display: grid;
+  /* display: grid;
   grid-template-columns: repeat(5, 1fr);
   grid-gap: 20px;
   align-items: center;
   height: 4rem;
+  border-bottom: 1px solid #eee; */
+
+  
+  display: flex;
+  /* justify-content: space-between; */
+  /* grid-template-columns: repeat(4, 1fr); */
+  /* grid-gap: 20px; */
+  align-items: center;
+  height: 4rem;
   border-bottom: 1px solid #eee;
+  overflow-x: auto;
+  /* width: 100%; */
+  flex-wrap: nowrap;
+  overflow: hidden;
+  overflow-x: auto;
 }
 .profile-ticket > .tabs > .tab {
-  width: 100%;
+  margin: 0 1.3rem;
+}
+.profile-ticket > .tabs > .tab:first-child{
+  margin-left: 0;
+}
+.profile-ticket > .tabs > .tab:last-child {
+  margin-right: 0;
+}
+.profile-ticket > .tabs > .tab {
+  /* width: 100%;
   height: 100%;
   display: grid;
   align-items: center;
   transition: all 0.4s ease;
   cursor: pointer;
-  border-bottom: 1px solid transparent;
+  border-bottom: 1px solid transparent; */
 }
 .profile-ticket > .tabs > .tab:hover {
   border-bottom: 1px solid #c46900;
@@ -183,11 +210,16 @@
   animation: fadeEffect 1s; /* Fading effect takes 1 second */
 }
 .form-wrapper > div > input {
-  min-width: 100%;
-  height: 3rem;
-  padding: 0 35px;
+  width: 100%;
+  height: 2.5rem;
+  padding: 0 30px;
+  margin-top: 10px;
+  margin-bottom: 0 !important;
   background-color: #f1f1f1;
-  margin-top: 5px;
+  color: #555;
+  border: 1px solid #f1f1f1;
+  border-radius: 0 !important;
+  transition: 0.5s;
 }
 /* Go from zero to full opacity */
 @keyframes fadeEffect {
@@ -201,11 +233,10 @@
 
 /* TGN Styles */
 #profile-setting {
-  padding: 2rem 2rem 5rem;
-  position: relative;
+  padding: 2rem 0;
 }
 .grid-system {
-  grid-template-columns: repeat(2, 1fr) !important;
+  grid-template-columns: repeat(2, 1fr);
   gap: 30px !important;
 }
 label {
@@ -222,9 +253,6 @@ input {
   padding: 8px 4px;
   font-size: 0.87rem;
   transition: all 0.4s ease;
-}
-.profile-setting-content:first-child {
-  border-right: 1px solid #eee;
 }
 .form-wrapper {
   position: relative;
@@ -302,3 +330,132 @@ input {
 .security > div > .form-wrapper > div > p {
   color: #888;
 }
+
+
+/* ========================================================================================>>>>
+
+|\\\\          ////| ||||||||||||||||  |||||||||||||||  ||||||||||||||||           /\
+||\\\\        ////|| ||||||||||||||||  |||||||||||||||  ||||||||||||||||          //\\
+|||\\\\      ////||| ||||              ||||       ||||        ||||               ///\\\
+||||\\\\    ////|||| ||||              ||||       ||||        ||||              ////\\\\
+|||| \\\\  //// |||| ||||||||||||||||  ||||       ||||        ||||             ////  \\\\
+||||  \\\\////  |||| ||||||||||||||||  ||||       ||||        ||||            ////    \\\\
+||||   \\\///   |||| ||||              ||||       ||||        ||||           ////||||||\\\\
+||||    \\//    |||| ||||              ||||       ||||        ||||          ////||||||||\\\\
+||||     \/     |||| ||||||||||||||||  |||||||||||||||  ||||||||||||||||   ////          \\\\
+||||            |||| ||||||||||||||||  |||||||||||||||  ||||||||||||||||  ////            \\\\
+
+||||||||||||||||     ||||        ||||  |||||||||||||||  ||||||||||||||||  ||||             ||||
+||||||||||||||||     ||||        ||||  |||||||||||||||  ||||||||||||||||  ||||             ||||
+||||        ||||     ||||        ||||  ||||             ||||        ||||  ||||             ||||
+||||        ||||     ||||        ||||  ||||             ||||        ||||  ||||             ||||
+||||        ||||     ||||        ||||  |||||||||||||||  ||||||||||||||||  |||||||||||||||||||||
+||||        ||||     ||||        ||||  |||||||||||||||  ||||||||||||||||  |||||||||||||||||||||
+||||     \\\||||     ||||        ||||  ||||             ||||     \\\\                      ||||
+||||      \\||||\    ||||        ||||  ||||             ||||      \\\\                     ||||
+||||||||||||||||\\   ||||||||||||||||  |||||||||||||||  ||||       \\\\   |||||||||||||||||||||      
+||||||||||||||||\\\  ||||||||||||||||  |||||||||||||||  ||||        \\\\  |||||||||||||||||||||
+
+<<<<=============================================================================================*/
+
+/* Desktops and large screens */
+@media (max-width: 1200px) {
+  
+}
+
+/* Small screens and laptops */
+@media (max-width: 1024px) {
+  
+}
+
+@media (max-width: 975px) {
+
+}
+
+/* iPad Pro */
+@media (max-width: 914px) {
+  
+}
+
+@media (max-width: 876px) {
+  .grid-system {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 860px) {
+
+}
+
+@media (max-width: 800px) {
+  .profile-setting-content {
+    border: 1px solid red;
+  }
+}
+
+/* iPads and tablets */
+@media (max-width: 767px) {
+ 
+}
+
+@media (max-width: 703px) {
+ 
+}
+
+/* Bigger Mobiles */
+@media (max-width: 682px) {
+ 
+}
+
+@media (max-width: 600px) {
+  
+}
+
+@media (max-width: 576px) {
+  
+}
+
+/* Mobile devices */
+@media (max-width: 480px) {
+ 
+}
+
+@media (max-width: 405px) {
+  
+}
+
+/* Smallest Mobites */
+@media (max-width: 320px) {
+ 
+}
+
+/* Samsung Fold Mobites */
+@media (max-width: 280px) {
+  
+}
+
+/* ========================================================================================>>>>
+
+|\\\\          ////| ||||||||||||||||  |||||||||||||||  ||||||||||||||||           /\
+||\\\\        ////|| ||||||||||||||||  |||||||||||||||  ||||||||||||||||          //\\
+|||\\\\      ////||| ||||              ||||       ||||        ||||               ///\\\
+||||\\\\    ////|||| ||||              ||||       ||||        ||||              ////\\\\
+|||| \\\\  //// |||| ||||||||||||||||  ||||       ||||        ||||             ////  \\\\
+||||  \\\\////  |||| ||||||||||||||||  ||||       ||||        ||||            ////    \\\\
+||||   \\\///   |||| ||||              ||||       ||||        ||||           ////||||||\\\\
+||||    \\//    |||| ||||              ||||       ||||        ||||          ////||||||||\\\\
+||||     \/     |||| ||||||||||||||||  |||||||||||||||  ||||||||||||||||   ////          \\\\
+||||            |||| ||||||||||||||||  |||||||||||||||  ||||||||||||||||  ////            \\\\
+
+||||||||||||||||     ||||        ||||  |||||||||||||||  ||||||||||||||||  ||||             ||||
+||||||||||||||||     ||||        ||||  |||||||||||||||  ||||||||||||||||  ||||             ||||
+||||        ||||     ||||        ||||  ||||             ||||        ||||  ||||             ||||
+||||        ||||     ||||        ||||  ||||             ||||        ||||  ||||             ||||
+||||        ||||     ||||        ||||  |||||||||||||||  ||||||||||||||||  |||||||||||||||||||||
+||||        ||||     ||||        ||||  |||||||||||||||  ||||||||||||||||  |||||||||||||||||||||
+||||     \\\||||     ||||        ||||  ||||             ||||     \\\\                      ||||
+||||      \\||||\    ||||        ||||  ||||             ||||      \\\\                     ||||
+||||||||||||||||\\   ||||||||||||||||  |||||||||||||||  ||||       \\\\   |||||||||||||||||||||      
+||||||||||||||||\\\  ||||||||||||||||  |||||||||||||||  ||||        \\\\  |||||||||||||||||||||
+
+<<<<=============================================================================================*/
