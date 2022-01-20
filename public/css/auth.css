@@ -257,15 +257,34 @@ form > h2 {
   display: flex;
   justify-content: space-between;
 }
+
 form > div {
   position: relative;
+  width: 100%;
 }
-form > div ion-icon {
+form > div .left-icon {
   position: absolute;
   bottom: 28%;
   left: 14px;
   color: #888;
   z-index: 99;
+}
+form > div .right-icon {
+  position: absolute;
+  bottom: 28%;
+  right: 14px;
+  color: #888;
+  z-index: 99;
+  cursor: pointer;
+}
+.eye-off1 {
+  display: none;
+}
+.eye-off2 {
+  display: none;
+}
+.eye-off3 {
+  display: none;
 }
 label {
   color: #555;
@@ -337,6 +356,7 @@ section .container .signinBx .formBx {
   overflow: hidden !important;
 }
 section .container .signinBx .formBx > form {
+  position: relative;
   width: 70%;
   height: auto;
   display: grid;

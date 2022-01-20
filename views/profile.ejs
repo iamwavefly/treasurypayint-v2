@@ -48,18 +48,20 @@
         <h2>Settings</h2>
       </div>
       <h2><%- include('./partials/message'); %></h2>
-      <div class="tabs">
-        <div class="tablinks tab active" onclick="openPanel(event, 'profile-setting')">
-          <button for="profile-setting-tab">Profile setting</button>
-        </div>
-        <div class="tablinks tab" onclick="openPanel(event, 'security')">
-          <button for="security">Privacy & Security</button>
-        </div>
-        <div class="tab">
-          <button class="tablinks" for="notifications">Notifications</button>
-        </div>
-        <div class="tab">
-          <button class="tablinks" for="usage">Usage & statistic</button>
+      <div class="swipe-tab">
+        <div class="tabs">
+          <div class="tablinks tab active" onclick="openPanel(event, 'profile-setting')">
+            <button for="profile-setting-tab">Profile setting</button>
+          </div>
+          <div class="tablinks tab" onclick="openPanel(event, 'security')">
+            <button for="security">Privacy & Security</button>
+          </div>
+          <div class="tab">
+            <button class="tablinks" for="notifications">Notifications</button>
+          </div>
+          <div class="tab">
+            <button class="tablinks" for="usage">Usage & statistic</button>
+          </div>
         </div>
       </div>
       <!-- tab content 👇 -->

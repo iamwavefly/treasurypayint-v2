@@ -98,13 +98,13 @@ body {
 #index_header .logo {
   width: 15rem;
   height: 5rem;
-}
-#index_header .logo .row {
   justify-content: start;
-  line-height: 5rem;
+}
+#index_header .logo a {
+  width: 100%;
 }
 #index_header .logo img {
-  width: 3rem;
+  width: 100%;
 }
 .lead {
   color: #f5f5f5;
@@ -740,11 +740,11 @@ h3 {
   }
   #index_header {
     position: absolute;
-    transition: 0.5s ease;
     overflow: hidden;
+    transition: 0.5s;
   }
   #index_header.active {
-    background-color: #f5f5f5;
+    background: #f5f5f5;
     height: auto;
   }
   #index_header .row {
@@ -753,19 +753,13 @@ h3 {
     align-items: flex-start;
   }
   #index_header .logo {
-    width: auto;
     margin-bottom: 1.5rem;
-    height: 4rem;
+    flex-direction: row !important;
+    align-items: center;
+    padding: 0 !important;
   }
   .lead.active {
     color: #666;
-  }
-  #index_header .logo img {
-    margin-top: 1rem;
-  }
-  #index_header .logo .row {
-    flex-direction: row !important;
-    justify-content: start;
   }
   #index_header #navigation > li {
     margin-left: 0.5rem;
@@ -776,12 +770,14 @@ h3 {
   }
   #index_header #navigation > li > a {
     color: #333;
+    font-size: 1.2rem;
   } 
   .Appointment {
     display: block;
   }
   .Appointment a {
     margin-bottom: 1rem;
+    font-size: 1.2rem;
   }
   .Appointment .phone_num {
     margin-left: 0.5rem;
@@ -829,8 +825,17 @@ h3 {
     font-size: 2rem;
     line-height: 45px;
   }
+  #index_header .logo {
+    width: 12rem;
+  }
   .footer {
     padding: 0 !important;
+  }
+  #index_header #navigation > li > a {
+    font-size: 1rem;
+  }
+  .Appointment a {
+    font-size: 1rem;
   }
 }
 

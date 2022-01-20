@@ -337,10 +337,9 @@
 
     <div class="wrapper">
         <div class="sidebar__nav">
-            <div class="brand__logo">
-                <img src="/img/logo.svg" alt="treasury pay">
-                <span>Treasury PayInt</span>
-            </div>
+            <a href="/dashboard" class="brand__logo">
+                <img src="/img/treasurypayint logo.png" alt="treasury pay">
+            </a>
             <nav>
                 <div class="navbar">
                     <li class="<%= page_name === 'Dashboard' && 'active' %>"><ion-icon name="speedometer"></ion-icon><a href="/dashboard">Dashboard</a></li>
@@ -393,6 +392,9 @@
                             <div class="notification-header">
                                 <h3>NOTIFICATIONS</h3>
                                 <a href="#">Mark all as read</a>
+                            </div>
+                            <div style="text-align: center; margin-top: 2rem; font-size: 0.8rem;">
+                                Your notifications will appear here. 
                             </div>
                             <% notifications.forEach(notif => { %>
                                 <div class="notification-panel <%= notif.status === 'unread' ? 'unread' : '' %>">

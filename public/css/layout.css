@@ -2253,6 +2253,7 @@ select {
   }
   .right {
     width: 100vw;
+    overflow-x: hidden !important;
   }
   .header .first-div {
     left: 0;
@@ -2315,6 +2316,7 @@ select {
   }
   .menu__items.open {
     transform: translateY(0);
+    overflow-y: auto;
   }
   .navbar__mobile {
     display: block;
@@ -2425,6 +2427,10 @@ select {
   .password-passcode-container .header > h2 {
     font-size: 1.25rem;
     text-align: center;
+  }
+  .mobile__toggler {
+    width: 2.5rem;
+    height: 2.5rem;
   }
 }
 

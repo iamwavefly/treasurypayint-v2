@@ -42,17 +42,19 @@
                     <h2>Sign In</h2>
                     <%- include('./partials/message'); %>
                     <div class="username-field">
-                        <ion-icon name="person"></ion-icon>
+                        <ion-icon class="left-icon" name="person"></ion-icon>
                         <label for="username">Username</label>
                         <input autofocus="true" type="text" name="username" id="username" placeholder="Username" />
                     </div>
                     <div class="password-field">
                         <div class="label-password">
-                            <ion-icon name="lock-closed"></ion-icon>
+                            <ion-icon class="left-icon" name="lock-closed"></ion-icon>
                             <label for="password">Password</label>
                             <a href="/users/auth/forgot-password">Forgot password?</a>
                         </div>
-                        <input type="password" name="password" id="password" placeholder="Password" />
+                        <input type="password" name="password" id="password1" placeholder="Password" />
+                        <ion-icon class="right-icon eye1" name="eye" onclick="view1()"></ion-icon>
+                        <ion-icon class="right-icon eye-off1" name="eye-off" onclick="hide1()"></ion-icon>
                     </div>
                     <button>Login</button>
                     <p class="signup">
@@ -68,34 +70,38 @@
                     <h2>Create an account</h2>
                     <%- include('./partials/message'); %>
                     <div class="username-field">
-                        <ion-icon name="pricetag"></ion-icon>
+                        <ion-icon class="left-icon" name="pricetag"></ion-icon>
                         <label for="username">Username</label>
                         <input type="text" name="username" id="username" value="<%= typeof username != 'undefined' ? username : '' %>" placeholder="Choose username" />
                     </div>
                     <div class="firstname-field">
-                        <ion-icon  class="icon" name="person"></ion-icon>
+                        <ion-icon  class="left-icon icon" name="person"></ion-icon>
                         <label for="first_name">First name</label>
                         <input type="text" name="first_name" id="first_name" value="<%= typeof first_name != 'undefined' ? first_name : '' %>" placeholder="First name" />
                     </div>
                     <div class="lastname-field">
-                        <ion-icon  class="icon" name="person"></ion-icon>
+                        <ion-icon  class="left-icon icon" name="person"></ion-icon>
                         <label for="other_name">Last name</label>
                         <input type="text" name="other_name" id="other_name" value="<%= typeof other_name != 'undefined' ? other_name : '' %>" placeholder="Last name" />
                     </div>
                     <div class="email-field">
-                        <ion-icon name="mail"></ion-icon>
+                        <ion-icon class="left-icon" name="mail"></ion-icon>
                         <label for="email">Email</label>
                         <input type="email" name="email" id="email" value="<%= typeof email != 'undefined' ? email : '' %>" placeholder="Email" />
                     </div>
                     <div class="password-field">
-                        <ion-icon name="lock-closed"></ion-icon>
+                        <ion-icon class="left-icon" name="lock-closed"></ion-icon>
                         <label for="password">Choose password</label>
-                        <input type="password" name="password" id="password" placeholder="Choose password" />
+                        <input type="password" name="password" id="password2" placeholder="Choose password" />
+                        <ion-icon class="right-icon eye2" name="eye" onclick="view2()"></ion-icon>
+                        <ion-icon class="right-icon eye-off2" name="eye-off" onclick="hide2()"></ion-icon>
                     </div>
                     <div class="password-field">
-                        <ion-icon name="lock-closed"></ion-icon>
+                        <ion-icon class="left-icon" name="lock-closed"></ion-icon>
                         <label for="password2">Confirm password</label>
-                        <input type="password" name="password2" id="password2" placeholder="Retype password" />
+                        <input type="password" name="password2" id="password3" placeholder="Retype password" />
+                        <ion-icon class="right-icon eye3" name="eye" onclick="view3()"></ion-icon>
+                        <ion-icon class="right-icon eye-off3" name="eye-off" onclick="hide3()"></ion-icon>
                     </div>
                     <button type="submit">Sign up</button>
                     <p class="signup">
