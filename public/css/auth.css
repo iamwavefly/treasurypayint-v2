@@ -63,7 +63,7 @@ section .container .user .formBx {
   justify-content: center;
   align-items: center;
   transition: 0.5s;
-  overflow-y: scroll;
+  overflow-y: auto;
 }
 
 section .container .user .imgBx {
@@ -536,7 +536,7 @@ section .container.active .signinBx .imgBx {
   .password-field a {
     font-size: 0.75rem;
   }
-  form > div ion-icon {
+  form > div .left-icon {
     left: 10px;
   }
   ::placeholder {

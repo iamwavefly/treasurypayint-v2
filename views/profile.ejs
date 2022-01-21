@@ -56,16 +56,16 @@
           <div class="tablinks tab" onclick="openPanel(event, 'security')">
             <button for="security">Privacy & Security</button>
           </div>
-          <div class="tab">
-            <button class="tablinks" for="notifications">Notifications</button>
+          <div class="tablinks tab" onclick="openPanel(event, 'bank-card')">
+            <button for="bank-card">Band & Card</button>
           </div>
-          <div class="tab">
-            <button class="tablinks" for="usage">Usage & statistic</button>
+          <div class="tablinks tab" onclick="openPanel(event, 'account-setting')">
+            <button for="account-setting">Account Setting</button>
           </div>
         </div>
       </div>
       <!-- tab content 👇 -->
-      <form class="profile-setting tab-panel grid-system" action="/users/profile/update/<%= user?.id %>?_method=PUT" method="post" id="profile-setting" style="display: grid;">
+      <form class="profile-setting tab-panel profile grid-system" action="/users/profile/update/<%= user?.id %>?_method=PUT" method="post" id="profile-setting" style="display: grid;">
         <div class="profile-setting-content">
           <div class="form-wrapper">
             <label for="">Full Name</label>
@@ -147,11 +147,11 @@
         </div>
       </form>
   
-      <div class="security tab-panel" id="security">
+      <div class="security tab-panel security" id="security">
         <div class="security-content">
           <div class="form-wrapper">
             <div class="form-wrapper-content">
-              <label for="">Password</label>
+              <label for="">Change Password</label>
               <p>Change your password to a new one.</p>
             </div>
             <button id="change-password" class="setting-btn btn-right">Change Password</button>
@@ -172,16 +172,31 @@
           </div> 
           <div class="form-wrapper">
             <div class="form-wrapper-content">
+              <label for="">Deactivate Account</label>
+              <p>When you deactivate your Treasury Payint account, you can still reactivate it anytime.</p>
+            </div>
+            <button class="setting-btn btn-right">Deactivate Account</button>
+          </div> 
+          <div class="form-wrapper">
+            <div class="form-wrapper-content">
               <label for="">Delete Account</label>
               <p>When you delete your Treasury Payint account, you won't be able to recover it again.</p>
             </div>
-            <button class="setting-btn btn-right">Delete my account</button>
+            <button class="setting-btn btn-right">Delete Account</button>
           </div> 
         </div>
       </div>
   
       <div class="profile-setting tab-panel" id="privacy-setting">
         Privacy Setting
+      </div>
+
+      <div class="profile-setting tab-panel" id="bank-card">
+        Bank & Card
+      </div>
+
+      <div class="account-setting tab-panel" id="account-setting">
+        Account Setting
       </div>
     </div>
   </div>
@@ -190,14 +205,14 @@
 
 <script>
 
-  const profileEditBtn = document.querySelector('#profile-edit-btn')
-  const profileEditForm = document.querySelector('#profile-setting')
-  const profileSubmitBtn = document.querySelector('#profile-submit-btn')
-  const changePassword = document.querySelector('#change-password')
-  const changePasswordBtn = document.querySelector('#change-password-form button')
-  const newPassword1 = document.querySelector('#new-password-1')
-  const newPassword2 = document.querySelector('#new-password-2')
-  const oldPassword = document.querySelector('#old-password')
+  const profileEditBtn = document.querySelector('#profile-edit-btn');
+  const profileEditForm = document.querySelector('#profile-setting');
+  const profileSubmitBtn = document.querySelector('#profile-submit-btn');
+  const changePassword = document.querySelector('#change-password');
+  const changePasswordBtn = document.querySelector('#change-password-form button');
+  const newPassword1 = document.querySelector('#new-password-1');
+  const newPassword2 = document.querySelector('#new-password-2');
+  const oldPassword = document.querySelector('#old-password');
 
   function openPanel(evt, panelName) {
     // Declare all variables
