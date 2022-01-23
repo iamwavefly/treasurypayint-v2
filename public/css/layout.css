@@ -2066,30 +2066,53 @@ p {
   width: 100%;
   position: relative;
 }
-.password-passcode-container > .password-form-wrapper > div:first-child > p {
+.password-passcode-container 
+> .password-form-wrapper 
+> div:first-child 
+> p {
   position: absolute;
-  display: flex;
-  align-items: center;
-  bottom: -15px;
-  background-color: #ecebeb;
+  /* display: flex; */
+  /* align-items: center; */
+  bottom: 0;
+  left: 0;
+  background-color: #696969 !important;
   color: #888;
-  height: 3rem;
-  width: 4rem;
+  height: 2.5rem;
+  width: 4.5rem;
+  margin-bottom: 0;
+  z-index: 100;
+}
+.password-passcode-container 
+> .password-form-wrapper 
+> div:first-child 
+> p
+> input {
+  padding: 0 0 0 25px;
+  height: 100%;
+  width: 100%;
+  margin-top: 0;
+}
+.password-passcode-container 
+> .password-form-wrapper 
+> div:first-child 
+> p
+> span {
+  position: absolute;
+  height: 100%;
+  line-height: 2.5rem;
   padding-left: 15px;
+  bottom: 0;
+  left: 0;
 }
 .password-passcode-container
   > .password-form-wrapper
   > div:first-child
-  > p
   > input {
+  padding-left: 75px;
   position: relative;
-  padding: 0;
-  width: 100%;
-  margin-top: 0;
-  background-color: transparent;
 }
 .password-passcode-container > .password-form-wrapper input,
-select {
+.password-passcode-container > .password-form-wrapper select {
   width: 100%;
   height: 2.5rem;
   padding: 0 15px;

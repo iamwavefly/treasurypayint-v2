@@ -139,7 +139,10 @@
                <form action="/users/profile/update/<%= user.id %>?_method=PUT" method="post" class="password-form-wrapper" id="update-profile-form">
                     <div>
                         <label for="number">Phone number</label>
-                        <p>+<input type="number" required name="country_code" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" maxlength="4" class="country_code" placeholder="123"/></p>
+                        <p>
+                            <span>+</span>
+                            <input type="number" value="+" required name="country_code" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" maxlength="4" class="country_code" placeholder="123"/>
+                        </p>
                         <input type="number" required id="number" placeholder="Phone number" name="number">
                     </div>
                     <div class="address-field">
