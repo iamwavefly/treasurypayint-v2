@@ -80,9 +80,12 @@ body {
 /* ========= Main Section-Starts======== */
 /* ========= Index Header ======== */
 .slider_area .container {
-  height: 100%;
+  position: relative;
+  height: 100vh;
   display: flex;
   align-items: center;
+  top: -5rem;
+  z-index: 1000;
 }
 #index_header {
   position: relative;
@@ -157,13 +160,17 @@ body {
   font-family: "Roboto", sans-serif;
   overflow: hidden;
 }
+.slider_area .slider_text {
+  width: auto;
+  height: auto;
+}
 .slider_area .slider_text h3 {
   font-size: 3.75rem;
   font-weight: 400;
   line-height: 74px;
-  margin-bottom: 40px;
   color: #fff;
   max-width: 60%;
+  padding-bottom: 2rem;
 }
 .boxed-btn3 {
   background: #c46900;
@@ -732,8 +739,8 @@ h3 {
 
 /* iPads and tablets */
 @media (max-width: 768px) {
-  .slider_area .slider_text h3 {
-    max-width: 100%;
+  .slider_area .container {
+    top: 0;
   }
   #index_header {
     position: absolute;
@@ -814,13 +821,10 @@ h3 {
   .container {
     padding-left: 1rem;
   }
-  .slider_area .slider_text {
-    max-width: 20rem;
-    margin-bottom: 0;
-  }
   .slider_area .slider_text h3 {
     font-size: 2rem;
     line-height: 45px;
+    max-width: 100%;
   }
   #index_header .logo {
     width: 12rem;
@@ -838,14 +842,13 @@ h3 {
 
 /* Smallest Mobites */
 @media (max-width: 320px) {
-  .container {
-    margin-left: initial !important;
+  .slider_area {
+    background-position: center;
   }
   #index_header .logo {
     margin-left: -0.8rem;
   }
   .slider_area .slider_text h3 {
-    margin-bottom: 3rem;
     font-size: 1.5rem;
     line-height: 35px;
   }
