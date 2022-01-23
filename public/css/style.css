@@ -85,7 +85,6 @@ body {
   display: flex;
   align-items: center;
   top: -5rem;
-  z-index: 1000;
 }
 #index_header {
   position: relative;
@@ -745,7 +744,7 @@ h3 {
   #index_header {
     position: absolute;
     overflow: hidden;
-    transition: 0.5s;
+    transition: all 0.5s;
   }
   #index_header.active {
     background: #f5f5f5;
@@ -806,6 +805,12 @@ h3 {
     padding: 5px 8px 0;
     font-size: 1.2rem;
   }
+  /* #indexOpen {
+    display: block;
+  }
+  #indexOpen {
+    display: none;
+  } */
 }
 
 /* Bigger Mobiles */
@@ -818,6 +823,9 @@ h3 {
 
 /* Mobile devices */
 @media (max-width: 480px) {
+  .slider_area {
+    background-position: center;
+  }
   .container {
     padding-left: 1rem;
   }
@@ -842,9 +850,6 @@ h3 {
 
 /* Smallest Mobites */
 @media (max-width: 320px) {
-  .slider_area {
-    background-position: center;
-  }
   #index_header .logo {
     margin-left: -0.8rem;
   }
